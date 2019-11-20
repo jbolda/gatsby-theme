@@ -1,0 +1,20 @@
+{
+  "name": "@jbolda/gatsby-theme",
+  "version": "0.0.1",
+  "description": "M O N O R E P O for Gatsby themes",
+  "main": "index.js",
+  "repository": "https://github.com/jbolda/gatsby-theme.git",
+  "author": "Jacob Bolda <me@jacobbolda.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lerna": "lerna"
+  },
+  "devDependencies": {
+    "lerna": "^3.18.4"
+  },
+  "workspaces": [
+    "packages/**",
+    "examples/**"
+  ]
+}

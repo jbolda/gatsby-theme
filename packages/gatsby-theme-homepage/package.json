@@ -1,0 +1,16 @@
+{
+  "name": "@jbolda/gatsby-theme-homepage",
+  "version": "0.0.0",
+  "description": "themed homepage",
+  "author": "Jacob Bolda <me@jacobbolda.com>",
+  "homepage": "https://github.com/jbolda/gatsby-theme#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbolda/gatsby-theme.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
