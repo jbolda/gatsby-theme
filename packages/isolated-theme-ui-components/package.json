@@ -1,0 +1,17 @@
+{
+  "name": "@jbolda/isolated-theme-ui-components",
+  "version": "0.0.0",
+  "description": "Components the implement the isolated-theme-ui context and pragma.",
+  "author": "Jacob Bolda <me@jacobbolda.com>",
+  "homepage": "https://github.com/jbolda/gatsby-theme#readme",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/jbolda/gatsby-theme/issues"
+  },
+  "peerDependencies": {
+    "isolated-theme-ui": "^1.0.1"
+  }
+}
