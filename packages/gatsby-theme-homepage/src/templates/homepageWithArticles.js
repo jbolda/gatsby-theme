@@ -1,12 +1,12 @@
 import React from "react";
-import HeroLayout from "../components/HeroLayout";
-import HeroArticles from "../components/HeroArticles";
+import Layout from "@jbolda/gatsby-theme-homepage/src/components/layout";
+import Articles from "../components/articles";
 
-const HeroTemplate = props => (
-  <HeroLayout {...props}>
-    <HeroArticles swatch="thirdary" />
+const Homepage = props => (
+  <Layout {...props}>
+    <Articles swatch="thirdary" />
     {props.children}
-  </HeroLayout>
+  </Layout>
 );
 
-export default HeroTemplate;
+export default Homepage;

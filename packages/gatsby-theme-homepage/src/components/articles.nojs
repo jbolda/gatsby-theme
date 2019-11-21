@@ -64,14 +64,14 @@ const Articles = ({ posts, pictures, swatch }) =>
     </div>
   ));
 
-export default Articles;
-
-/*
 export default props => (
   <StaticQuery
     query={graphql`
       query GatsbyThemeBulmaHomepageHeroArticles {
-        posts: allBlogPost(limit: 6, sort: {fields: frontmatter___last, order: DESC}) {
+        posts: allBlogPost(
+          limit: 6
+          sort: { fields: frontmatter___last, order: DESC }
+        ) {
           edges {
             node {
               frontmatter {
@@ -116,22 +116,25 @@ export default props => (
       }
     `}
     render={queryData => (
-      <section className={`section is-${props.swatch || 'thirdary'} ${props.edge || 'edge--top'}`}>
+      <section
+        className={`section is-${props.swatch || "thirdary"} ${props.edge ||
+          "edge--top"}`}
+      >
         <h1 className="title">
-          <Link to={'/articles/'}>
-            Articles
-          </Link>
+          <Link to={"/articles/"}>Articles</Link>
         </h1>
         <h2 className="subtitle">The Most Recent</h2>
         <hr />
         <div className="columns is-multiline">
-          <HeroArticles
+          <Articles
             posts={queryData.posts}
             pictures={queryData.pictures}
             {...props}
           />
         </div>
-        <p><Link to={'/articles/'}>Read More</Link></p>
+        <p>
+          <Link to={"/articles/"}>Read More</Link>
+        </p>
       </section>
     )}
   />
@@ -144,4 +147,3 @@ const sortThroughPictures = (article, pictures) =>
       (article && picture.node.base === article.base ? picture.node : finalVal),
     null
   );
-*/
