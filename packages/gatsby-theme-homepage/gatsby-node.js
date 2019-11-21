@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const Debug = require("debug");
 
-exports.onPreExtractQueries = (
+exports.onPreBootstrap = (
   { actions, store },
   { showArticlesOnHomepage = false }
 ) => {
