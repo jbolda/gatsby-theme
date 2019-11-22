@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const Debug = require("debug");
 
-exports.onPreBootstrap = (
-  { actions, store },
+exports.onPreExtractQueries = (
+  { store },
   { showArticlesOnHomepage = false }
 ) => {
   const storeState = store.getState();
@@ -11,48 +11,46 @@ exports.onPreBootstrap = (
   const showArticles = hasBlogInstalled && showArticlesOnHomepage;
 
   if (showArticles) {
-    fs.mkdir(
-      path.resolve("./.cache/@jbolda/gatsby-theme-homepage/templates"),
-      { recursive: true },
-      err => {
-        if (err) throw err;
-
-        fs.copyFileSync(
-          require.resolve("./src/templates/homepageWithArticles.js"),
-          path.resolve(
-            "./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js"
-          )
-        );
-      }
+    fs.mkdirSync(
+      path.join(__dirname, "./.cache/@jbolda/gatsby-theme-homepage/templates/"),
+      { recursive: true }
     );
-    fs.mkdir(
-      path.resolve("./.cache/@jbolda/gatsby-theme-homepage/components"),
-      { recursive: true },
-      err => {
-        if (err) throw err;
 
-        fs.copyFileSync(
-          require.resolve("./src/components/articles.nojs"),
-          path.resolve(
-            "./.cache/@jbolda/gatsby-theme-homepage/components/articles.js"
-          )
-        );
-      }
+    fs.copyFileSync(
+      require.resolve("./src/templates/homepageWithArticles.js"),
+      path.join(
+        __dirname,
+        "./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js"
+      )
+    );
+
+    fs.mkdirSync(
+      path.join(
+        __dirname,
+        "./.cache/@jbolda/gatsby-theme-homepage/components/"
+      ),
+      { recursive: true }
+    );
+
+    fs.copyFileSync(
+      require.resolve("./src/components/articles.nojs"),
+      path.join(
+        __dirname,
+        "./.cache/@jbolda/gatsby-theme-homepage/components/articles.js"
+      )
     );
   } else {
-    fs.mkdir(
-      path.resolve("./.cache/@jbolda/gatsby-theme-homepage/templates"),
-      { recursive: true },
-      err => {
-        if (err) throw err;
+    fs.mkdirSync(
+      path.join(__dirname, "./.cache/@jbolda/gatsby-theme-homepage/templates/"),
+      { recursive: true }
+    );
 
-        fs.copyFileSync(
-          require.resolve("./src/templates/homepage.js"),
-          path.resolve(
-            "./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js"
-          )
-        );
-      }
+    fs.copyFileSync(
+      require.resolve("./src/templates/homepage.js"),
+      path.join(
+        __dirname,
+        "./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js"
+      )
     );
   }
   return;
@@ -61,13 +59,12 @@ exports.onPreBootstrap = (
 exports.createPages = ({ actions }) => {
   const { createPage } = actions;
 
-  const homepage = path.resolve(
+  const homepage = require.resolve(
     `./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js`
   );
 
   createPage({
     path: "/", // required
     component: homepage
-    // component: showArticles ? homepageWithArticles : homepage
   });
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "gatsby-image";
+// import Img from "gatsby-image";
 import { StaticQuery, graphql } from "gatsby";
 
 const Landing = ({ profile, site, swatch, textColor }) => (
@@ -7,11 +7,11 @@ const Landing = ({ profile, site, swatch, textColor }) => (
     <div className="hero-body">
       <div className="columns is-centered is-vcentered">
         <div className="column is-one-third">
-          <Img
+          {/* <Img
             className="image"
             Tag="figure"
-            // fluid={profile.childImageSharp.fluid}
-          />
+            fluid={profile.childImageSharp.fluid}
+          /> */}
         </div>
         <div className="column">
           <div className="columns is-centered">
