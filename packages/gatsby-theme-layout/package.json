@@ -1,0 +1,25 @@
+{
+  "name": "@jbolda/gatsby-theme-layout",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Jacob Bolda <me@jacobbolda.com>",
+  "homepage": "https://github.com/jbolda/gatsby-theme#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbolda/gatsby-theme.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/jbolda/gatsby-theme/issues"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-brands-svg-icons": "^5.11.2",
+    "@fortawesome/free-regular-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7"
+  }
+}

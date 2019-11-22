@@ -1,15 +1,14 @@
 import React from "react";
 import Landing from "./landing";
 import About from "./about";
+import Nav from "@jbolda/gatsby-theme-layout";
 
 const Layout = props => (
-  <SimpleNav location={props.location}>
+  <Nav location={props.location}>
     <Landing swatch="primary" />
     <About swatch="secondary" />
     {props.children}
-  </SimpleNav>
+  </Nav>
 );
 
 export default Layout;
-
-const SimpleNav = ({ children }) => <div>{children}</div>;
