@@ -2,10 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const Debug = require("debug");
 
-exports.onPreExtractQueries = (
-  { store },
-  { showArticlesOnHomepage = false }
-) => {
+exports.onPreBootstrap = ({ store }, { showArticlesOnHomepage = false }) => {
   const storeState = store.getState();
   const hasBlogInstalled = !!storeState.nodesByType.get(`BlogPost`);
   const showArticles = hasBlogInstalled && showArticlesOnHomepage;
