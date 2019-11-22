@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
+    "@jbolda/gatsby-theme-blog": "^0.0.0",
     "@jbolda/gatsby-theme-homepage": "^0.0.0",
     "@jbolda/gatsby-theme-layout": "^0.0.0",
     "@mdx-js/mdx": "^1.5.1",

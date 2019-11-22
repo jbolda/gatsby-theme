@@ -1,0 +1,18 @@
+{
+  "name": "@jbolda/gatsby-theme-blog",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Jacob Bolda <me@jacobbolda.com>",
+  "homepage": "https://github.com/jbolda/gatsby-theme#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbolda/gatsby-theme.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/jbolda/gatsby-theme/issues"
+  }
+}

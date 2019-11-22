@@ -93,6 +93,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `@jbolda/gatsby-theme-homepage`,
+    `@jbolda/gatsby-theme-blog`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {}
