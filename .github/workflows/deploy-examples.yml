@@ -1,0 +1,30 @@
+name: Deploy Examples
+
+on:
+  push:
+   branches:    
+     - master  # Push events on master branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        example: ['personal']
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: example/${{ matrix.example }}
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID_PERSONAL }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          yarn
+          yarn lerna bootstrap
+          cd examples/${{ matrix.example }}
+          yarn build
+          npx netlify-cli deploy --dir=public --prod

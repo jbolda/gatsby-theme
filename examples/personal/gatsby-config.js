@@ -67,7 +67,7 @@ module.exports = {
         apiKey: process.env.AIRTABLE_API_KEY,
         tables: [
           {
-            baseId: `appcL6Jdj7ZrhTg4q`,
+            baseId: `appyi6XMs9Kowv84G`,
             tableName: `Recipes`,
             tableView: `List`,
             queryName: `Recipes`,
@@ -76,22 +76,7 @@ module.exports = {
               ingredients: "text/markdown",
               directions: "text/markdown"
             },
-            separateMapTypes: true,
-            tableLinks: [`Cooking_Method`, `Style`]
-          },
-          {
-            baseId: `appcL6Jdj7ZrhTg4q`,
-            tableName: `Cooking Method`,
-            tableView: `Main View`,
-            queryName: `Cooking Method`,
-            tableLinks: [`Recipes`]
-          },
-          {
-            baseId: `appcL6Jdj7ZrhTg4q`,
-            tableName: `Style`,
-            tableView: `Main View`,
-            queryName: `Style`,
-            tableLinks: [`Recipes`]
+            separateMapTypes: true
           }
         ]
       }

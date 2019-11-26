@@ -1,0 +1,24 @@
+name: Build Check on PR
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        example: ['personal']
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: example/${{ matrix.example }}
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          yarn
+          yarn lerna bootstrap
+          cd examples/${{ matrix.example }}
+          yarn build
