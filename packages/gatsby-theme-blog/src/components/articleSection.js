@@ -1,7 +1,6 @@
 import React from "react";
-import PostPublished from "./postPublished";
 
-const BlogSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
+const ArticleSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
   if (props.componentOverride) {
     return props.componentOverride();
   } else if (props.componentBlocks) {
@@ -38,9 +37,7 @@ const BlogSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
           }
         })}
         <ColumnContainer>
-          <div className={`notification is-${props.swatch || "primary"}`}>
-            <PostPublished frontmatter={props.post.frontmatter} />
-          </div>
+          <div className={`notification is-${props.swatch || "primary"}`}></div>
         </ColumnContainer>
       </section>
     );
@@ -64,7 +61,6 @@ const BlogSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
             </h1>
             <div className={`notification is-${props.swatch || "secondary"}`}>
               {props.children}
-              <PostPublished frontmatter={props.post.frontmatter} />
             </div>
           </ColumnContainer>
         </div>
@@ -79,4 +75,4 @@ const ColumnContainer = ({ children }) => (
   </div>
 );
 
-export default BlogSection;
+export default ArticleSection;

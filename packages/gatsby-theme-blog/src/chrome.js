@@ -1,12 +1,12 @@
 import React from "react";
-import BlogPostLayout from "./blogPostLayout";
+import BlogPostLayout from "./articleLayout";
 import HelmetBlock from "./components/helmetBlock";
-import BlogSection from "./components/blogSection";
+import BlogSection from "./components/articleSection";
 import Img from "gatsby-image";
 
 class Chrome extends React.Component {
   render() {
-    const { frontmatter } = this.props.post;
+    const { frontmatter } = this.props.article;
     const adjustTitleStyle = this.props.hero
       ? {
           color: "white",
