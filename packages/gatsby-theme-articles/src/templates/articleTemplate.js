@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Chrome from "../Chrome.js";
+import Chrome from "../chrome";
 
 const ArticleTemplate = props => (
   <Chrome

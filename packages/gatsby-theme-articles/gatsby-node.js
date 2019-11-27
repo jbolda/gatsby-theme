@@ -1,5 +1,6 @@
 const Debug = require("debug");
 const path = require("path");
+const crypto = require("crypto");
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const { urlResolve } = require(`gatsby-core-utils`);
 
@@ -30,8 +31,8 @@ exports.createSchemaCustomization = ({ actions, schema }, {}) => {
     slug: String!
     written: Date! @dateformat
     updated: Date @dateformat
-    tags: [String]!
-    keywords: [String]!
+    tags: [String]
+    keywords: [String]
     excerpt: String!
   }`);
 
@@ -48,8 +49,8 @@ exports.createSchemaCustomization = ({ actions, schema }, {}) => {
         },
         written: { type: `Date!`, extensions: { dateformat: {} } },
         updated: { type: `Date`, extensions: { dateformat: {} } },
-        tags: { type: `[String]!` },
-        keywords: { type: `[String]!` },
+        tags: { type: `[String]` },
+        keywords: { type: `[String]` },
         excerpt: {
           type: `String!`,
           args: {
@@ -74,26 +75,21 @@ exports.createSchemaCustomization = ({ actions, schema }, {}) => {
 // This will change with schema customization with work
 exports.onCreateNode = async (
   { node, actions, getNode, createNodeId },
-  themeOptions
+  { contentPath = "articles", basePath = "" }
 ) => {
   const { createNode, createParentChildLink } = actions;
-  const { contentPath, basePath } = themeOptions;
 
   // Make sure it's an MDX node
-  if (
-    node.internal.type !== `Mdx` ||
-    !node.parent ||
-    (!!node.parent && node.parent.sourceInstanceName !== "articles")
-  ) {
+  if (node.internal.type !== `Mdx` || !node.fileAbsolutePath) {
     return;
   }
-  console.log(node);
+
   // Create source field (according to contentPath)
   const fileNode = getNode(node.parent);
   const source = fileNode.sourceInstanceName;
 
-  let slug = "";
   if (node.internal.type === `Mdx` && source === contentPath) {
+    let slug;
     if (node.frontmatter.slug) {
       if (path.isAbsolute(node.frontmatter.slug)) {
         // absolute paths take precedence
@@ -104,11 +100,6 @@ exports.onCreateNode = async (
       }
     } else {
       // otherwise use the filepath function from gatsby-source-filesystem
-      console.log({
-        node: fileNode,
-        getNode,
-        basePath: contentPath
-      });
       const filePath = createFilePath({
         node: fileNode,
         getNode,
@@ -123,7 +114,7 @@ exports.onCreateNode = async (
       title: node.frontmatter.title,
       tags: node.frontmatter.tags || [],
       slug,
-      date: node.frontmatter.date,
+      written: node.frontmatter.written,
       keywords: node.frontmatter.keywords || []
     };
 
@@ -135,13 +126,13 @@ exports.onCreateNode = async (
       parent: node.id,
       children: [],
       internal: {
-        type: `MdxArticle`,
+        type: `MdxArticles`,
         contentDigest: crypto
           .createHash(`md5`)
           .update(JSON.stringify(fieldData))
           .digest(`hex`),
         content: JSON.stringify(fieldData),
-        description: `Mdx implementation of the BlogPost interface`
+        description: `Mdx implementation of the Articles interface`
       }
     });
     createParentChildLink({ parent: node, child: getNode(mdxBlogPostId) });
@@ -174,7 +165,7 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result);
           reject(result.errors);
         }
-
+        console.dir(result);
         result.data.allArticles.nodes.forEach(node => {
           if (node.path) {
             createPage({

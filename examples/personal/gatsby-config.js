@@ -64,7 +64,7 @@ module.exports = {
     {
       resolve: `gatsby-source-airtable`,
       options: {
-        apiKey: process.env.AIRTABLE_API_KEY,
+        apiKey: process.env.AIRTABLE_API_KEY_DEV,
         tables: [
           {
             baseId: `appyi6XMs9Kowv84G`,
@@ -85,7 +85,10 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `@jbolda/gatsby-theme-homepage`,
-    `@jbolda/gatsby-theme-articles`,
+    {
+      resolve: `@jbolda/gatsby-theme-articles`,
+      options: { contentPath: "articles" }
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {}
