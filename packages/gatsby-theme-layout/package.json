@@ -1,6 +1,6 @@
 {
   "name": "@jbolda/gatsby-theme-layout",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
@@ -21,7 +21,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
-    "@jbolda/isolated-theme-ui-components": "^0.0.0",
+    "@jbolda/isolated-theme-ui-components": "^0.0.1",
     "isolated-theme-ui": "^1.0.1"
   }
 }
