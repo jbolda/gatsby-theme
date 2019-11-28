@@ -2,82 +2,60 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import Img from "gatsby-image";
 
+import Flex from "@jbolda/isolated-theme-ui-components/src/components/flex";
+import Box from "@jbolda/isolated-theme-ui-components/src/components/box";
+import Heading from "@jbolda/isolated-theme-ui-components/src/components/heading";
+
 const ArticleList = props => {
   return (
     <Nav {...props}>
-      <div className="hero is-small is-thirdary edge--bottom--reverse">
-        <div className="hero-body">
-          <div className="columns is-centered is-vcentered">
-            <div className="column is-one-third content">
-              <p className="title">Articles</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="section">
-        <div className="columns is-multiline">
-          {props.data.articles.nodes.map(article => (
-            <div className="column is-one-third" key={article.frontmatter.path}>
-              <div className="card">
-                <div className="card-image">
-                  {article.frontmatter.heroImage ? (
-                    <Img
-                      className="image"
-                      Tag="figure"
-                      fluid={
-                        article.frontmatter.heroImage.childImageSharp.fluid
-                      }
-                    />
-                  ) : null}
-                </div>
-                <div className="card-content">
-                  <div className="heading">
-                    <div className="level">
-                      <h4 className="level-left">
-                        <time
-                          className="subtitle is-6"
-                          dateTime={
-                            article.frontmatter.updatedPretty ||
-                            article.frontmatter.writtenPretty
-                          }
-                        >
-                          {article.frontmatter.updatedPretty ||
-                            article.frontmatter.writtenPretty}
-                        </time>
-                      </h4>
-                      <h5
-                        className={`tag is-${props.swatch ||
-                          "thirdary"} is-6 level-right`}
-                      >
-                        {article.frontmatter.category}
-                      </h5>
-                    </div>
-                    <h1 className="title">
-                      <Link to={article.frontmatter.path}>
-                        {article.frontmatter.title}
-                      </Link>
-                    </h1>
+      <Heading>Articles</Heading>
+      <Flex>
+        {props.data.articles.nodes.map(article => (
+          <Box key={article.slug}>
+            <div className="card">
+              <div className="card-image">
+                {article.heroImage ? (
+                  <Img
+                    className="image"
+                    Tag="figure"
+                    fluid={article.heroImage.childImageSharp.fluid}
+                  />
+                ) : null}
+              </div>
+              <div className="card-content">
+                <div className="heading">
+                  <div className="level">
+                    <h5
+                      className={`tag is-${props.swatch ||
+                        "thirdary"} is-6 level-right`}
+                    >
+                      {article.category}
+                    </h5>
                   </div>
-                  <div className="content">
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: article.frontmatter.description
-                      }}
-                    />
-                  </div>
-                  <nav className="level">
-                    <div className="level-left">
-                      <span className="level-item">
-                        <Link to={article.frontmatter.path}>Read</Link>
-                      </span>
-                    </div>
-                  </nav>
+                  <h1 className="title">
+                    <Link to={article.slug}>{article.title}</Link>
+                  </h1>
                 </div>
+                <div className="content">
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: article.description
+                    }}
+                  />
+                </div>
+                <nav className="level">
+                  <div className="level-left">
+                    <span className="level-item">
+                      <Link to={article.slug}>Read</Link>
+                    </span>
+                  </div>
+                </nav>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
+          </Box>
+        ))}
+      </Flex>
     </Nav>
   );
 };
@@ -96,6 +74,7 @@ export const pageQuery = graphql`
         title
         updated
         written
+        slug
       }
     }
   }

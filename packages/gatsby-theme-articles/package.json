@@ -14,5 +14,9 @@
   },
   "bugs": {
     "url": "https://github.com/jbolda/gatsby-theme/issues"
+  },
+  "dependencies": {
+    "@jbolda/isolated-theme-ui-components": "^0.0.0",
+    "isolated-theme-ui": "^1.0.1"
   }
 }

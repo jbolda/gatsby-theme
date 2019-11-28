@@ -143,7 +143,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const mdxArticle = require.resolve(`./src/templates/articleTemplate.js`);
+    const mdxArticle = require.resolve(`./src/templates/articleTemplate`);
     // const mdxBlogPostWithoutImage = require.resolve(
     //   `./src/templates/articleTemplateWithoutImage.js`
     // );
@@ -165,9 +165,9 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result);
           reject(result.errors);
         }
-        console.dir(result);
+
         result.data.allArticles.nodes.forEach(node => {
-          if (node.path) {
+          if (node.slug) {
             createPage({
               path: node.slug, // required
               // component: edge.node.fields.heroImageSet
@@ -183,7 +183,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         createPage({
           path: "/articles/",
-          component: require.resolve(`./src/templates/articleList.js`)
+          component: require.resolve(`./src/templates/articleList`)
         });
 
         return;

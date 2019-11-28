@@ -1,12 +1,11 @@
 import React from "react";
-import BlogPostLayout from "./articleLayout";
+import ArticleLayout from "./articleLayout";
 import HelmetBlock from "./components/helmetBlock";
-import BlogSection from "./components/articleSection";
+import ArticleSection from "./components/articleSection";
 import Img from "gatsby-image";
 
 class Chrome extends React.Component {
   render() {
-    const { frontmatter } = this.props.article;
     const adjustTitleStyle = this.props.hero
       ? {
           color: "white",
@@ -36,16 +35,16 @@ class Chrome extends React.Component {
     };
 
     return (
-      <BlogPostLayout location={this.props.location}>
+      <ArticleLayout location={this.props.location}>
         <HeroImage hero={this.props.hero} />
-        <BlogSection
+        <ArticleSection
           props={this.props}
           adjustTitleStyle={adjustTitleStyle}
           adjustPostStyle={adjustPostStyle}
           swatch="secondary"
         />
-        <HelmetBlock frontmatter={frontmatter} />
-      </BlogPostLayout>
+        <HelmetBlock frontmatter={this.props.article} />
+      </ArticleLayout>
     );
   }
 }

@@ -12,5 +12,9 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@jbolda/isolated-theme-ui-components": "^0.0.0",
+    "isolated-theme-ui": "^1.0.1"
   }
 }

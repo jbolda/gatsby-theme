@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 
-class BlogPostLayout extends React.Component {
+class ArticleLayout extends React.Component {
   render() {
     let { siteMetadata } = this.props.site;
 
@@ -40,6 +40,6 @@ export default props => (
         }
       }
     `}
-    render={queryData => <BlogPostLayout site={queryData.site} {...props} />}
+    render={queryData => <ArticleLayout site={queryData.site} {...props} />}
   />
 );

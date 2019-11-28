@@ -18,7 +18,7 @@ const ArticleSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
               ...adjustTitleStyle
             }}
           >
-            {props.post.frontmatter.title}
+            {props.article.title}
           </h1>
         </ColumnContainer>
         {props.componentBlocks.map(block => {
@@ -57,7 +57,7 @@ const ArticleSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
                 ...adjustTitleStyle
               }}
             >
-              {props.post.frontmatter.title}
+              {props.article.title}
             </h1>
             <div className={`notification is-${props.swatch || "secondary"}`}>
               {props.children}

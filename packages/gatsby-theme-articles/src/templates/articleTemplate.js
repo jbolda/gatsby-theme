@@ -1,17 +1,15 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import Chrome from "../chrome";
 
-const ArticleTemplate = props => (
+const ArticleTemplate = ({ data, location }) => (
   <Chrome
-    article={this.props.data.article}
-    hero={this.props.data.article.frontmatter.heroImage}
-    location={this.props.location}
+    article={data.article}
+    hero={data.article.heroImage}
+    location={location}
   >
-    <div
-      className="content has-text-grey-dark"
-      dangerouslySetInnerHTML={{ __html: this.props.data.article.html }}
-    />
+    <MDXRenderer>{data.article.body}</MDXRenderer>
   </Chrome>
 );
 
