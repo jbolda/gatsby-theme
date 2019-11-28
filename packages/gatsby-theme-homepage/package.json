@@ -5,6 +5,9 @@
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "repository": {
     "type": "git",
