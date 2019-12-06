@@ -84,7 +84,10 @@ module.exports = {
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `@jbolda/gatsby-theme-homepage`,
+    {
+      resolve: `@jbolda/gatsby-theme-homepage`,
+      options: { showArticlesOnHomepage: true }
+    },
     {
       resolve: `@jbolda/gatsby-theme-articles`,
       options: { contentPath: "articles" }

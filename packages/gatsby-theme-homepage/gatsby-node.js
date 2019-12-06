@@ -2,10 +2,23 @@ const fs = require("fs");
 const path = require("path");
 const Debug = require("debug");
 
-exports.onPreBootstrap = ({ store }, { showArticlesOnHomepage = false }) => {
+exports.onPreBootstrap = (
+  { store, reporter },
+  { showArticlesOnHomepage = false }
+) => {
+  const debug = Debug("@jbolda/gatsby-theme-homepage:onPreBootstrap");
   const storeState = store.getState();
-  const hasBlogInstalled = !!storeState.nodesByType.get(`BlogPost`);
-  const showArticles = hasBlogInstalled && showArticlesOnHomepage;
+  const hasArticlesInstalled = !!storeState.nodesByType.get(`Articles`);
+
+  const showArticles = hasArticlesInstalled && showArticlesOnHomepage;
+  debug(
+    reporter.info(`Is the article theme installed? ${hasArticlesInstalled}`)
+  );
+  debug(
+    reporter.info(
+      `Is the theme configured to show articles? ${showArticlesOnHomepage}`
+    )
+  );
 
   if (showArticles) {
     fs.mkdirSync(
