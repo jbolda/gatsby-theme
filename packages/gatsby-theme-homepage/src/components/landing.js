@@ -1,39 +1,24 @@
 import React from "react";
 // import Img from "gatsby-image";
 import { StaticQuery, graphql } from "gatsby";
+import { Flex, Box, Heading, Text } from "@jbolda/isolated-theme-ui-components";
 
 const Landing = ({ profile, site, swatch, textColor }) => (
-  <section className={`hero is-small is-${swatch || "primary"} edge--bottom`}>
-    <div className="hero-body">
-      <div className="columns is-centered is-vcentered">
-        <div className="column is-one-third">
-          {/* <Img
+  <Flex>
+    <Box>
+      {/* <Img
             className="image"
             Tag="figure"
             fluid={profile.childImageSharp.fluid}
           /> */}
-        </div>
-        <div className="column">
-          <div className="columns is-centered">
-            <div className="column is-half">
-              <h3 className={`subtitle ${textColor || "has-text-thirdary"}`}>
-                Hi, I am
-              </h3>
-              <h1 className={`title ${textColor || "has-text-thirdary"}`}>
-                {site.siteMetadata.siteAuthor}
-              </h1>
-              <h2 className={`subtitle ${textColor || "has-text-thirdary"}`}>
-                {site.siteMetadata.siteAuthorIdentity}
-              </h2>
-              <div className={`${textColor || "has-text-thirdary"}`}>
-                <p>{site.siteMetadata.siteLanding}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </Box>
+    <Box>
+      <Heading as="h3">Hi, I am</Heading>
+      <Heading>{site.siteMetadata.siteAuthor}</Heading>
+      <Heading as="h2">{site.siteMetadata.siteAuthorIdentity}</Heading>
+      <Text as="p">{site.siteMetadata.siteLanding}</Text>
+    </Box>
+  </Flex>
 );
 
 export default props => (

@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../../../../src/components/layout";
-import Articles from "../components/articles";
+import Articles from "../../../../src/components/articles";
 
 const Homepage = props => (
   <Layout {...props}>
