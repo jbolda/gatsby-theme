@@ -1,9 +1,19 @@
 /** @jsx jsx */
 import { jsx } from "../context";
-import { Link } from "gatsby";
+import { Link as GatsbyLink } from "gatsby";
 
-export default ({ to, children }) => (
-  <Link to={to} sx={{ color: "text" }}>
-    {children}
-  </Link>
-);
+export default ({ as: Link = GatsbyLink, to, children }) =>
+  Link !== "a" ? (
+    <Link to={to} sx={{ color: "text" }}>
+      {children}
+    </Link>
+  ) : (
+    <a
+      href={to}
+      target="_blank"
+      rel="noopener noreferrer"
+      sx={{ color: "text" }}
+    >
+      {children}
+    </a>
+  );
