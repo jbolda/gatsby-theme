@@ -2,15 +2,16 @@ const fs = require("fs");
 const path = require("path");
 const Debug = require("debug");
 
-exports.onPreBootstrap = (
-  { store, reporter },
+exports.onPreExtractQueries = (
+  { getNodesByType, reporter },
   { showArticlesOnHomepage = false }
 ) => {
-  const debug = Debug("@jbolda/gatsby-theme-homepage:onPreBootstrap");
-  const storeState = store.getState();
-  const hasArticlesInstalled = !!storeState.nodesByType.get(`Articles`);
-
+  const debug = Debug("@jbolda/gatsby-theme-homepage:onPreExtractQueries");
+  // it seems that we can't query for interfaces
+  // so only supporting MdxArticles right now
+  const hasArticlesInstalled = getNodesByType(`MdxArticles`).length > 0;
   const showArticles = hasArticlesInstalled && showArticlesOnHomepage;
+
   debug(
     reporter.info(`Is the article theme installed? ${hasArticlesInstalled}`)
   );
