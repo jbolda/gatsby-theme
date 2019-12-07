@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const Debug = require("debug");
 
-exports.onPreExtractQueries = (
+exports.onPreBootstrap = async (
   { getNodesByType, reporter },
   { showArticlesOnHomepage = false }
 ) => {
@@ -12,59 +12,31 @@ exports.onPreExtractQueries = (
   const hasArticlesInstalled = getNodesByType(`MdxArticles`).length > 0;
   const showArticles = hasArticlesInstalled && showArticlesOnHomepage;
 
-  debug(
+  debug(() =>
     reporter.info(`Is the article theme installed? ${hasArticlesInstalled}`)
   );
-  debug(
+  debug(() =>
     reporter.info(
       `Is the theme configured to show articles? ${showArticlesOnHomepage}`
     )
   );
 
-  if (showArticles) {
-    fs.mkdirSync(
-      path.join(__dirname, "./.cache/@jbolda/gatsby-theme-homepage/templates/"),
-      { recursive: true }
-    );
+  fs.mkdirSync(
+    path.join(__dirname, "./.cache/@jbolda/gatsby-theme-homepage/templates/"),
+    { recursive: true }
+  );
 
-    fs.copyFileSync(
-      require.resolve("./src/templates/homepageWithArticles.js"),
-      path.join(
-        __dirname,
-        "./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js"
-      )
-    );
-
-    fs.mkdirSync(
-      path.join(
-        __dirname,
-        "./.cache/@jbolda/gatsby-theme-homepage/components/"
-      ),
-      { recursive: true }
-    );
-
-    fs.copyFileSync(
-      require.resolve("./src/components/articles.nojs"),
-      path.join(
-        __dirname,
-        "./.cache/@jbolda/gatsby-theme-homepage/components/articles.js"
-      )
-    );
-  } else {
-    fs.mkdirSync(
-      path.join(__dirname, "./.cache/@jbolda/gatsby-theme-homepage/templates/"),
-      { recursive: true }
-    );
-
-    fs.copyFileSync(
-      require.resolve("./src/templates/homepage.js"),
-      path.join(
-        __dirname,
-        "./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js"
-      )
-    );
-  }
-  return;
+  return await fs.copyFileSync(
+    require.resolve(
+      `./src/templates/${
+        showArticles ? "homepageWithArticles.nojs" : "homepage.js"
+      }`
+    ),
+    path.join(
+      __dirname,
+      "./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js"
+    )
+  );
 };
 
 exports.createPages = ({ actions }) => {

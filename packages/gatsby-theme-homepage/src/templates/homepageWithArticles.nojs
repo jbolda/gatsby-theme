@@ -1,0 +1,29 @@
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../../../../src/components/layout";
+import Articles from "../../../../src/components/articles";
+
+const Homepage = props => (
+  <Layout {...props}>
+    <Articles articles={props.data.articles} />
+    {props.children}
+  </Layout>
+);
+
+export default Homepage;
+
+export const pageQuery = graphql`
+  query JBoldaGatsbyThemeHomepageImageArticles {
+    articles: allArticles(sort: { fields: written, order: DESC }) {
+      nodes {
+        excerpt
+        keywords
+        tags
+        title
+        updated
+        written
+        slug
+      }
+    }
+  }
+`;
