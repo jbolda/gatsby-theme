@@ -2,23 +2,21 @@ const fs = require("fs");
 const path = require("path");
 const Debug = require("debug");
 
-exports.onPreBootstrap = async (
+exports.resolvableExtensions = async (
   { getNodesByType, reporter },
   { showArticlesOnHomepage = false }
 ) => {
-  const debug = Debug("@jbolda/gatsby-theme-homepage:onPreExtractQueries");
+  const debug = Debug(
+    "@jbolda/gatsby-theme-homepage:createSchemaCustomization"
+  );
   // it seems that we can't query for interfaces
   // so only supporting MdxArticles right now
   const hasArticlesInstalled = getNodesByType(`MdxArticles`).length > 0;
   const showArticles = hasArticlesInstalled && showArticlesOnHomepage;
 
-  debug(() =>
-    reporter.info(`Is the article theme installed? ${hasArticlesInstalled}`)
-  );
-  debug(() =>
-    reporter.info(
-      `Is the theme configured to show articles? ${showArticlesOnHomepage}`
-    )
+  reporter.info(`Is the article theme installed? ${hasArticlesInstalled}`);
+  reporter.info(
+    `Is the theme configured to show articles? ${showArticlesOnHomepage}`
   );
 
   fs.mkdirSync(
