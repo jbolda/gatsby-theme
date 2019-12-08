@@ -1,5 +1,4 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import { Flex, Box, Heading, Link } from "@jbolda/isolated-theme-ui-components";
 // import Img from "gatsby-image";
 
