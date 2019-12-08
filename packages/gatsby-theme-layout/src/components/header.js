@@ -26,7 +26,9 @@ const Header = props => {
               <Text>{props.siteMetadata.siteTitle}</Text>
             )}
           </Link>
-          {/* {!props.siteMetadata.navLinks ? null : (
+        </Box>
+        <Box width={null}>
+          {!props.siteMetadata.navLinks ? null : (
             <button
               aria-label="menu"
               aria-expanded={hamburgerActive ? "true" : "false"}
@@ -37,7 +39,7 @@ const Header = props => {
               <span aria-hidden="true" />
               {hamburgerActive ? "true" : "false"}
             </button>
-          )} */}
+          )}
         </Box>
         {!props.siteMetadata.navLinks
           ? null
