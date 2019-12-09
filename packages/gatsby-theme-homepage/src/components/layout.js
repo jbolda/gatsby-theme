@@ -5,8 +5,8 @@ import Nav from "@jbolda/gatsby-theme-layout";
 
 const Layout = props => (
   <Nav location={props.location}>
-    <Landing swatch="primary" />
-    <About swatch="secondary" />
+    <Landing />
+    <About />
     {props.children}
   </Nav>
 );
