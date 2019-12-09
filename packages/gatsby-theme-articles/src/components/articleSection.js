@@ -1,78 +1,40 @@
 import React from "react";
+import { Flex, Box, Heading } from "@jbolda/isolated-theme-ui-components";
 
-const ArticleSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
-  if (props.componentOverride) {
-    return props.componentOverride();
-  } else if (props.componentBlocks) {
+const ArticleSection = ({
+  componentOverride,
+  componentBlocks,
+  article,
+  children
+}) => {
+  if (componentOverride) {
+    return componentOverride();
+  } else if (componentBlocks) {
     return (
-      <section
-        className={`section is-${props.swatch || "secondary"}`}
-        style={{ paddingBottom: "1rem", ...adjustPostStyle }}
-      >
-        <ColumnContainer>
-          <h1
-            className="title is-1"
-            style={{
-              paddingLeft: 24,
-              paddingRight: 40,
-              ...adjustTitleStyle
-            }}
-          >
-            {props.article.title}
-          </h1>
-        </ColumnContainer>
-        {props.componentBlocks.map(block => {
+      <Flex direction="column">
+        <Box>
+          <Heading>{article.title}</Heading>
+        </Box>
+        {componentBlocks.map(block => {
           if (block.wrapper === "break-out") {
-            return (
-              <div key={block.uniqueKey} className="container">
-                {block.renderComponent()}
-              </div>
-            );
+            return <Box key={block.uniqueKey}>{block.renderComponent()}</Box>;
           } else {
-            return (
-              <ColumnContainer key={block.uniqueKey}>
-                {block.renderComponent()}
-              </ColumnContainer>
-            );
+            return <Box key={block.uniqueKey}>{block.renderComponent()}</Box>;
           }
         })}
-        <ColumnContainer>
-          <div className={`notification is-${props.swatch || "primary"}`}></div>
-        </ColumnContainer>
-      </section>
+      </Flex>
     );
   } else {
     return (
-      <section
-        className={`section is-${props.swatch || "fifthary"}`}
-        style={{ paddingBottom: "1rem", ...adjustPostStyle }}
-      >
-        <div className="container">
-          <ColumnContainer>
-            <h1
-              className="title is-1"
-              style={{
-                paddingLeft: 24,
-                paddingRight: 40,
-                ...adjustTitleStyle
-              }}
-            >
-              {props.article.title}
-            </h1>
-            <div className={`notification is-${props.swatch || "secondary"}`}>
-              {props.children}
-            </div>
-          </ColumnContainer>
-        </div>
-      </section>
+      <Flex direction="column">
+        <Box>
+          <Heading>{article.title}</Heading>
+        </Box>
+        {console.log(children)}
+        <Box>{children}</Box>
+      </Flex>
     );
   }
 };
-
-const ColumnContainer = ({ children }) => (
-  <div className="columns is-centered">
-    <div className="column is-half">{children}</div>
-  </div>
-);
 
 export default ArticleSection;

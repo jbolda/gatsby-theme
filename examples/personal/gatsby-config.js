@@ -51,7 +51,10 @@ module.exports = {
         icon: ["fas", "camera"]
       }
     ],
-    navLinks: [{ url: "/recipes/", text: "Our Recipes" }]
+    navLinks: [
+      { url: "/articles/", text: "Articles" },
+      { url: "/recipes/", text: "Our Recipes" }
+    ]
   },
   plugins: [
     {

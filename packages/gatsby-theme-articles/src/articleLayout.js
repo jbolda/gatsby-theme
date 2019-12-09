@@ -1,35 +1,27 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
+import Nav from "@jbolda/gatsby-theme-layout";
+import { Box } from "@jbolda/isolated-theme-ui-components";
 
-class ArticleLayout extends React.Component {
-  render() {
-    let { siteMetadata } = this.props.site;
-
-    return (
-      <Nav site={this.props.site} location={this.props.location}>
-        {this.props.children}
-        <section className={`section is-${this.props.swatch || "primary"}`}>
-          <hr />
-          <div className="container">
-            <p>
-              {siteMetadata.siteDescription}
-              <a href={siteMetadata.siteContact}>
-                <br /> <strong>{siteMetadata.siteAuthor}</strong> on Twitter
-              </a>
-            </p>
-          </div>
-        </section>
-      </Nav>
-    );
-  }
-}
-
-const Nav = ({ children }) => <div>{children}</div>;
+const ArticleLayout = ({ footerInfo, location, children }) => (
+  <Nav location={location}>
+    {children}
+    <Box>
+      <hr />
+      <p>
+        {footerInfo.siteDescription}
+        <a href={footerInfo.siteContact}>
+          <br /> <strong>{footerInfo.siteAuthor}</strong> on Twitter
+        </a>
+      </p>
+    </Box>
+  </Nav>
+);
 
 export default props => (
   <StaticQuery
     query={graphql`
-      query JBoldaGatsbyThemeBlogBlogPostLayout {
+      query JBoldaGatsbyThemeArticleArticleLayout {
         site {
           siteMetadata {
             siteTitle
@@ -40,6 +32,8 @@ export default props => (
         }
       }
     `}
-    render={queryData => <ArticleLayout site={queryData.site} {...props} />}
+    render={queryData => (
+      <ArticleLayout footerInfo={queryData.site.siteMetadata} {...props} />
+    )}
   />
 );

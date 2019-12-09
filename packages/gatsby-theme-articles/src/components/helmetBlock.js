@@ -4,13 +4,13 @@ import Helmet from "react-helmet";
 const HelmetBlock = ({ frontmatter }) => (
   <Helmet>
     <title>{`${frontmatter.title} | Jacob Bolda`}</title>
-    <meta name="description" content={frontmatter.description} />
+    <meta name="description" content={frontmatter.excerpt} />
     <meta property="og:title" content={`${frontmatter.title} | Jacob Bolda`} />
     <meta
       property="og:url"
-      content={`https://www.jacobbolda.com/${frontmatter.path}`}
+      content={`https://www.jacobbolda.com/${frontmatter.slug}`}
     />
-    <meta property="og:description" content={frontmatter.description} />
+    <meta property="og:description" content={frontmatter.excerpt} />
     <meta property="og:site_name" content="Jacob Bolda" />
     <meta property="og:type" content="article" />
     <meta property="og:article:author" content="Jacob Bolda" />
@@ -20,7 +20,7 @@ const HelmetBlock = ({ frontmatter }) => (
     <meta property="twitter:label1" content="Category" />
     <meta property="twitter:data1" content={frontmatter.category} />
     <meta property="twitter:label2" content="Written" />
-    <meta property="twitter:data2" content={frontmatter.writtenPretty} />
+    <meta property="twitter:data2" content={frontmatter.written} />
   </Helmet>
 );
 
