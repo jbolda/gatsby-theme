@@ -14,7 +14,7 @@ const MasterLayout = ({ siteMetadata, children }) => (
     <Helmet defaultTitle={siteMetadata.siteTitle}>
       <title>{siteMetadata.siteTitle}</title>
       <meta property="description" content={siteMetadata.siteDescription} />
-      <meta property="keywords" content="articles" />
+      <meta name="keywords" content="articles" />
       <style type="text/css">{`
         body {
             margin: 0px;

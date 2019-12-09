@@ -1,19 +1,25 @@
 import React from "react";
 import Helmet from "react-helmet";
 
-const HelmetBlock = ({ frontmatter }) => (
+const HelmetBlock = ({ frontmatter, siteMetadata }) => (
   <Helmet>
-    <title>{`${frontmatter.title} | Jacob Bolda`}</title>
+    <title>{`${siteMetadata.siteTitle} | ${frontmatter.title}`}</title>
     <meta name="description" content={frontmatter.excerpt} />
-    <meta property="og:title" content={`${frontmatter.title} | Jacob Bolda`} />
+    {!!frontmatter.keywords ? (
+      <meta name="keywords" content={frontmatter.keywords.join(", ")} />
+    ) : null}
+    <meta
+      property="og:title"
+      content={`${siteMetadata.siteTitle} | ${frontmatter.title}`}
+    />
     <meta
       property="og:url"
       content={`https://www.jacobbolda.com/${frontmatter.slug}`}
     />
     <meta property="og:description" content={frontmatter.excerpt} />
-    <meta property="og:site_name" content="Jacob Bolda" />
+    <meta property="og:site_name" content={siteMetadata.siteTitle} />
     <meta property="og:type" content="article" />
-    <meta property="og:article:author" content="Jacob Bolda" />
+    <meta property="og:article:author" content={siteMetadata.siteAuthor} />
     <meta property="og:article:published_time" content={frontmatter.written} />
     <meta property="og:article:modified_time" content={frontmatter.updated} />
     <meta property="og:article:tag" content={frontmatter.category} />

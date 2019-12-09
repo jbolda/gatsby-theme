@@ -1,10 +1,12 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Nav from "@jbolda/gatsby-theme-layout";
+import HelmetBlock from "./components/helmetBlock";
 import { Box } from "@jbolda/isolated-theme-ui-components";
 
-const ArticleLayout = ({ footerInfo, location, children }) => (
+const ArticleLayout = ({ footerInfo, article, location, children }) => (
   <Nav location={location}>
+    <HelmetBlock frontmatter={article} siteMetadata={footerInfo} />
     {children}
     <Box>
       <hr />
