@@ -6,18 +6,18 @@ exports.resolvableExtensions = async (
   { getNodesByType, reporter },
   { showArticlesOnHomepage = false }
 ) => {
-  const debug = Debug(
-    "@jbolda/gatsby-theme-homepage:createSchemaCustomization"
-  );
+  const debug = Debug("@jbolda/gatsby-theme-homepage:resolvableExtensions");
   // it seems that we can't query for interfaces
   // so only supporting MdxArticles right now
   const hasArticlesInstalled = getNodesByType(`MdxArticles`).length > 0;
   const showArticles = hasArticlesInstalled && showArticlesOnHomepage;
 
-  reporter.info(`Is the article theme installed? ${hasArticlesInstalled}`);
-  reporter.info(
-    `Is the theme configured to show articles? ${showArticlesOnHomepage}`
-  );
+  if (debug.enabled) {
+    reporter.info(`Is the article theme installed? ${hasArticlesInstalled}`);
+    reporter.info(
+      `Is the theme configured to show articles? ${showArticlesOnHomepage}`
+    );
+  }
 
   fs.mkdirSync(
     path.join(__dirname, "./.cache/@jbolda/gatsby-theme-homepage/templates/"),
