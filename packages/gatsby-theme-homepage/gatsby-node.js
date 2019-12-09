@@ -2,14 +2,15 @@ const fs = require("fs");
 const path = require("path");
 const Debug = require("debug");
 
-exports.resolvableExtensions = async (
-  { getNodesByType, reporter },
+exports.createPages = async (
+  { actions, getNodesByType, reporter },
   { showArticlesOnHomepage = false }
 ) => {
-  const debug = Debug("@jbolda/gatsby-theme-homepage:resolvableExtensions");
+  const debug = Debug("@jbolda/gatsby-theme-homepage:createPages");
+
   // it seems that we can't query for interfaces
   // so only supporting MdxArticles right now
-  const hasArticlesInstalled = getNodesByType(`MdxArticles`).length > 0;
+  const hasArticlesInstalled = getNodesByType(`Articles`).length > 0;
   const showArticles = hasArticlesInstalled && showArticlesOnHomepage;
 
   if (debug.enabled && !!reporter) {
@@ -19,12 +20,12 @@ exports.resolvableExtensions = async (
     );
   }
 
-  fs.mkdirSync(
+  await fs.mkdirSync(
     path.join(__dirname, "./.cache/@jbolda/gatsby-theme-homepage/templates/"),
     { recursive: true }
   );
 
-  return await fs.copyFileSync(
+  await fs.copyFileSync(
     require.resolve(
       `./src/templates/${
         showArticles ? "homepageWithArticles.nojs" : "homepage.js"
@@ -35,18 +36,17 @@ exports.resolvableExtensions = async (
       "./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js"
     )
   );
-};
 
-exports.createPages = ({ actions }) => {
   const { createPage } = actions;
-  const debug = Debug("@jbolda/gatsby-theme-homepage:createPages");
 
-  const homepage = require.resolve(
+  const homepage = await require.resolve(
     `./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js`
   );
 
   if (debug.enabled && !!reporter) {
-    reporter.info(`creating page from template at ${homepage}`);
+    reporter.info(
+      `creating page from homepage template at \n${JSON.stringify(homepage)}`
+    );
   }
 
   createPage({
