@@ -12,7 +12,7 @@ exports.resolvableExtensions = async (
   const hasArticlesInstalled = getNodesByType(`MdxArticles`).length > 0;
   const showArticles = hasArticlesInstalled && showArticlesOnHomepage;
 
-  if (debug.enabled) {
+  if (debug.enabled && !!reporter) {
     reporter.info(`Is the article theme installed? ${hasArticlesInstalled}`);
     reporter.info(
       `Is the theme configured to show articles? ${showArticlesOnHomepage}`
