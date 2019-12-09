@@ -1,52 +1,44 @@
 import React from "react";
-import { Flex, Box, Heading, Link } from "@jbolda/isolated-theme-ui-components";
+import {
+  Flex,
+  Box,
+  Heading,
+  Text,
+  Link
+} from "@jbolda/isolated-theme-ui-components";
 // import Img from "gatsby-image";
 
-const Articles = ({ articles, swatch }) =>
-  articles.nodes.map(article => (
-    <Box key={article.slug}>
-      <div className="card">
-        <div className="card-image"></div>
-        <div className="card-content">
-          <div className="heading">
-            <div className="level">
-              <h4 className="level-left">
-                <time
-                  className="subtitle is-6"
-                  dateTime={article.updated || article.written}
-                >
-                  {article.updated || article.written}
-                </time>
-              </h4>
-              <h5 className={`tag is-${swatch || "thirdary"} is-6 level-right`}>
-                {article.tags}
-              </h5>
-            </div>
-            <h1 className="title">
-              <Link to={article.slug}>{article.title}</Link>
-            </h1>
-          </div>
-          <div className="content">
+const Articles = ({ articles }) => (
+  <Flex direction="row">
+    {articles.nodes.map(article => (
+      <Box key={article.slug} width={["85%", "85%", "30%"]}>
+        <Flex direction="column">
+          <Box width="100%">{article.tags}</Box>
+          <Box width="100%" sx={{ padding: 0 }}>
+            <Link to={article.slug}>
+              <Heading>{article.title}</Heading>
+            </Link>
+          </Box>
+          <Box width="100%" sx={{ padding: 0 }}>
             <p
               dangerouslySetInnerHTML={{
                 __html: article.excerpt
               }}
             />
-          </div>
-          <nav className="level">
-            <div className="level-left">
-              <span className="level-item">
-                <Link to={article.slug}>Read</Link>
-              </span>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </Box>
-  ));
+          </Box>
+          <Box width="100%">
+            <Link to={article.slug}>
+              <Text>Read</Text>
+            </Link>
+          </Box>
+        </Flex>
+      </Box>
+    ))}
+  </Flex>
+);
 
 export default props => (
-  <Flex>
+  <Flex direction="column" alignItems="left">
     <Heading>
       <Link to={"/articles/"}>Articles</Link>
     </Heading>

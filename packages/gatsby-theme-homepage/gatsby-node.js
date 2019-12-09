@@ -10,7 +10,7 @@ exports.createPages = async (
 
   // it seems that we can't query for interfaces
   // so only supporting MdxArticles right now
-  const hasArticlesInstalled = getNodesByType(`Articles`).length > 0;
+  const hasArticlesInstalled = getNodesByType(`MdxArticles`).length > 0;
   const showArticles = hasArticlesInstalled && showArticlesOnHomepage;
 
   if (debug.enabled && !!reporter) {

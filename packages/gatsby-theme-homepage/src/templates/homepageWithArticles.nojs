@@ -14,7 +14,7 @@ export default Homepage;
 
 export const pageQuery = graphql`
   query JBoldaGatsbyThemeHomepageImageArticles {
-    articles: allArticles(sort: { fields: written, order: DESC }) {
+    articles: allArticles(limit: 6, sort: { fields: written, order: DESC }) {
       nodes {
         excerpt
         keywords
