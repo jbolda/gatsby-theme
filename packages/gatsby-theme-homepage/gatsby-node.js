@@ -39,10 +39,15 @@ exports.resolvableExtensions = async (
 
 exports.createPages = ({ actions }) => {
   const { createPage } = actions;
+  const debug = Debug("@jbolda/gatsby-theme-homepage:createPages");
 
   const homepage = require.resolve(
     `./.cache/@jbolda/gatsby-theme-homepage/templates/homepage.js`
   );
+
+  if (debug.enabled && !!reporter) {
+    reporter.info(`creating page from template at ${homepage}`);
+  }
 
   createPage({
     path: "/", // required
