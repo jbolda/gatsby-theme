@@ -26,6 +26,7 @@
     "@fortawesome/react-fontawesome": "^0.1.7",
     "@jbolda/isolated-theme-ui-components": "^0.0.1",
     "gatsby-plugin-compile-es6-packages": "^2.1.0",
-    "isolated-theme-ui": "^1.0.1"
+    "isolated-theme-ui": "^1.0.1",
+    "react-use": "^13.12.1"
   }
 }
