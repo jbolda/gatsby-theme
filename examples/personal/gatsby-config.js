@@ -104,7 +104,16 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-mdx`,
-      options: {}
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590
+            }
+          }
+        ]
+      }
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`
