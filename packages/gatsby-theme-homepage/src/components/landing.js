@@ -3,7 +3,7 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { Flex, Box, Heading, Text } from "@jbolda/isolated-theme-ui-components";
 
-const Landing = ({ profile, site, swatch, textColor }) => (
+const Landing = ({ profile, site }) => (
   <Flex>
     <Box>
       {/* <Img

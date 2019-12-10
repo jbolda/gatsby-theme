@@ -30,7 +30,6 @@ const ArticleSection = ({
         <Box>
           <Heading>{article.title}</Heading>
         </Box>
-        {console.log(children)}
         <Box>{children}</Box>
       </Flex>
     );
