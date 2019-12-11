@@ -88,7 +88,9 @@ const Header = props => {
                       margin: 2
                     }}
                   >
-                    <Link to={link.url}>{link.text}</Link>
+                    <Link to={link.url}>
+                      <Text>{link.text}</Text>
+                    </Link>
                   </Box>
                 ))}
               </Flex>

@@ -1,17 +1,16 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Text, Link } from "@jbolda/isolated-theme-ui-components";
 
 export default ({ siteMetadata }) => (
   <aside className="menu">
     <p className="menu-label">Contact Me</p>
-    <ul className="menu-list">
-      {siteMetadata.contactLinks.map(link => (
-        <li key={link.text}>
-          <a href={link.url}>
-            <FontAwesomeIcon icon={link.icon} /> {link.text}
-          </a>
-        </li>
-      ))}
-    </ul>
+    {siteMetadata.contactLinks.map(link => (
+      <Link to={link.url}>
+        <Text as="p">
+          <FontAwesomeIcon icon={link.icon} /> {link.text}
+        </Text>
+      </Link>
+    ))}
   </aside>
 );

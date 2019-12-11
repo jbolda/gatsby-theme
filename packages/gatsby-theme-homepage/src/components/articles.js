@@ -39,14 +39,14 @@ const Articles = ({ articles }) => (
 
 export default props => (
   <Flex direction="column" alignItems="left">
-    <Heading>
-      <Link to={"/articles/"}>Articles</Link>
-    </Heading>
-    <Heading as="h2">The Most Recent</Heading>
+    <Link to={"/articles/"}>
+      <Heading sx={{ marginBottom: "0px" }}>Articles</Heading>
+    </Link>
+    <Text>The Most Recent</Text>
     <Articles articles={props.articles} {...props} />
-    <Heading as="h3">
-      <Link to={"/articles/"}>Read More</Link>
-    </Heading>
+    <Link to={"/articles/"}>
+      <Heading as="h3">Read More</Heading>
+    </Link>
   </Flex>
 );
 

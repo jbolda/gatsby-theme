@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from "gatsby";
 
 export default ({ as: Link = GatsbyLink, to, children }) =>
   Link !== "a" ? (
-    <Link to={to} sx={{ color: "text" }}>
+    <Link to={to} sx={{ variant: `styles.a` }}>
       {children}
     </Link>
   ) : (
@@ -12,7 +12,7 @@ export default ({ as: Link = GatsbyLink, to, children }) =>
       href={to}
       target="_blank"
       rel="noopener noreferrer"
-      sx={{ color: "text" }}
+      sx={{ variant: `styles.a` }}
     >
       {children}
     </a>
