@@ -7271,10 +7271,10 @@ gatsby-remark-images@^3.1.35:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-gatsby-source-airtable@^2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/gatsby-source-airtable/-/gatsby-source-airtable-2.0.11.tgz#e63dd6ebb4a40fdf5c6bfb28b68c02ed0860547c"
-  integrity sha512-f9zVhWjdwCwkXotHrK8/RGq86vXFyBuf5z3FNE76DgQ2eBmpXJnAtzSB2f27q1E73RArD+fqbl09E5hM9t1iSQ==
+gatsby-source-airtable@^2.1.0-alpha.0:
+  version "2.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-airtable/-/gatsby-source-airtable-2.1.0-alpha.0.tgz#7d1dc0a1562c256031cf0f0ab5b0b2f05e61a4a7"
+  integrity sha512-MuoLD+WDhTRxxen3obO9bTjZOKOKrLPPwA2K+62pV8bEXLBRcSRNpizSZxweoR3WG/zXiBzbpuPwsy7RG2dabg==
   dependencies:
     airtable "^0.7.2"
     bluebird "^3.5.4"
@@ -7322,6 +7322,13 @@ gatsby-telemetry@^1.1.39:
     stack-trace "^0.0.10"
     stack-utils "1.0.2"
     uuid "3.3.3"
+
+gatsby-theme-recipes@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-recipes/-/gatsby-theme-recipes-0.0.9.tgz#6e14a80f7ce2dec507e35928d7a96fc7fb6095fd"
+  integrity sha512-zF8YGd2CMKvJMgIfLx0ZxZKsFSJ5RqzUOfRyYlDdX3Ea9HxrdoKyP6icy6J3FlmhiW3HuTU1/YPzkQQCudQoAw==
+  dependencies:
+    isolated-theme-ui "^1.0.1"
 
 gatsby-transformer-sharp@^2.3.5:
   version "2.3.5"

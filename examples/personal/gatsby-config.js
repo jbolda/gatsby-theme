@@ -81,7 +81,7 @@ module.exports = {
     {
       resolve: `gatsby-source-airtable`,
       options: {
-        apiKey: process.env.AIRTABLE_API_KEY_DEV,
+        apiKey: process.env.AIRTABLE_API_KEY,
         tables: [
           {
             baseId: `appyi6XMs9Kowv84G`,
@@ -108,6 +108,13 @@ module.exports = {
     {
       resolve: `@jbolda/gatsby-theme-articles`,
       options: { contentPath: "articles" }
+    },
+    {
+      resolve: `gatsby-theme-recipes`,
+      options: {
+        siteUrl: "https://jbolda-gatsby-theme-personal.netlify.com/",
+        sources: ["Airtable"]
+      }
     },
     {
       resolve: `gatsby-plugin-mdx`,
