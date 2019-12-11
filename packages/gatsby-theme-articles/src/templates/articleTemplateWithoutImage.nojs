@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import Chrome from "../chrome";
+import Chrome from "../../../../src/chrome";
 
 export default ({ data, location }) => (
   <Chrome

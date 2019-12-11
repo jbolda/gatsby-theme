@@ -1,4 +1,5 @@
 const Debug = require("debug");
+const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 const { createFilePath } = require(`gatsby-source-filesystem`);
@@ -34,6 +35,7 @@ exports.createSchemaCustomization = ({ actions, schema }, {}) => {
     tags: [String]
     keywords: [String]
     excerpt: String!
+    featuredImage: ImageSharp
   }`);
 
   createTypes(
@@ -64,7 +66,8 @@ exports.createSchemaCustomization = ({ actions, schema }, {}) => {
         body: {
           type: `String!`,
           resolve: mdxResolverPassthrough(`body`)
-        }
+        },
+        featuredImage: { type: "ImageSharp" }
       },
       interfaces: [`Node`, `Articles`]
     })
@@ -139,15 +142,10 @@ exports.onCreateNode = async (
   }
 };
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const mdxArticle = require.resolve(`./src/templates/articleTemplate`);
-    // const mdxBlogPostWithoutImage = require.resolve(
-    //   `./src/templates/articleTemplateWithoutImage.js`
-    // );
-
     resolve(
       graphql(
         `
@@ -155,25 +153,90 @@ exports.createPages = ({ graphql, actions }) => {
             allArticles {
               nodes {
                 slug
+                featuredImage {
+                  id
+                }
               }
             }
           }
         `
-      ).then(result => {
+      ).then(async result => {
         if (result.errors) {
           console.log(result.errors);
           console.log(result);
           reject(result.errors);
+        }
+        const debug = Debug("@jbolda/gatsby-theme-articles:createPages");
+
+        let articlesWithoutImages = 0;
+        let mdxArticleWithImage;
+        let articlesWithImages = 0;
+        let mdxArticleWithoutImage;
+        result.data.allArticles.nodes.forEach(node => {
+          if (node.featuredImage && node.featuredImage.id) {
+            articlesWithImages++;
+          } else {
+            articlesWithoutImages++;
+          }
+        });
+
+        if (debug.enabled && !!reporter) {
+          reporter.info(`articles with images: ${articlesWithImages}`);
+          reporter.info(`articles without images: ${articlesWithoutImages}`);
+        }
+
+        try {
+          await fs.rmdirSync(
+            "./.cache/@jbolda/gatsby-theme-articles/templates/"
+          );
+        } catch (e) {
+          if (debug.enabled && !!reporter) {
+            reporter.error(`error removing .cache dir\n`, e);
+          }
+        }
+
+        await fs.mkdirSync(
+          path.join(
+            __dirname,
+            "./.cache/@jbolda/gatsby-theme-articles/templates/"
+          ),
+          { recursive: true }
+        );
+
+        if (articlesWithImages > 0) {
+          await fs.copyFileSync(
+            require.resolve(`./src/templates/articleTemplate.nojs`),
+            path.join(
+              __dirname,
+              "./.cache/@jbolda/gatsby-theme-articles/templates/articleTemplate.js"
+            )
+          );
+          mdxArticleWithImage = require.resolve(
+            `./.cache/@jbolda/gatsby-theme-articles/templates/articleTemplate.js`
+          );
+        }
+
+        if (articlesWithoutImages > 0) {
+          await fs.copyFileSync(
+            require.resolve(`./src/templates/articleTemplateWithoutImage.nojs`),
+            path.join(
+              __dirname,
+              `./.cache/@jbolda/gatsby-theme-articles/templates/articleTemplateWithoutImage.js`
+            )
+          );
+          mdxArticleWithoutImage = require.resolve(
+            `./.cache/@jbolda/gatsby-theme-articles/templates/articleTemplateWithoutImage.js`
+          );
         }
 
         result.data.allArticles.nodes.forEach(node => {
           if (node.slug) {
             createPage({
               path: node.slug, // required
-              // component: edge.node.fields.heroImageSet
-              //   ? mdxBlogPost
-              //   : mdxBlogPostWithoutImage,
-              component: mdxArticle,
+              component:
+                node.featuredImage && node.featuredImage.id
+                  ? mdxArticleWithImage
+                  : mdxArticleWithoutImage,
               context: {
                 slug: node.slug
               }
