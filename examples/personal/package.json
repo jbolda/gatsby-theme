@@ -1,6 +1,6 @@
 {
   "name": "personal",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
   "license": "MIT",
@@ -19,9 +19,9 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@jbolda/gatsby-theme-articles": "^0.0.3",
-    "@jbolda/gatsby-theme-homepage": "^0.0.3",
-    "@jbolda/gatsby-theme-layout": "^0.0.3",
+    "@jbolda/gatsby-theme-articles": "^0.0.4",
+    "@jbolda/gatsby-theme-homepage": "^0.0.4",
+    "@jbolda/gatsby-theme-layout": "^0.0.4",
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
     "gatsby": "^2.18.1",
