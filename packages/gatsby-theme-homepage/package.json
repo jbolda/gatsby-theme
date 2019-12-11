@@ -1,6 +1,6 @@
 {
   "name": "@jbolda/gatsby-theme-homepage",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "themed homepage",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
@@ -17,7 +17,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@jbolda/isolated-theme-ui-components": "^0.0.1",
+    "@jbolda/isolated-theme-ui-components": "^0.0.2",
     "gatsby-plugin-compile-es6-packages": "^2.1.0",
     "isolated-theme-ui": "^1.0.1"
   }
