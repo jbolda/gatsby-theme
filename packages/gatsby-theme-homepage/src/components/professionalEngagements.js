@@ -1,10 +1,10 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
+import { Flex, Box, Heading, Text } from "@jbolda/isolated-theme-ui-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const Engagements = ({ engagements }) => (
-  <Flex alignItems="flex-start">
+  <Flex>
     {!!engagements
       ? engagements.nodes.map(engagement => (
           <Box key={engagement.name} width={["85%", "45%", "30%"]}>
@@ -32,7 +32,11 @@ export default props => (
       }
     `}
     render={queryData => (
-      <Engagements engagements={queryData.engagements} {...props} />
+      <Flex direction="column" alignItems="left">
+        <Heading sx={{ marginBottom: "0px" }}>Professional Engagements</Heading>
+        <Text>In View of the Public</Text>
+        <Engagements engagements={queryData.engagements} {...props} />
+      </Flex>
     )}
   />
 );
