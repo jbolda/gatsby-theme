@@ -72,6 +72,13 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `professionalEngagements`,
+        path: `${__dirname}/src/professionalEngagements/`
+      }
+    },
+    {
       resolve: `gatsby-source-airtable`,
       options: {
         apiKey: process.env.AIRTABLE_API_KEY_DEV,
