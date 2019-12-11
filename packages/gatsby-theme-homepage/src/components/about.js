@@ -5,7 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import SiteLinks from "./siteLinks";
 
 const About = ({ site, about }) => (
-  <Flex alignItems="top">
+  <Flex>
     {!!site && !!site.siteMetadata && !!site.siteMetadata.contactLinks ? (
       <Box width={["85%", "25%", "25%"]}>
         <SiteLinks siteMetadata={site.siteMetadata} />
