@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@jbolda/isolated-theme-ui-components": "^0.0.3",
-    "gatsby-plugin-compile-es6-packages": "^2.1.0",
-    "isolated-theme-ui": "^1.0.1"
+    "gatsby-plugin-compile-es6-packages": "2.1.0",
+    "isolated-theme-ui": "1.0.1"
   }
 }

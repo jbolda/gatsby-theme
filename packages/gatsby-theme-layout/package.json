@@ -19,14 +19,14 @@
     "url": "https://github.com/jbolda/gatsby-theme/issues"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-brands-svg-icons": "^5.11.2",
-    "@fortawesome/free-regular-svg-icons": "^5.11.2",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.7",
+    "@fortawesome/fontawesome-svg-core": "1.2.25",
+    "@fortawesome/free-brands-svg-icons": "5.11.2",
+    "@fortawesome/free-regular-svg-icons": "5.11.2",
+    "@fortawesome/free-solid-svg-icons": "5.11.2",
+    "@fortawesome/react-fontawesome": "0.1.7",
     "@jbolda/isolated-theme-ui-components": "^0.0.3",
-    "gatsby-plugin-compile-es6-packages": "^2.1.0",
-    "isolated-theme-ui": "^1.0.1",
-    "react-use": "^13.12.1"
+    "gatsby-plugin-compile-es6-packages": "2.1.0",
+    "isolated-theme-ui": "1.0.1",
+    "react-use": "13.12.1"
   }
 }
