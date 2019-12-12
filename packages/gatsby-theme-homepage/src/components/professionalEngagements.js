@@ -20,7 +20,10 @@ export default props => (
     query={graphql`
       query jBoldaGatsbyThemeHomepageProfessionalEngagements {
         engagements: allFile(
-          filter: { sourceInstanceName: { eq: "professionalEngagements" } }
+          filter: {
+            sourceInstanceName: { eq: "homepage" }
+            relativeDirectory: { regex: "/engagements*/" }
+          }
         ) {
           nodes {
             name
@@ -31,12 +34,16 @@ export default props => (
         }
       }
     `}
-    render={queryData => (
-      <Flex direction="column" alignItems="left">
-        <Heading sx={{ marginBottom: "0px" }}>Professional Engagements</Heading>
-        <Text>In View of the Public</Text>
-        <Engagements engagements={queryData.engagements} {...props} />
-      </Flex>
-    )}
+    render={queryData =>
+      queryData.engagements.nodes.length === 0 ? null : (
+        <Flex direction="column" alignItems="left">
+          <Heading sx={{ marginBottom: "0px" }}>
+            Professional Engagements
+          </Heading>
+          <Text>In View of the Public</Text>
+          <Engagements engagements={queryData.engagements} {...props} />
+        </Flex>
+      )
+    }
   />
 );
