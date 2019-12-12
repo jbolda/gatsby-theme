@@ -3,16 +3,6 @@ module.exports = {
     siteTitle: `Jacob Bolda`,
     siteDescription: `Structural Engineer with a knack for creative solutions using code and ingenuity.`,
     siteAuthor: `Jacob Bolda`,
-    siteAuthorIdentity: `Structural Engineer`,
-    siteLanding: `
-    Focusing on the intersection of tech and Structural
-    Engineering. Masters degree in Structural Engineering
-    from the Milwaukee School of Engineering, undergrad in
-    Architectural Engineering with a minor in Management,
-    and a deep understanding of software and programming.
-    Marrying that experience with problem solving and
-    systematizing is powerful.
-  `,
     siteContact: "https://twitter.com/jacobbolda",
     contactLinks: [
       {
@@ -67,15 +57,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `main`,
-        path: `${__dirname}/src/main/`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `professionalEngagements`,
-        path: `${__dirname}/src/professionalEngagements/`
+        name: `homepage`,
+        path: `${__dirname}/src/homepage/`
       }
     },
     {

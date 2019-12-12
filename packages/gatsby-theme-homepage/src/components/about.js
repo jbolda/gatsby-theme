@@ -1,19 +1,19 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
 import SiteLinks from "./siteLinks";
 
 const About = ({ site, about }) => (
   <Flex>
-    {!!site && !!site.siteMetadata && !!site.siteMetadata.contactLinks ? (
+    {!!site || !!site.siteMetadata || !!site.siteMetadata.contactLinks ? (
       <Box width={["85%", "25%", "25%"]}>
         <SiteLinks siteMetadata={site.siteMetadata} />
       </Box>
     ) : null}
-    {!!about && !!about.body ? (
+    {!!about || !!about.childMdx || !!about.childMdx.body ? (
       <Box width={["85%", "65%", "65%"]}>
-        <MDXRenderer>{about.body}</MDXRenderer>
+        <MDXRenderer>{about.childMdx.body}</MDXRenderer>
       </Box>
     ) : null}
   </Flex>
@@ -26,8 +26,6 @@ export default props => (
         site {
           siteMetadata {
             siteAuthor
-            siteAuthorIdentity
-            siteLanding
             contactLinks {
               text
               url
@@ -35,8 +33,13 @@ export default props => (
             }
           }
         }
-        about: mdx(frontmatter: { title: { eq: "About Me" } }) {
-          body
+        about: file(
+          sourceInstanceName: { eq: "homepage" }
+          name: { eq: "about" }
+        ) {
+          childMdx {
+            body
+          }
         }
       }
     `}
