@@ -1,4 +1,8 @@
-import * as context from "./context"
+import {
+  jsx as contextJSX,
+  mdx as contextMDX,
+  IsolatedThemeContext
+} from "./src/context";
 import WrapElement from "./src/components/wrapElement";
 import Flex from "./src/components/flex";
 import Box from "./src/components/box";
@@ -9,9 +13,9 @@ import Button from "./src/components/button";
 import SVG from "./src/components/svg";
 
 export {
-  context.jsx as contextJSX,
-  context.mdx as contextMDX,
-  context.IsolatedThemeContext as IsolatedThemeContext,
+  contextJSX,
+  contextMDX,
+  IsolatedThemeContext,
   WrapElement,
   Flex,
   Box,
