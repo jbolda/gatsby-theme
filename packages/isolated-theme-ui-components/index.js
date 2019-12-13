@@ -1,3 +1,4 @@
+import { jsx, mdx } as context from "./context"
 import WrapElement from "./src/components/wrapElement";
 import Flex from "./src/components/flex";
 import Box from "./src/components/box";
@@ -7,4 +8,4 @@ import Link from "./src/components/link";
 import Button from "./src/components/button";
 import SVG from "./src/components/svg";
 
-export { WrapElement, Flex, Box, Heading, Text, Link, Button, SVG };
+export { jsx as contextJSX, mdx as contextMDX, WrapElement, Flex, Box, Heading, Text, Link, Button, SVG };
