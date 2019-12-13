@@ -1,5 +1,6 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
+import { contextMDX } from "@jbolda/isolated-theme-ui-components";
 import { Flex, Box, Heading, Text } from "@jbolda/isolated-theme-ui-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
@@ -8,7 +9,7 @@ const Engagements = ({ engagements }) => (
     {!!engagements
       ? engagements.nodes.map(engagement => (
           <Box key={engagement.name} width={["85%", "45%", "30%"]}>
-            <MDXRenderer>{engagement.childMdx.body}</MDXRenderer>
+            <MDXRenderer scope={{ contextMDX }}>{engagement.childMdx.body}</MDXRenderer>
           </Box>
         ))
       : null}
