@@ -1,6 +1,6 @@
 import React from "react";
-// import Img from "gatsby-image";
 import { StaticQuery, graphql } from "gatsby";
+import { mdx } from "@jbolda/isolated-theme-ui-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import Img from "gatsby-image";
 import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
@@ -17,7 +17,7 @@ const Landing = ({ landing, profile }) => (
     )}
     {!landing || !landing.childMdx || !landing.childMdx.body ? null : (
       <Box width={["80%", "50%", "30%"]}>
-        <MDXRenderer>{landing.childMdx.body}</MDXRenderer>
+        <MDXRenderer scope={{ mdx }}>{landing.childMdx.body}</MDXRenderer>
       </Box>
     )}
   </Flex>
