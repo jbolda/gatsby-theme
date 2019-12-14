@@ -28,8 +28,8 @@ export default {
     muted: "#e9edf6",
     modes: {
       dark: {
-        text: "#F3FBF1",
-        background: "#3B3737",
+        text: "#baccb3",
+        background: "#191b1a",
         primary: "#a6e58b",
         secondary: "#363233",
         muted: "#dcf4d3"

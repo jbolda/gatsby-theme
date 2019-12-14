@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { IsolatedThemeContext, jsx } from "../context";
+import { ColorMode } from "theme-ui";
 import theme from "../theme";
 
 export default ({ children }) => (
@@ -8,6 +9,7 @@ export default ({ children }) => (
       theme
     }}
   >
+    <ColorMode />
     {children}
   </IsolatedThemeContext.Provider>
 );
