@@ -1,14 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { contextMDX } from "@jbolda/isolated-theme-ui-components";
 import Chrome from "../../../../src/chrome";
 
 export default ({ data, location }) => (
-  <Chrome
-    article={data.article}
-    location={location}
-  >
-  <MDXRenderer>{data.article.body}</MDXRenderer>
+  <Chrome article={data.article} location={location}>
+    <MDXRenderer scope={{ contextMDX }}>{data.article.body}</MDXRenderer>
   </Chrome>
 );
 

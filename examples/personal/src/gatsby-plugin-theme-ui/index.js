@@ -23,7 +23,7 @@ export default {
   colors: {
     text: "#192E29",
     background: "#F8F9FC",
-    primary: "#ee39f1", // "#39f1a2",
+    primary: "#39f1a2",
     secondary: "#5A80A1",
     muted: "#e9edf6",
     modes: {
