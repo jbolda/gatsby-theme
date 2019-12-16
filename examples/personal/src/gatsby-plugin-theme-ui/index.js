@@ -99,12 +99,22 @@ export default {
       fontSize: 0
     },
     p: {
+      color: "text",
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "body"
+    },
+    span: {
+      color: "text",
       fontFamily: "body",
       fontWeight: "body",
       lineHeight: "body"
     },
     a: {
-      color: "primary"
+      color: "primary",
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "body"
     },
     pre: {
       fontFamily: "monospace",
