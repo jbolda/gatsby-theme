@@ -29,7 +29,7 @@ export default {
     modes: {
       dark: {
         text: "#F3FBF1",
-        background: "#3B3737",
+        background: "#1d2121",
         primary: "#a6e58b",
         secondary: "#363233",
         muted: "#dcf4d3"
@@ -99,12 +99,22 @@ export default {
       fontSize: 0
     },
     p: {
+      color: "text",
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "body"
+    },
+    span: {
+      color: "text",
       fontFamily: "body",
       fontWeight: "body",
       lineHeight: "body"
     },
     a: {
-      color: "primary"
+      color: "primary",
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "body"
     },
     pre: {
       fontFamily: "monospace",

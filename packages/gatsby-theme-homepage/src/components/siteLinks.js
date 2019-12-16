@@ -6,7 +6,7 @@ export default ({ siteMetadata }) => (
   <aside className="menu">
     <p className="menu-label">Contact Me</p>
     {siteMetadata.contactLinks.map(link => (
-      <Link to={link.url}>
+      <Link as="a" to={link.url} key={link.url}>
         <Text as="p">
           <FontAwesomeIcon icon={link.icon} /> {link.text}
         </Text>
