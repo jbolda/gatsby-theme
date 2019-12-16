@@ -29,7 +29,7 @@ export default {
     modes: {
       dark: {
         text: "#F3FBF1",
-        background: "#3B3737",
+        background: "#1d2121",
         primary: "#a6e58b",
         secondary: "#363233",
         muted: "#dcf4d3"
