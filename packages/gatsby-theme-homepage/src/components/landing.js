@@ -11,7 +11,6 @@ const Landing = ({ landing, profile }) => (
     !profile.childImageSharp ||
     !profile.childImageSharp.fluid ? null : (
       <Box width={["80%", "50%", "30%"]}>
-        {console.log(profile)}
         <Img fluid={profile.childImageSharp.fluid} />
       </Box>
     )}
