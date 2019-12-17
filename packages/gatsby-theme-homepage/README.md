@@ -1,11 +1,21 @@
 # `@jbolda/gatsby-theme-homepage`
 
-> TODO: description
+## Convention
+This plugin expects a `gatsby-source-filesystem` config entry with a `name` entry of _homepage_ pointing at directory. The optional, but recommended folder name is `src/homepage`.
 
-## Usage
+It expects a `landing.mdx`, `about.mdx`, and picture file named `avatar` in this folder. These three files control the first two sections, and none are technically a requirement.
 
-```
-const gatsbyThemeHomepage = require('@jbolda/gatsby-theme-homepage');
+Lastly, it expects a nested folder named `engagements` with markdown files with names of your choosing. Each file will be a separate "engagement".
 
-// TODO: DEMONSTRATE API
+## Configuration
+
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: `@jbolda/gatsby-theme-homepage`,
+      options: { showArticlesOnHomepage: true }
+    },
+  ]
+}
 ```
