@@ -1,11 +1,17 @@
 # `gatsby-theme-blog`
 
-> TODO: description
+## Convention
+This plugin expects markdown files in a folder defined by a `gatsby-source-filesystem` config entry with a `name` entry of _articles_. The name can be configured with the `contentPath` option.
 
-## Usage
+## Configuration
 
-```
-const gatsbyThemeBlog = require('gatsby-theme-blog');
-
-// TODO: DEMONSTRATE API
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: `@jbolda/gatsby-theme-articles`,
+      options: { contentPath: "articles" }
+    },
+  ]
+}
 ```
