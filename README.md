@@ -15,9 +15,9 @@ These themes use theme-ui which has some built-in ability to customize colors, f
 # Packages
 | package | description |
 | ------- | ----------- |
-| [@jbolda/gatsby-theme-homepage](https://github.com/jbolda/gatsby-theme/tree/master/packages/@jbolda/gatsby-theme-homepage) | Theme to construct a homepage. |
-| [@jbolda/gatsby-theme-articles](https://github.com/jbolda/gatsby-theme/tree/master/packages/@jbolda/gatsby-theme-articles) | Theme to construct pages for each of your articles. |
-| [@jbolda/gatsby-theme-layout](https://github.com/jbolda/gatsby-theme/tree/master/packages/@jbolda/gatsby-theme-layout) | Theme generally ingested by other themes to set navigation and default SEO. |
+| [@jbolda/gatsby-theme-homepage](https://github.com/jbolda/gatsby-theme/tree/master/packages/gatsby-theme-homepage) | Theme to construct a homepage. |
+| [@jbolda/gatsby-theme-articles](https://github.com/jbolda/gatsby-theme/tree/master/packages/gatsby-theme-articles) | Theme to construct pages for each of your articles. |
+| [@jbolda/gatsby-theme-layout](https://github.com/jbolda/gatsby-theme/tree/master/packages/gatsby-theme-layout) | Theme generally ingested by other themes to set navigation and default SEO. |
 
 # Example sites
 - [Personal](https://jbolda-gatsby-theme-personal.netlify.com/) ([Source](https://github.com/jbolda/gatsby-theme/tree/master/examples/personal))
