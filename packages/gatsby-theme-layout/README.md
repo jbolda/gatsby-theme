@@ -1,4 +1,4 @@
-# `gatsby-theme-layout`
+# `@jbolda/gatsby-theme-layout`
 
 ## Convention
 This theme is primarily used in other themes. There is only configuration requirements.
