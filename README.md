@@ -2,8 +2,6 @@
 M O N O R E P O for Gatsby themes
 
 ## The Concept
-Gatsby themes repository
-
 These themes were written with the intent to allow a user gradually settle into their Gatsby site. The current ecosystem seems to rely too heavily on shadowing and use it as a crutch. Shadowing is a powerful and important feature, but the theme creator should provide a more gradual experience that eventually leads to shadowing if necessary.
 
 These themes seek to accomplish this by using convention then configuration then shadowing if necessary. The convention is represented by the built-in data sources that it expects to consume, and the structure and location of the content. As the user wants to address more advanced configurations, they can use the Gatsby lifecycles to bring in data and put it into the existing data model. This would allow the user to make the content their own without the need to rely on any shadowing.
