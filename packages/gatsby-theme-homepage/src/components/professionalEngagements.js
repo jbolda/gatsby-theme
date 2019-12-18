@@ -9,7 +9,9 @@ const Engagements = ({ engagements }) => (
     {!!engagements
       ? engagements.nodes.map(engagement => (
           <Box key={engagement.name} width={["85%", "45%", "30%"]}>
-            <MDXRenderer scope={{ contextMDX }}>{engagement.childMdx.body}</MDXRenderer>
+            <MDXRenderer scope={{ contextMDX }}>
+              {engagement.childMdx.body}
+            </MDXRenderer>
           </Box>
         ))
       : null}
@@ -24,6 +26,7 @@ export default props => (
           filter: {
             sourceInstanceName: { eq: "homepage" }
             relativeDirectory: { regex: "/engagements*/" }
+            ext: { eq: ".mdx" }
           }
         ) {
           nodes {
