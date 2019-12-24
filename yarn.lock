@@ -7032,12 +7032,14 @@ gatsby-telemetry@^1.1.46:
     stack-utils "1.0.2"
     uuid "3.3.3"
 
-gatsby-theme-recipes@0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-recipes/-/gatsby-theme-recipes-0.0.9.tgz#6e14a80f7ce2dec507e35928d7a96fc7fb6095fd"
-  integrity sha512-zF8YGd2CMKvJMgIfLx0ZxZKsFSJ5RqzUOfRyYlDdX3Ea9HxrdoKyP6icy6J3FlmhiW3HuTU1/YPzkQQCudQoAw==
+gatsby-theme-recipes@0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-recipes/-/gatsby-theme-recipes-0.0.10.tgz#07e17bb448009162403efc26ab89ab2d0a83adfc"
+  integrity sha512-vedvGqHIqCbtXUErx1kl6NJbnWl0A9dy986g1lHGe1ZGuaOzlumvSD8tXluFiEV3XbSsty+B5EfJY1SXRzr1SA==
   dependencies:
-    isolated-theme-ui "^1.0.1"
+    "@jbolda/isolated-theme-ui-components" "0.0.4"
+    gatsby-plugin-compile-es6-packages "2.1.0"
+    isolated-theme-ui "1.0.1"
 
 gatsby-transformer-sharp@2.3.9:
   version "2.3.9"
