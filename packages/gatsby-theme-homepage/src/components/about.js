@@ -6,14 +6,20 @@ import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
 import SiteLinks from "./siteLinks";
 
 const About = ({ site, about }) => (
-  <Flex>
+  <Flex sx={{ variant: "jboldaGatsbyTheme.homepage.about.container" }}>
     {!!site || !!site.siteMetadata || !!site.siteMetadata.contactLinks ? (
-      <Box width={["85%", "25%", "25%"]}>
+      <Box
+        width={["85%", "25%", "25%"]}
+        sx={{ variant: "jboldaGatsbyTheme.homepage.about.left" }}
+      >
         <SiteLinks siteMetadata={site.siteMetadata} />
       </Box>
     ) : null}
     {!!about || !!about.childMdx || !!about.childMdx.body ? (
-      <Box width={["85%", "65%", "65%"]}>
+      <Box
+        width={["85%", "65%", "65%"]}
+        sx={{ variant: "jboldaGatsbyTheme.homepage.about.right" }}
+      >
         <MDXRenderer scope={{ contextMDX }}>{about.childMdx.body}</MDXRenderer>
       </Box>
     ) : null}

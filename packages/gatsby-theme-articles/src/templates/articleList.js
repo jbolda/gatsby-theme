@@ -14,9 +14,12 @@ export default props => {
   return (
     <Nav {...props}>
       <Heading>Articles</Heading>
-      <Flex>
+      <Flex sx={{ variant: "jboldaGatsbyTheme.articles.list.container" }}>
         {props.data.articles.nodes.map(article => (
-          <Box key={article.slug}>
+          <Box
+            key={article.slug}
+            sx={{ variant: "jboldaGatsbyTheme.articles.list.each" }}
+          >
             {article.heroImage ? (
               <Img
                 className="image"
@@ -26,7 +29,7 @@ export default props => {
             ) : null}
             <Text>{article.category}</Text>
             <Link to={article.slug}>
-              <Heading>{article.title}</Heading>
+              <Heading as="h2">{article.title}</Heading>
             </Link>
             <p
               dangerouslySetInnerHTML={{

@@ -11,12 +11,16 @@ import {
 const Articles = ({ articles }) => (
   <Flex direction="row">
     {articles.nodes.map(article => (
-      <Box key={article.slug} width={["85%", "85%", "30%"]}>
+      <Box
+        key={article.slug}
+        width={["85%", "85%", "30%"]}
+        sx={{ variant: "jboldaGatsbyTheme.homepage.articles.each" }}
+      >
         <Flex direction="column">
           <Box width="100%">{article.tags}</Box>
           <Box width="100%" sx={{ padding: 0 }}>
             <Link to={article.slug}>
-              <Heading>{article.title}</Heading>
+              <Heading as="h3">{article.title}</Heading>
             </Link>
           </Box>
           <Box width="100%" sx={{ padding: 0 }}>
@@ -38,22 +42,20 @@ const Articles = ({ articles }) => (
 );
 
 export default props => (
-  <Flex direction="column" alignItems="left">
+  <Flex
+    direction="column"
+    alignItems="left"
+    sx={{ variant: "jboldaGatsbyTheme.homepage.articles.container" }}
+  >
     <Link to={"/articles/"}>
-      <Heading sx={{ marginBottom: "0px" }}>Articles</Heading>
+      <Heading as="h2" sx={{ marginBottom: "0px" }}>
+        Articles
+      </Heading>
     </Link>
     <Text>The Most Recent</Text>
     <Articles articles={props.articles} {...props} />
     <Link to={"/articles/"}>
-      <Heading as="h3">Read More</Heading>
+      <Heading as="h4">Read More</Heading>
     </Link>
   </Flex>
 );
-
-// const sortThroughPictures = (article, pictures) =>
-//   pictures.reduce(
-//     (finalVal, picture) =>
-//       finalVal ||
-//       (article && picture.node.base === article.base ? picture.node : finalVal),
-//     null
-//   );

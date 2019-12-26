@@ -11,7 +11,12 @@ const Footer = ({ site }) => (
   <Box
     as="footer"
     width="98%"
-    sx={{ margin: "0px", padding: "0px", flexShrink: 0 }}
+    sx={{
+      margin: "0px",
+      padding: "0px",
+      flexShrink: 0,
+      variant: "jboldaGatsbyTheme.layout.footer"
+    }}
   >
     <Flex>
       <Box width={null} sx={{ justifyContent: "center", flexShrink: 1 }}>
