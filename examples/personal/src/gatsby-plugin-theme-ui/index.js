@@ -58,11 +58,6 @@ export default {
       letterSpacing: "body"
     }
   },
-  jboldaGatsbyTheme: {
-    layout: {
-      content: {}
-    }
-  },
   styles: {
     root: {
       ...bodyTextStandards
