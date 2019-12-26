@@ -20,13 +20,15 @@ module.exports = {
 ```
 
 ## Design Tokens
+The following are design tokens that are applied by variants through this theme. You may use them to apply styles to elements as a stopgap before needing to shadow a component.
+
 ```js
 {
   jboldaGatsbyTheme: {
     layout: {
-      header: { // add tokens here },
-      content: { // add tokens here },
-      footer: { // add tokens here }
+      header: { /* add tokens here */ },
+      content: { /* add tokens here */ },
+      footer: { /* add tokens here */ }
     }
   }
 }
