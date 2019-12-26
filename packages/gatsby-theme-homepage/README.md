@@ -19,3 +19,33 @@ module.exports = {
   ]
 }
 ```
+
+## Design Tokens
+The following are design tokens that are applied by variants through this theme. You may use them to apply styles to elements as a stopgap before needing to shadow a component.
+
+```js
+{
+  jboldaGatsbyTheme: {
+    homepage: {
+      landing: {
+        container: { /* add tokens here */ },
+        left: { /* add tokens here */ },
+        right: { /* add tokens here */ }
+      },
+      about: {
+        container: { /* add tokens here */ },
+        left: { /* add tokens here */ },
+        right: { /* add tokens here */ }
+      },
+      engagements: {
+        container: { /* add tokens here */ },
+        each: { /* add tokens here */ }
+      },
+      articles: {
+        container: { /* add tokens here */ },
+        each: { /* add tokens here */ }
+      }
+    }
+  }
+}
+```

@@ -6,16 +6,31 @@ import Img from "gatsby-image";
 import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
 
 const Landing = ({ landing, profile }) => (
-  <Flex sx={{ justifyContent: "space-evenly" }}>
+  <Flex
+    sx={{
+      justifyContent: "space-evenly",
+      variant: "jboldaGatsbyTheme.homepage.landing.container"
+    }}
+  >
     {!profile ||
     !profile.childImageSharp ||
     !profile.childImageSharp.fluid ? null : (
-      <Box width={["80%", "50%", "30%"]}>
+      <Box
+        width={["80%", "50%", "30%"]}
+        sx={{
+          variant: "jboldaGatsbyTheme.homepage.landing.left"
+        }}
+      >
         <Img fluid={profile.childImageSharp.fluid} />
       </Box>
     )}
     {!landing || !landing.childMdx || !landing.childMdx.body ? null : (
-      <Box width={["80%", "50%", "30%"]}>
+      <Box
+        width={["80%", "50%", "30%"]}
+        sx={{
+          variant: "jboldaGatsbyTheme.homepage.landing.right"
+        }}
+      >
         <MDXRenderer scope={{ contextMDX }}>
           {landing.childMdx.body}
         </MDXRenderer>
