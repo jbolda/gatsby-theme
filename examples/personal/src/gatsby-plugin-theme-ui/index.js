@@ -1,3 +1,15 @@
+const headingTextStandards = {
+  fontFamily: "heading",
+  fontWeight: "heading",
+  lineHeight: "heading"
+};
+
+const bodyTextStandards = {
+  fontFamily: "body",
+  fontWeight: "body",
+  lineHeight: "body"
+};
+
 export default {
   initialColorMode: "light",
   useCustomProperties: true, // true is default
@@ -38,83 +50,64 @@ export default {
   },
   text: {
     heading: {
-      fontFamily: "heading",
-      fontWeight: "heading",
-      lineHeight: "heading",
+      ...headingTextStandards,
       letterSpacing: "heading"
     },
     body: {
-      fontFamily: "body",
-      fontWeight: "body",
-      lineHeight: "body",
+      ...bodyTextStandards,
       letterSpacing: "body"
+    }
+  },
+  jboldaGatsbyTheme: {
+    layout: {
+      content: {}
     }
   },
   styles: {
     root: {
-      fontFamily: "body",
-      lineHeight: "body",
-      fontWeight: "body"
+      ...bodyTextStandards
     },
     h1: {
       color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      ...headingTextStandards,
       fontSize: 5
     },
     h2: {
       color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      ...headingTextStandards,
       fontSize: 4
     },
     h3: {
       color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      ...headingTextStandards,
       fontSize: 3
     },
     h4: {
       color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      ...headingTextStandards,
       fontSize: 2
     },
     h5: {
       color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      ...headingTextStandards,
       fontSize: 1
     },
     h6: {
       color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      ...headingTextStandards,
       fontSize: 0
     },
     p: {
       color: "text",
-      fontFamily: "body",
-      fontWeight: "body",
-      lineHeight: "body"
+      ...bodyTextStandards
     },
     span: {
       color: "text",
-      fontFamily: "body",
-      fontWeight: "body",
-      lineHeight: "body"
+      ...bodyTextStandards
     },
     a: {
       color: "primary",
-      fontFamily: "body",
-      fontWeight: "body",
-      lineHeight: "body"
+      ...bodyTextStandards
     },
     pre: {
       fontFamily: "monospace",

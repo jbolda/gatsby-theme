@@ -22,7 +22,12 @@ const Header = props => {
     <Box
       as="header"
       width="98%"
-      sx={{ margin: "0px", padding: "0px", flexShrink: 0 }}
+      sx={{
+        margin: "0px",
+        padding: "0px",
+        flexShrink: 0,
+        variant: "jboldaGatsbyTheme.layout.header"
+      }}
     >
       <div ref={ref}>
         <Flex

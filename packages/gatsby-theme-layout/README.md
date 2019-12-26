@@ -4,7 +4,7 @@
 This theme is primarily used in other themes. There is only configuration requirements.
 
 ## Configuration
-```
+```js
 module.exports = {
   siteMetadata: {
     siteTitle: `Jacob Bolda`,
@@ -15,6 +15,19 @@ module.exports = {
       { url: "/articles/", text: "Articles" },
       { url: "/recipes/", text: "Our Recipes" }
     ]
+  }
+}
+```
+
+## Design Tokens
+```js
+{
+  jboldaGatsbyTheme: {
+    layout: {
+      header: { // add tokens here },
+      content: { // add tokens here },
+      footer: { // add tokens here }
+    }
   }
 }
 ```
