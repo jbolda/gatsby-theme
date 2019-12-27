@@ -21,10 +21,8 @@ export const pageQuery = graphql`
       updated
       written
       featuredImage {
-        childImageSharp {
-          fluid(maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
+        fluid(maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }

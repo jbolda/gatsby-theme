@@ -29,8 +29,9 @@ The following are design tokens that are applied by variants through this theme.
       },
       article: {
         container: { /* add tokens here */ },
-        content: { /* add tokens here */ }
-        footer: { /* add tokens here */ }
+        content: { /* add tokens here */ },
+        footer: { /* add tokens here */ },
+        featuredImage: { /* add tokens here */ }
       }
     }
   }
