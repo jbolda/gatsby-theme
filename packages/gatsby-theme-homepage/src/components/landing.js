@@ -8,6 +8,7 @@ import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
 const Landing = ({ landing, profile }) => (
   <Flex
     sx={{
+      padding: 2,
       justifyContent: "space-evenly",
       variant: "jboldaGatsbyTheme.homepage.landing.container"
     }}

@@ -9,7 +9,12 @@ import {
 // import Img from "gatsby-image";
 
 const Articles = ({ articles }) => (
-  <Flex direction="row">
+  <Flex
+    direction="row"
+    sx={{
+      padding: 2
+    }}
+  >
     {articles.nodes.map(article => (
       <Box
         key={article.slug}
@@ -45,7 +50,10 @@ export default props => (
   <Flex
     direction="column"
     alignItems="left"
-    sx={{ variant: "jboldaGatsbyTheme.homepage.articles.container" }}
+    sx={{
+      padding: 4,
+      variant: "jboldaGatsbyTheme.homepage.articles.container"
+    }}
   >
     <Link to={"/articles/"}>
       <Heading as="h2" sx={{ marginBottom: "0px" }}>

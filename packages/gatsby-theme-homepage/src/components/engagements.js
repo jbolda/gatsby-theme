@@ -47,7 +47,10 @@ export default props => (
         <Flex
           direction="column"
           alignItems="left"
-          sx={{ variant: "jboldaGatsbyTheme.homepage.engagements.container" }}
+          sx={{
+            padding: 4,
+            variant: "jboldaGatsbyTheme.homepage.engagements.container"
+          }}
         >
           <Heading as="h2" sx={{ marginBottom: "0px" }}>
             Professional Engagements

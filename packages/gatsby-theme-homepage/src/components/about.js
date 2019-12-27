@@ -6,7 +6,12 @@ import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
 import SiteLinks from "./siteLinks";
 
 const About = ({ site, about }) => (
-  <Flex sx={{ variant: "jboldaGatsbyTheme.homepage.about.container" }}>
+  <Flex
+    sx={{
+      padding: 2,
+      variant: "jboldaGatsbyTheme.homepage.about.container"
+    }}
+  >
     {!!site || !!site.siteMetadata || !!site.siteMetadata.contactLinks ? (
       <Box
         width={["85%", "25%", "25%"]}
