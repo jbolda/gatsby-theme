@@ -27,6 +27,6 @@
     "@jbolda/isolated-theme-ui-components": "^0.0.4",
     "gatsby-plugin-compile-es6-packages": "2.1.0",
     "isolated-theme-ui": "1.0.1",
-    "react-use": "13.12.2"
+    "react-use": "13.13.0"
   }
 }
