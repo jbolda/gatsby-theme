@@ -1,8 +1,7 @@
 import React from "react";
-import { Box } from "@jbolda/isolated-theme-ui-components";
+import { Box, Image } from "@jbolda/isolated-theme-ui-components";
 import ArticleLayout from "./articleLayout";
 import ArticleSection from "./components/articleSection";
-import Img from "gatsby-image";
 
 export default ({ article, location, children }) => (
   <ArticleLayout article={article} location={location}>
@@ -14,8 +13,14 @@ export default ({ article, location, children }) => (
 const FeaturedImage = ({ featuredImage }) => {
   if (featuredImage) {
     return (
-      <Box>
-        <Img className="image" fluid={featuredImage.childImageSharp.fluid} />
+      <Box sx={{ width: "100%", padding: 0, margin: 0 }}>
+        <Image
+          sx={{
+            maxHeight: "600px",
+            variant: "jboldaGatsbyTheme.articles.article.featuredImage"
+          }}
+          fluid={featuredImage.fluid}
+        />
       </Box>
     );
   } else {

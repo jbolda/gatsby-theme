@@ -1,28 +1,15 @@
 const Debug = require("debug");
 const fs = require("fs");
 const path = require("path");
+const util = require("util");
 const crypto = require("crypto");
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const { urlResolve } = require(`gatsby-core-utils`);
 
-const mdxResolverPassthrough = fieldName => async (
-  source,
-  args,
-  context,
-  info
-) => {
-  const type = info.schema.getType(`Mdx`);
-  const mdxNode = context.nodeModel.getNodeById({
-    id: source.parent
-  });
-  const resolver = type.getFields()[fieldName].resolve;
-  const result = await resolver(mdxNode, args, context, {
-    fieldName
-  });
-  return result;
-};
-
-exports.createSchemaCustomization = ({ actions, schema }, {}) => {
+exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
+  const debug = Debug(
+    "@jbolda/gatsby-theme-articles:createSchemaCustomization"
+  );
   const { createTypes } = actions;
 
   createTypes(`interface Articles @nodeInterface {
@@ -37,6 +24,137 @@ exports.createSchemaCustomization = ({ actions, schema }, {}) => {
     excerpt: String!
     featuredImage: ImageSharp
   }`);
+
+  if (debug.enabled && !!reporter) {
+    reporter.info(`@jbolda/gatsby-theme-articles:createSchemaCustomization`);
+  }
+
+  const mdxResolverPassthrough = fieldName => async (
+    source,
+    args,
+    context,
+    info
+  ) => {
+    const debug = Debug(
+      "@jbolda/gatsby-theme-articles:createSchemaCustomization:mdxResolverPassthrough"
+    );
+    const type = info.schema.getType(`Mdx`);
+    const mdxNode = context.nodeModel.getNodeById({
+      id: source.parent
+    });
+    if (debug.enabled && !!reporter) {
+      reporter.info(
+        `@jbolda/gatsby-theme-articles:createSchemaCustomization:mdxResolverPassthrough mdxNode\n${util.inspect(
+          mdxNode
+        )}`
+      );
+    }
+    const resolver = type.getFields()[fieldName].resolve;
+    const result = await resolver(mdxNode, args, context, {
+      fieldName
+    });
+    if (debug.enabled && !!reporter) {
+      reporter.info(
+        `@jbolda/gatsby-theme-articles:createSchemaCustomization:mdxResolverPassthrough result\n${util.inspect(
+          result
+        )}`
+      );
+    }
+    return result;
+  };
+
+  const imageSharpResolverPassthrough = fieldName => async (
+    source,
+    args,
+    context,
+    info
+  ) => {
+    const debug = Debug(
+      "@jbolda/gatsby-theme-articles:createSchemaCustomization:imageSharpResolverPassthrough"
+    );
+
+    if (debug.enabled && !!reporter) {
+      reporter.info(
+        `@jbolda/gatsby-theme-articles:createSchemaCustomization:imageSharpResolverPassthrough source\n${util.inspect(
+          source,
+          { showHidden: true }
+        )}`
+      );
+    }
+
+    // early return based on set string, if undefined/null then we can exit
+    // and properly set as null for graphql
+    if (!source[fieldName]) return null;
+
+    const type = info.schema.getType(`Mdx`);
+    try {
+      await context.nodeModel.prepareNodes(
+        type, // source node
+        {
+          frontmatter: {
+            featuredImage: { childImageSharp: { id: true } }
+          }
+        }, // querying for resolvable field
+        {
+          frontmatter: {
+            featuredImage: { childImageSharp: { id: true } }
+          }
+        }, // resolve this field
+        [type.name] // The types to use are these
+      );
+    } catch (e) {
+      reporter.warn(
+        `We tried to resolve an image on ${source.title},
+        but an ImageSharp node does not exist. This may be intentional and 
+        an image is not required.`
+      );
+      reporter.error(e);
+      return null;
+    }
+
+    try {
+      const mdxNode = await context.nodeModel.runQuery({
+        type: type,
+        query: { filter: { id: { eq: source.parent } } },
+        firstOnly: true
+      });
+
+      if (debug.enabled && !!reporter) {
+        reporter.info(
+          `@jbolda/gatsby-theme-articles:createSchemaCustomization:imageSharpResolverPassthrough mdxNode\n${util.inspect(
+            mdxNode,
+            { showHidden: true }
+          )}`
+        );
+      }
+
+      const imageSharpNode = await context.nodeModel.getNodeById({
+        id:
+          mdxNode.__gatsby_resolved.frontmatter.featuredImage.childImageSharp.id
+      });
+
+      if (debug.enabled && !!reporter) {
+        reporter.info(
+          `@jbolda/gatsby-theme-articles:createSchemaCustomization:imageSharpResolverPassthrough imageSharpNode\n${util.inspect(
+            imageSharpNode
+          )}`
+        );
+      }
+
+      return imageSharpNode;
+    } catch (e) {
+      // we catch and ignore as an image isn't required
+      if (debug.enabled && !!reporter) {
+        reporter.warn(
+          `We queried for the image node on ${source.title},
+          but an ImageSharp node does not exist. This may be intentional and 
+          an image is not required.`
+        );
+        reporter.error(e);
+      }
+      return null;
+    }
+  };
 
   createTypes(
     schema.buildObjectType({
@@ -67,7 +185,10 @@ exports.createSchemaCustomization = ({ actions, schema }, {}) => {
           type: `String!`,
           resolve: mdxResolverPassthrough(`body`)
         },
-        featuredImage: { type: "ImageSharp" }
+        featuredImage: {
+          type: "ImageSharp",
+          resolve: imageSharpResolverPassthrough(`featuredImage`)
+        }
       },
       interfaces: [`Node`, `Articles`]
     })
@@ -77,9 +198,10 @@ exports.createSchemaCustomization = ({ actions, schema }, {}) => {
 // Create fields for post slugs and source
 // This will change with schema customization with work
 exports.onCreateNode = async (
-  { node, actions, getNode, createNodeId },
+  { node, actions, getNode, createNodeId, reporter },
   { contentPath = "articles", basePath = "" }
 ) => {
+  const debug = Debug("@jbolda/gatsby-theme-articles:onCreateNode");
   const { createNode, createParentChildLink } = actions;
 
   // Make sure it's an MDX node
@@ -118,8 +240,16 @@ exports.onCreateNode = async (
       tags: node.frontmatter.tags || [],
       slug,
       written: node.frontmatter.written,
-      keywords: node.frontmatter.keywords || []
+      keywords: node.frontmatter.keywords || [],
+      // set string as an easy check for early return
+      featuredImage: node.frontmatter.featuredImage
     };
+
+    if (debug.enabled && !!reporter) {
+      reporter.info(`@jbolda/gatsby-theme-articles:onCreateNode`);
+      reporter.info(`incoming frontmatter:\n${util.inspect(node.frontmatter)}`);
+      reporter.info(`proxy node data:\n${util.inspect(fieldData)}`);
+    }
 
     const mdxBlogPostId = createNodeId(`${node.id} >>> MdxBlogPost`);
     await createNode({

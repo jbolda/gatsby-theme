@@ -11,6 +11,7 @@ import Text from "./src/components/text";
 import Link from "./src/components/link";
 import Button from "./src/components/button";
 import SVG from "./src/components/svg";
+import Image from "./src/components/image";
 
 export {
   contextJSX,
@@ -23,5 +24,6 @@ export {
   Text,
   Link,
   Button,
-  SVG
+  SVG,
+  Image
 };
