@@ -8,7 +8,7 @@ import {
 } from "@jbolda/isolated-theme-ui-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useClickAway } from "react-use";
-import { useThemeUI, useColorMode } from "theme-ui";
+import ColorToggle from "./colorToggle";
 
 const Header = props => {
   const [hamburgerActive, setHamburgerMenu] = useState(false);
@@ -18,29 +18,6 @@ const Header = props => {
   useClickAway(ref, () => {
     setHamburgerMenu(false);
   });
-
-  const { theme } = useThemeUI();
-
-  const themeModes =
-    !!theme && !!theme.colors && !!theme.colors.modes
-      ? [
-          !!theme && !!theme.initialColorMode
-            ? theme.initialColorMode
-            : "default"
-        ].concat(Object.keys(theme.colors.modes))
-      : [];
-
-  const themeList = themeModes.reduce((modes, mode, index, array) => {
-    return {
-      ...modes,
-      [mode]: {
-        name: mode,
-        next: array[index + 1 > array.length - 1 ? 0 : index + 1]
-      }
-    };
-  }, {});
-
-  const [colorMode, setColorMode] = useColorMode();
 
   return (
     <Box
@@ -122,32 +99,7 @@ const Header = props => {
                     </Link>
                   </Box>
                 ))}
-                {themeModes.length < 2 ? null : (
-                  <Box
-                    width={null}
-                    sx={{
-                      display: [
-                        hamburgerActive ? "flex" : "none",
-                        "flex",
-                        "flex"
-                      ],
-                      padding: 0,
-                      margin: 2
-                    }}
-                  >
-                    <Button
-                      aria-label="menu"
-                      sx={{
-                        backgroundColor: "inherit",
-                        borderStyle: "groove",
-                        borderColor: "secondary"
-                      }}
-                      onClick={e => setColorMode(themeList[colorMode].next)}
-                    >
-                      <Text sx={{ padding: 2 }}>{colorMode}</Text>
-                    </Button>
-                  </Box>
-                )}
+                <ColorToggle hamburgerActive={hamburgerActive} />
               </Flex>
             </Box>
           )}
