@@ -27,18 +27,18 @@ const Header = props => {
           !!theme && !!theme.initialColorMode
             ? theme.initialColorMode
             : "default"
-        ]
-          .concat(Object.keys(theme.colors.modes))
-          .reduce((modes, mode, index, array) => {
-            return {
-              ...modes,
-              [mode]: {
-                name: mode,
-                next: array[index + 1 > array.length - 1 ? 0 : index + 1]
-              }
-            };
-          }, {})
-      : {};
+        ].concat(Object.keys(theme.colors.modes))
+      : [];
+
+  const themeList = themeModes.reduce((modes, mode, index, array) => {
+    return {
+      ...modes,
+      [mode]: {
+        name: mode,
+        next: array[index + 1 > array.length - 1 ? 0 : index + 1]
+      }
+    };
+  }, {});
 
   const [colorMode, setColorMode] = useColorMode();
 
@@ -122,30 +122,32 @@ const Header = props => {
                     </Link>
                   </Box>
                 ))}
-                <Box
-                  width={null}
-                  sx={{
-                    display: [
-                      hamburgerActive ? "flex" : "none",
-                      "flex",
-                      "flex"
-                    ],
-                    padding: 0,
-                    margin: 2
-                  }}
-                >
-                  <Button
-                    aria-label="menu"
+                {themeModes.length < 2 ? null : (
+                  <Box
+                    width={null}
                     sx={{
-                      backgroundColor: "inherit",
-                      borderStyle: "groove",
-                      borderColor: "secondary"
+                      display: [
+                        hamburgerActive ? "flex" : "none",
+                        "flex",
+                        "flex"
+                      ],
+                      padding: 0,
+                      margin: 2
                     }}
-                    onClick={e => setColorMode(themeModes[colorMode].next)}
                   >
-                    <Text sx={{ padding: 2 }}>{colorMode}</Text>
-                  </Button>
-                </Box>
+                    <Button
+                      aria-label="menu"
+                      sx={{
+                        backgroundColor: "inherit",
+                        borderStyle: "groove",
+                        borderColor: "secondary"
+                      }}
+                      onClick={e => setColorMode(themeList[colorMode].next)}
+                    >
+                      <Text sx={{ padding: 2 }}>{colorMode}</Text>
+                    </Button>
+                  </Box>
+                )}
               </Flex>
             </Box>
           )}
