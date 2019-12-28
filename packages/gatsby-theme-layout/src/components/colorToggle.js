@@ -3,7 +3,7 @@ import { Box, Text, Button } from "@jbolda/isolated-theme-ui-components";
 import { useThemeUI, useColorMode } from "theme-ui";
 
 export default ({ hamburgerActive }) => {
-  const { theme } = useThemeUI();
+  const { theme, colorMode, setColorMode } = useThemeUI();
 
   const themeModes =
     !!theme && !!theme.colors && !!theme.colors.modes
@@ -24,8 +24,6 @@ export default ({ hamburgerActive }) => {
     };
   }, {});
 
-  const [colorMode, setColorMode] = useColorMode();
-
   return themeModes.length < 2 ? null : (
     <Box
       width={null}
@@ -35,7 +33,6 @@ export default ({ hamburgerActive }) => {
         margin: 2
       }}
     >
-      {console.dir(themeList)}
       <Button
         aria-label="menu"
         sx={{
