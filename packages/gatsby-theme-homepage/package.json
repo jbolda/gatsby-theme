@@ -13,6 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/jbolda/gatsby-theme.git"
   },
+  "keywords": ["gatsby", "gatsby-plugin"],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
