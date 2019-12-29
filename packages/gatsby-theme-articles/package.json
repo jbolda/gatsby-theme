@@ -1,7 +1,7 @@
 {
   "name": "@jbolda/gatsby-theme-articles",
   "version": "0.0.7",
-  "description": "> TODO: description",
+  "description": "Gatsby theme to construct pages for each of your articles.",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
   "license": "MIT",
@@ -12,6 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/jbolda/gatsby-theme.git"
   },
+  "keywords": ["gatsby", "gatsby-plugin"],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
