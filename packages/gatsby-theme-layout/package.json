@@ -1,6 +1,6 @@
 {
   "name": "@jbolda/gatsby-theme-layout",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "> TODO: description",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
@@ -24,7 +24,7 @@
     "@fortawesome/free-regular-svg-icons": "5.12.0",
     "@fortawesome/free-solid-svg-icons": "5.12.0",
     "@fortawesome/react-fontawesome": "0.1.8",
-    "@jbolda/isolated-theme-ui-components": "^0.0.4",
+    "@jbolda/isolated-theme-ui-components": "^0.0.5",
     "gatsby-plugin-compile-es6-packages": "2.1.0",
     "isolated-theme-ui": "1.0.1",
     "react-use": "13.13.0"
