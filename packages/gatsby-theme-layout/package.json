@@ -1,7 +1,7 @@
 {
   "name": "@jbolda/gatsby-theme-layout",
   "version": "0.0.7",
-  "description": "Gatsby Theme generally ingested by other themes to set navigation and default SEO.",
+  "description": "Gatsby theme generally ingested by other themes to set navigation and default SEO.",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
   "license": "MIT",
