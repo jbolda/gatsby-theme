@@ -43,6 +43,6 @@
     "theme-ui": "0.2.52"
   },
   "devDependencies": {
-    "lerna": "3.20.0"
+    "lerna": "3.20.1"
   }
 }
