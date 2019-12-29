@@ -1,7 +1,7 @@
 {
   "name": "@jbolda/gatsby-theme-homepage",
   "version": "0.0.8",
-  "description": "themed homepage",
+  "description": "Gatsby theme to construct a homepage.",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
   "license": "MIT",
