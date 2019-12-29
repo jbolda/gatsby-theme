@@ -1,5 +1,15 @@
 # `@jbolda/gatsby-theme-layout`
 
+## Installation
+Install from npm or yarn:
+```
+npm install @jbolda/gatsby-theme-layout
+```
+or
+```
+yarn add @jbolda/gatsby-theme-layout
+```
+
 ## Convention
 This theme is primarily used in other themes. There is only configuration requirements.
 
