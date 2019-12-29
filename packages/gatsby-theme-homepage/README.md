@@ -1,5 +1,16 @@
 # `@jbolda/gatsby-theme-homepage`
 
+## Installation
+Install from npm or yarn:
+```
+npm install @jbolda/gatsby-theme-homepage
+```
+or
+```
+yarn add @jbolda/gatsby-theme-homepage
+```
+
+
 ## Convention
 This plugin expects a `gatsby-source-filesystem` config entry with a `name` entry of _homepage_ pointing at the directory. The optional, but the recommended folder name is `src/homepage`.
 
@@ -11,7 +22,8 @@ Additionally, the site links section in the about section (the second one), you 
 
 ## Configuration
 
-```js
+```
+// in gatsby-config.js
 module.exports = {
   siteMetadata: {
     contactLinks: [
