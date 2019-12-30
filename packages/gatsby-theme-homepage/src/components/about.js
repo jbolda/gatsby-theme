@@ -7,6 +7,7 @@ import SiteLinks from "./siteLinks";
 
 const About = ({ site, about }) => (
   <Flex
+    alignItems="flex-start"
     sx={{
       padding: 2,
       variant: "jboldaGatsbyTheme.homepage.about.container"

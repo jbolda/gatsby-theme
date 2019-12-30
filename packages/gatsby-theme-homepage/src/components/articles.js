@@ -6,11 +6,11 @@ import {
   Text,
   Link
 } from "@jbolda/isolated-theme-ui-components";
-// import Img from "gatsby-image";
 
 const Articles = ({ articles }) => (
   <Flex
     direction="row"
+    alignItems="flex-start"
     sx={{
       padding: 2
     }}

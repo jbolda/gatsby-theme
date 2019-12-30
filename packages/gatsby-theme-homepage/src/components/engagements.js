@@ -5,7 +5,7 @@ import { Flex, Box, Heading, Text } from "@jbolda/isolated-theme-ui-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const Engagements = ({ engagements }) => (
-  <Flex>
+  <Flex alignItems="flex-start">
     {!!engagements
       ? engagements.nodes.map(engagement => (
           <Box
@@ -32,6 +32,7 @@ export default props => (
             relativeDirectory: { regex: "/engagements*/" }
             ext: { eq: ".mdx" }
           }
+          sort: { fields: childMdx___frontmatter___order, order: ASC }
         ) {
           nodes {
             name
