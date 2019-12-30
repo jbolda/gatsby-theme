@@ -51,15 +51,24 @@ The following are design tokens that are applied by variants through this theme.
       about: {
         container: { /* add tokens here */ },
         left: { /* add tokens here */ },
-        right: { /* add tokens here */ }
+        right: { /* add tokens here */ },
+        heading: { /* add tokens here */ },
+        text: { /* add tokens here */ },
+        link: { /* add tokens here */ }
       },
       engagements: {
         container: { /* add tokens here */ },
-        each: { /* add tokens here */ }
+        each: { /* add tokens here */ },
+        heading: { /* add tokens here */ },
+        text: { /* add tokens here */ },
+        link: { /* add tokens here */ }
       },
       articles: {
         container: { /* add tokens here */ },
-        each: { /* add tokens here */ }
+        each: { /* add tokens here */ },
+        heading: { /* add tokens here */ },
+        text: { /* add tokens here */ },
+        link: { /* add tokens here */ }
       }
     }
   }

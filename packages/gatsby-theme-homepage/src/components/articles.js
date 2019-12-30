@@ -22,22 +22,46 @@ const Articles = ({ articles }) => (
         sx={{ variant: "jboldaGatsbyTheme.homepage.articles.each" }}
       >
         <Flex direction="column">
-          <Box width="100%">{article.tags}</Box>
+          <Box width="100%">
+            {article.tags.map(tag => (
+              <Text
+                sx={{ variant: "jboldaGatsbyTheme.homepage.articles.text" }}
+              >
+                {tag}
+              </Text>
+            ))}
+          </Box>
           <Box width="100%" sx={{ padding: 0 }}>
-            <Link to={article.slug}>
-              <Heading as="h3">{article.title}</Heading>
+            <Link
+              to={article.slug}
+              sx={{ variant: "jboldaGatsbyTheme.homepage.articles.link" }}
+            >
+              <Heading
+                as="h3"
+                sx={{ variant: "jboldaGatsbyTheme.homepage.articles.heading" }}
+              >
+                {article.title}
+              </Heading>
             </Link>
           </Box>
           <Box width="100%" sx={{ padding: 0 }}>
-            <p
+            <Text
               dangerouslySetInnerHTML={{
                 __html: article.excerpt
               }}
+              sx={{ variant: "jboldaGatsbyTheme.homepage.articles.text" }}
             />
           </Box>
           <Box width="100%">
-            <Link to={article.slug}>
-              <Text>Read</Text>
+            <Link
+              to={article.slug}
+              sx={{ variant: "jboldaGatsbyTheme.homepage.articles.link" }}
+            >
+              <Text
+                sx={{ variant: "jboldaGatsbyTheme.homepage.articles.text" }}
+              >
+                Read
+              </Text>
             </Link>
           </Box>
         </Flex>
@@ -55,15 +79,34 @@ export default props => (
       variant: "jboldaGatsbyTheme.homepage.articles.container"
     }}
   >
-    <Link to={"/articles/"}>
-      <Heading as="h2" sx={{ marginBottom: "0px" }}>
+    <Link
+      to={"/articles/"}
+      sx={{ variant: "jboldaGatsbyTheme.homepage.articles.link" }}
+    >
+      <Heading
+        as="h2"
+        sx={{
+          marginBottom: "0px",
+          variant: "jboldaGatsbyTheme.homepage.articles.heading"
+        }}
+      >
         Articles
       </Heading>
     </Link>
-    <Text>The Most Recent</Text>
+    <Text sx={{ variant: "jboldaGatsbyTheme.homepage.articles.text" }}>
+      The Most Recent
+    </Text>
     <Articles articles={props.articles} {...props} />
-    <Link to={"/articles/"}>
-      <Heading as="h4">Read More</Heading>
+    <Link
+      to={"/articles/"}
+      sx={{ variant: "jboldaGatsbyTheme.homepage.articles.link" }}
+    >
+      <Heading
+        as="h4"
+        sx={{ variant: "jboldaGatsbyTheme.homepage.articles.heading" }}
+      >
+        Read More
+      </Heading>
     </Link>
   </Flex>
 );

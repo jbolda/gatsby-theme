@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Heading } from "@jbolda/isolated-theme-ui-components";
+import { Box, Heading } from "@jbolda/isolated-theme-ui-components";
 
 const ArticleSection = ({
   componentOverride,
