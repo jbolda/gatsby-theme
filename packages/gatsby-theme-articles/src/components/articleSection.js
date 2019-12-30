@@ -11,10 +11,7 @@ const ArticleSection = ({
     return componentOverride();
   } else {
     return (
-      <Flex
-        direction="column"
-        sx={{ variant: "jboldaGatsbyTheme.articles.article.container" }}
-      >
+      <React.Fragment>
         <Box>
           <Heading>{article.title}</Heading>
         </Box>
@@ -32,7 +29,7 @@ const ArticleSection = ({
             </Box>
           ))
         )}
-      </Flex>
+      </React.Fragment>
     );
   }
 };
