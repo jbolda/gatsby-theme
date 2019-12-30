@@ -12,7 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/jbolda/gatsby-theme.git"
   },
-  "keywords": ["gatsby", "gatsby-plugin"],
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
@@ -29,5 +32,13 @@
     "gatsby-plugin-compile-es6-packages": "2.1.0",
     "isolated-theme-ui": "1.0.1",
     "react-use": "13.13.0"
+  },
+  "peerDependencies": {
+    "gatsby-plugin-mdx": "^1.0.49",
+    "gatsby-plugin-sharp": "^2.2.31",
+    "gatsby-plugin-theme-ui": "^0.2.46",
+    "gatsby-source-filesystem": "^2.1.0",
+    "gatsby-transformer-sharp": "^2.2.20",
+    "theme-ui": "^0.2.46"
   }
 }

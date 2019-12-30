@@ -1123,6 +1123,11 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@jbolda/isolated-theme-ui-components@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@jbolda/isolated-theme-ui-components/-/isolated-theme-ui-components-0.0.4.tgz#831af082b5d45667dc0f198f0bac534b230e3805"
+  integrity sha512-jRXGEP5Yau7tGfkr8DEjxrFQ1WrkK9lAEjTqFMvn8YbRRuzf9WfX7x587h0Ka879E+Nn+e/nLCeEPWE9rvYNeQ==
+
 "@jimp/bmp@^0.6.8":
   version "0.6.8"
   resolved "https://registry.yarnpkg.com/@jimp/bmp/-/bmp-0.6.8.tgz#8abbfd9e26ba17a47fab311059ea9f7dd82005b6"
