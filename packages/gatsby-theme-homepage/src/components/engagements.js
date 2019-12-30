@@ -53,10 +53,22 @@ export default props => (
             variant: "jboldaGatsbyTheme.homepage.engagements.container"
           }}
         >
-          <Heading as="h2" sx={{ marginBottom: "0px" }}>
+          <Heading
+            as="h2"
+            sx={{
+              marginBottom: "0px",
+              variant: "jboldaGatsbyTheme.homepage.engagements.heading"
+            }}
+          >
             Professional Engagements
           </Heading>
-          <Text>In View of the Public</Text>
+          <Text
+            sx={{
+              variant: "jboldaGatsbyTheme.homepage.engagements.text"
+            }}
+          >
+            In View of the Public
+          </Text>
           <Engagements engagements={queryData.engagements} {...props} />
         </Flex>
       )

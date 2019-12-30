@@ -58,6 +58,84 @@ export default {
       letterSpacing: "body"
     }
   },
+  jboldaGatsbyTheme: {
+    homepage: {
+      landing: {
+        container: {
+          /* add tokens here */
+        },
+        left: {
+          /* add tokens here */
+        },
+        right: {
+          /* add tokens here */
+        }
+      },
+      about: {
+        container: {
+          /* add tokens here */
+        },
+        left: {
+          /* add tokens here */
+        },
+        right: {
+          /* add tokens here */
+        },
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      },
+      engagements: {
+        container: {
+          /* add tokens here */
+        },
+        each: {
+          /* add tokens here */
+        },
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      },
+      articles: {
+        container: {
+          /* add tokens here */
+        },
+        each: {
+          /* add tokens here */
+        },
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      }
+    }
+  },
   styles: {
     root: {
       ...bodyTextStandards

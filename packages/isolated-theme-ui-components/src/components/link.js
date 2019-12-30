@@ -2,9 +2,9 @@
 import { jsx } from "../context";
 import { Link as GatsbyLink } from "gatsby";
 
-export default ({ as: Link = GatsbyLink, to, children }) =>
+export default ({ as: Link = GatsbyLink, to, sx, children }) =>
   Link !== "a" ? (
-    <Link to={to} sx={{ variant: `styles.a` }}>
+    <Link to={to} sx={{ variant: `styles.a`, ...sx }}>
       {children}
     </Link>
   ) : (
@@ -12,7 +12,7 @@ export default ({ as: Link = GatsbyLink, to, children }) =>
       href={to}
       target="_blank"
       rel="noopener noreferrer"
-      sx={{ variant: `styles.a` }}
+      sx={{ variant: `styles.a`, ...sx }}
     >
       {children}
     </a>
