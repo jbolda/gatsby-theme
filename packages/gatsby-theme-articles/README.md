@@ -10,6 +10,12 @@ or
 yarn add @jbolda/gatsby-theme-articles
 ```
 
+We also rely on peer dependencies of the following packages. Consult the package installation guides for each to potentially additional peer depedencies that require installation.
+
+```
+yarn add @jbolda/gatsby-theme-layout@^0.0.7 gatsby-plugin-mdx@^1.0.49 gatsby-plugin-sharp@^2.2.31 gatsby-plugin-theme-ui@^0.2.46 gatsby-source-filesystem@^2.1.0 gatsby-transformer-sharp@^2.2.20 theme-ui@^0.2.46
+```
+
 ## Convention
 This plugin expects markdown files in a folder defined by a `gatsby-source-filesystem` config entry with a `name` entry of _articles_. The name can be configured with the `contentPath` option.
 
