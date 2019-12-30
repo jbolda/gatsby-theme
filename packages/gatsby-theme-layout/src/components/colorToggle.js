@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text, Button } from "@jbolda/isolated-theme-ui-components";
-import { useThemeUI, useColorMode } from "theme-ui";
+import { useThemeUI } from "theme-ui";
 
 export default ({ hamburgerActive }) => {
   const { theme, colorMode, setColorMode } = useThemeUI();

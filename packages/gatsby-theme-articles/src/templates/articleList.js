@@ -13,34 +13,41 @@ import {
 export default props => {
   return (
     <Nav {...props}>
-      <Heading>Articles</Heading>
-      <Flex sx={{ variant: "jboldaGatsbyTheme.articles.list.container" }}>
-        {props.data.articles.nodes.map(article => (
-          <Box
-            key={article.slug}
-            sx={{ variant: "jboldaGatsbyTheme.articles.list.each" }}
-          >
-            {article.heroImage ? (
-              <Img
-                className="image"
-                Tag="figure"
-                fluid={article.heroImage.childImageSharp.fluid}
+      <Flex
+        sx={{
+          padding: 2,
+          variant: "jboldaGatsbyTheme.articles.list.container"
+        }}
+      >
+        <Heading>Articles</Heading>
+        <Flex>
+          {props.data.articles.nodes.map(article => (
+            <Box
+              key={article.slug}
+              sx={{ variant: "jboldaGatsbyTheme.articles.list.each" }}
+            >
+              {article.heroImage ? (
+                <Img
+                  className="image"
+                  Tag="figure"
+                  fluid={article.heroImage.childImageSharp.fluid}
+                />
+              ) : null}
+              <Text>{article.category}</Text>
+              <Link to={article.slug}>
+                <Heading as="h2">{article.title}</Heading>
+              </Link>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: article.excerpt
+                }}
               />
-            ) : null}
-            <Text>{article.category}</Text>
-            <Link to={article.slug}>
-              <Heading as="h2">{article.title}</Heading>
-            </Link>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: article.excerpt
-              }}
-            />
-            <Link to={article.slug}>
-              <Text>Read</Text>
-            </Link>
-          </Box>
-        ))}
+              <Link to={article.slug}>
+                <Text>Read</Text>
+              </Link>
+            </Box>
+          ))}
+        </Flex>
       </Flex>
     </Nav>
   );
