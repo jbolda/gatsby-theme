@@ -1,5 +1,21 @@
 # `@jbolda/gatsby-theme-layout`
 
+## Installation
+Install from npm or yarn:
+```
+npm install @jbolda/gatsby-theme-layout
+```
+or
+```
+yarn add @jbolda/gatsby-theme-layout
+```
+
+We also rely on peer dependencies of the following packages. Consult the package installation guides for each to potentially additional peer depedencies that require installation.
+
+```
+yarn add gatsby-plugin-mdx@^1.0.49 gatsby-plugin-sharp@^2.2.31 gatsby-plugin-theme-ui@^0.2.46 gatsby-source-filesystem@^2.1.0 gatsby-transformer-sharp@^2.2.20 theme-ui@^0.2.46
+```
+
 ## Convention
 This theme is primarily used in other themes. There is only configuration requirements.
 
