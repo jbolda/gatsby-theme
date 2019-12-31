@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { Flex } from "@jbolda/isolated-theme-ui-components";
+import { WrapElement, Flex } from "@jbolda/isolated-theme-ui-components";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -10,20 +10,22 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fas, far, fab);
 
 const MasterLayout = ({ siteMetadata, children }) => (
-  <Flex direction="column" sx={{ minHeight: "100vh" }}>
-    <Helmet defaultTitle={siteMetadata.siteTitle}>
-      <title>{siteMetadata.siteTitle}</title>
-      <meta property="description" content={siteMetadata.siteDescription} />
-      <meta name="keywords" content="articles" />
-      <style type="text/css">{`
+  <WrapElement>
+    <Flex direction="column" sx={{ minHeight: "100vh" }}>
+      <Helmet defaultTitle={siteMetadata.siteTitle}>
+        <title>{siteMetadata.siteTitle}</title>
+        <meta property="description" content={siteMetadata.siteDescription} />
+        <meta name="keywords" content="articles" />
+        <style type="text/css">{`
         body {
             margin: 0px;
             padding: 0px;
         }
     `}</style>
-    </Helmet>
-    {children}
-  </Flex>
+      </Helmet>
+      {children}
+    </Flex>
+  </WrapElement>
 );
 
 export default MasterLayout;

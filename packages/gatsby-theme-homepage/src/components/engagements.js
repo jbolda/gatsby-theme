@@ -51,12 +51,10 @@ export default props => (
       }
     `}
     render={queryData => {
-      const { theme, components } = useThemeUI();
+      const { theme } = useThemeUI();
       return queryData.engagements.nodes.length === 0 ? null : (
         <WrapElement
-          theme={theme}
           components={{
-            ...components,
             ...theme.jboldaGatsbyTheme.homepage.engagements.components
           }}
         >
