@@ -1,9 +1,10 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { useThemeUI } from "theme-ui";
 import { contextMDX } from "@jbolda/isolated-theme-ui-components";
 import Img from "gatsby-image";
-import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
+import { WrapElement, Flex, Box } from "@jbolda/isolated-theme-ui-components";
 
 const Landing = ({ landing, profile }) => (
   <Flex
@@ -64,12 +65,23 @@ export default props => (
         }
       }
     `}
-    render={queryData => (
-      <Landing
-        landing={queryData.landing}
-        profile={queryData.profile}
-        {...props}
-      />
-    )}
+    render={queryData => {
+      const { theme, components } = useThemeUI();
+      return (
+        <WrapElement
+          theme={theme}
+          components={{
+            ...components,
+            ...theme.jboldaGatsbyTheme.homepage.landing.components
+          }}
+        >
+          <Landing
+            landing={queryData.landing}
+            profile={queryData.profile}
+            {...props}
+          />
+        </WrapElement>
+      );
+    }}
   />
 );

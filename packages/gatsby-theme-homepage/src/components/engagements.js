@@ -1,7 +1,14 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { contextMDX } from "@jbolda/isolated-theme-ui-components";
-import { Flex, Box, Heading, Text } from "@jbolda/isolated-theme-ui-components";
+import { useThemeUI } from "theme-ui";
+import {
+  contextMDX,
+  WrapElement,
+  Flex,
+  Box,
+  Heading,
+  Text
+} from "@jbolda/isolated-theme-ui-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const Engagements = ({ engagements }) => (
@@ -43,35 +50,44 @@ export default props => (
         }
       }
     `}
-    render={queryData =>
-      queryData.engagements.nodes.length === 0 ? null : (
-        <Flex
-          direction="column"
-          alignItems="left"
-          sx={{
-            padding: 4,
-            variant: "jboldaGatsbyTheme.homepage.engagements.container"
+    render={queryData => {
+      const { theme, components } = useThemeUI();
+      return queryData.engagements.nodes.length === 0 ? null : (
+        <WrapElement
+          theme={theme}
+          components={{
+            ...components,
+            ...theme.jboldaGatsbyTheme.homepage.engagements.components
           }}
         >
-          <Heading
-            as="h2"
+          <Flex
+            direction="column"
+            alignItems="left"
             sx={{
-              marginBottom: "0px",
-              variant: "jboldaGatsbyTheme.homepage.engagements.heading"
+              padding: 4,
+              variant: "jboldaGatsbyTheme.homepage.engagements.container"
             }}
           >
-            Professional Engagements
-          </Heading>
-          <Text
-            sx={{
-              variant: "jboldaGatsbyTheme.homepage.engagements.text"
-            }}
-          >
-            In View of the Public
-          </Text>
-          <Engagements engagements={queryData.engagements} {...props} />
-        </Flex>
-      )
-    }
+            <Heading
+              as="h2"
+              sx={{
+                marginBottom: "0px",
+                variant: "jboldaGatsbyTheme.homepage.engagements.heading"
+              }}
+            >
+              Professional Engagements
+            </Heading>
+            <Text
+              sx={{
+                variant: "jboldaGatsbyTheme.homepage.engagements.text"
+              }}
+            >
+              In View of the Public
+            </Text>
+            <Engagements engagements={queryData.engagements} {...props} />
+          </Flex>
+        </WrapElement>
+      );
+    }}
   />
 );

@@ -1,3 +1,5 @@
+import React from "react";
+
 const headingTextStandards = {
   fontFamily: "heading",
   fontWeight: "heading",
@@ -9,6 +11,11 @@ const bodyTextStandards = {
   fontWeight: "body",
   lineHeight: "body"
 };
+
+const MyH1 = props => <h1 style={{ color: "tomato" }} {...props} />;
+const MyParagraph = props => (
+  <p style={{ color: "pink", fontSize: "18px", lineHeight: 1.6 }} {...props} />
+);
 
 export default {
   initialColorMode: "light",
@@ -69,6 +76,10 @@ export default {
         },
         right: {
           /* add tokens here */
+        },
+        components: {
+          h1: MyH1,
+          p: MyParagraph
         }
       },
       about: {
@@ -112,6 +123,10 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "primary"
+        },
+        components: {
+          h1: MyH1,
+          p: MyParagraph
         }
       },
       articles: {

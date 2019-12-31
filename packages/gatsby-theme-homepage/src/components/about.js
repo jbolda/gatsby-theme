@@ -1,8 +1,13 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { contextMDX } from "@jbolda/isolated-theme-ui-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { Flex, Box } from "@jbolda/isolated-theme-ui-components";
+import { useThemeUI } from "theme-ui";
+import {
+  contextMDX,
+  WrapElement,
+  Flex,
+  Box
+} from "@jbolda/isolated-theme-ui-components";
 import SiteLinks from "./siteLinks";
 
 const About = ({ site, about }) => (
@@ -56,8 +61,19 @@ export default props => (
         }
       }
     `}
-    render={queryData => (
-      <About site={queryData.site} about={queryData.about} {...props} />
-    )}
+    render={queryData => {
+      const { theme, components } = useThemeUI();
+      return (
+        <WrapElement
+          theme={theme}
+          components={{
+            ...components,
+            ...theme.jboldaGatsbyTheme.homepage.about.components
+          }}
+        >
+          <About site={queryData.site} about={queryData.about} {...props} />
+        </WrapElement>
+      );
+    }}
   />
 );
