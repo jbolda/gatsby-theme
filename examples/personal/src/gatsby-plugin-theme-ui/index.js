@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+// import { Heading, Text } from "@jbolda/isolated-theme-ui-components";
 
 const headingTextStandards = {
   fontFamily: "heading",
@@ -12,10 +13,12 @@ const bodyTextStandards = {
   lineHeight: "body"
 };
 
-const MyH1 = props => <h1 style={{ color: "tomato" }} {...props} />;
-const MyParagraph = props => (
-  <p style={{ color: "pink", fontSize: "18px", lineHeight: 1.6 }} {...props} />
-);
+// const HeadingMDX = ({ as, variant }) => props => (
+//   <Heading as={props.as} sx={{ variant: props.variant }} {...props} />
+// );
+// const TextMDX = ({ as, variant }) => props => (
+//   <Text as={props.as} sx={{ variant: props.variant }} {...props} />
+// );
 
 export default {
   initialColorMode: "light",
@@ -77,9 +80,27 @@ export default {
         right: {
           /* add tokens here */
         },
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        },
         components: {
-          h1: MyH1,
-          p: MyParagraph
+          // h3: HeadingMDX({
+          //   as: "h3",
+          //   variant: "jboldaGatsbyTheme.homepage.landing.heading"
+          // }),
+          // span: TextMDX({
+          //   as: "span",
+          //   variant: "jboldaGatsbyTheme.homepage.landing.text"
+          // })
         }
       },
       about: {
@@ -107,26 +128,32 @@ export default {
       },
       engagements: {
         container: {
-          /* add tokens here */
+          backgroundColor: "secondary"
         },
         each: {
           /* add tokens here */
         },
         heading: {
           ...headingTextStandards,
-          color: "text"
+          color: "muted"
         },
         text: {
           ...bodyTextStandards,
-          color: "text"
+          color: "yellow"
         },
         link: {
           ...bodyTextStandards,
           color: "primary"
         },
         components: {
-          h1: MyH1,
-          p: MyParagraph
+          // h3: HeadingMDX({
+          //   as: "h3",
+          //   variant: "jboldaGatsbyTheme.homepage.engagements.heading"
+          // }),
+          // span: TextMDX({
+          //   as: "span",
+          //   variant: "jboldaGatsbyTheme.homepage.engagements.text"
+          // })
         }
       },
       articles: {
