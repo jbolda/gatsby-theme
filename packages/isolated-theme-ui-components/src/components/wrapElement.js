@@ -1,14 +1,12 @@
 /** @jsx jsx */
-import { jsx, ThemeProvider, useThemeUI } from "theme-ui";
+import { jsx } from "theme-ui";
+import { MDXProvider, useMDXComponents } from "@mdx-js/react";
 
-export default ({ children, theme, components }) => {
-  const context = useThemeUI();
+export default ({ children, components }) => {
+  const defaultComponents = useMDXComponents();
   return (
-    <ThemeProvider
-      theme={theme || context.theme}
-      components={components || context.components}
-    >
+    <MDXProvider components={{ ...defaultComponents, ...components }}>
       {children}
-    </ThemeProvider>
+    </MDXProvider>
   );
 };
