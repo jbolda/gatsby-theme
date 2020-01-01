@@ -2,13 +2,13 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { useThemeUI } from "theme-ui";
 import {
-  contextMDX,
   WrapElement,
   Flex,
   Box,
   Heading,
   Text
 } from "@jbolda/isolated-theme-ui-components";
+import { jsx } from "theme-ui";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const Engagements = ({ engagements }) => (
@@ -20,7 +20,24 @@ const Engagements = ({ engagements }) => (
             width={["85%", "45%", "30%"]}
             sx={{ variant: "jboldaGatsbyTheme.homepage.engagements.each" }}
           >
-            <MDXRenderer scope={{ contextMDX }}>
+            <MDXRenderer
+              components={{
+                p: props =>
+                  jsx(
+                    Text,
+                    {
+                      as: "p",
+                      sx: {
+                        color: "yellow",
+                        variant:
+                          "theme.jboldaGatsbyTheme.homepage.engagements.text"
+                      },
+                      ...props
+                    },
+                    props.children
+                  )
+              }}
+            >
               {engagement.childMdx.body}
             </MDXRenderer>
           </Box>
