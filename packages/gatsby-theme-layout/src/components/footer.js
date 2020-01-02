@@ -20,11 +20,27 @@ const Footer = ({ site }) => (
   >
     <Flex>
       <Box width={null} sx={{ justifyContent: "center", flexShrink: 1 }}>
-        <Text>
+        <Text
+          sx={{
+            variant: "jboldaGatsbyTheme.layout.text"
+          }}
+        >
           Made with <Heart style={{}} /> by
           {` `}
-          <Link as="a" to={site.siteMetadata.siteContact}>
-            <Text>{site.siteMetadata.siteAuthor}</Text>
+          <Link
+            as="a"
+            to={site.siteMetadata.siteContact}
+            sx={{
+              variant: "jboldaGatsbyTheme.layout.link"
+            }}
+          >
+            <Text
+              sx={{
+                variant: "jboldaGatsbyTheme.layout.text"
+              }}
+            >
+              {site.siteMetadata.siteAuthor}
+            </Text>
           </Link>
         </Text>
       </Box>

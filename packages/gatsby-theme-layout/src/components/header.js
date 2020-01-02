@@ -39,7 +39,12 @@ const Header = props => {
           sx={{ justifyContent: ["flex-start", "flex-end", "flex-end"] }}
         >
           <Box width={null} sx={{ flexGrow: [1, 0, 0], padding: 0, margin: 2 }}>
-            <Link to="/">
+            <Link
+              to="/"
+              sx={{
+                variant: "jboldaGatsbyTheme.layout.link"
+              }}
+            >
               {props.logo ? (
                 <Logo
                   icon={
@@ -50,7 +55,13 @@ const Header = props => {
                   alt={props.logo.alt}
                 />
               ) : (
-                <Text>{props.siteMetadata.siteTitle}</Text>
+                <Text
+                  sx={{
+                    variant: "jboldaGatsbyTheme.layout.text"
+                  }}
+                >
+                  {props.siteMetadata.siteTitle}
+                </Text>
               )}
             </Link>
           </Box>
@@ -94,8 +105,19 @@ const Header = props => {
                       margin: 2
                     }}
                   >
-                    <Link to={link.url}>
-                      <Text>{link.text}</Text>
+                    <Link
+                      to={link.url}
+                      sx={{
+                        variant: "jboldaGatsbyTheme.layout.link"
+                      }}
+                    >
+                      <Text
+                        sx={{
+                          variant: "jboldaGatsbyTheme.layout.text"
+                        }}
+                      >
+                        {link.text}
+                      </Text>
                     </Link>
                   </Box>
                 ))}

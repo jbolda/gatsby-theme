@@ -61,6 +61,20 @@ export default {
     }
   },
   jboldaGatsbyTheme: {
+    layout: {
+      heading: {
+        ...headingTextStandards,
+        color: "text"
+      },
+      text: {
+        ...bodyTextStandards,
+        color: "text"
+      },
+      link: {
+        ...bodyTextStandards,
+        color: "primary"
+      }
+    },
     homepage: {
       landing: {
         container: {
