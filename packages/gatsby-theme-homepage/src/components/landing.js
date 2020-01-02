@@ -79,7 +79,13 @@ export default props => (
               heading: "jboldaGatsbyTheme.homepage.landing.heading",
               text: "jboldaGatsbyTheme.homepage.landing.text"
             }),
-            ...theme.jboldaGatsbyTheme.homepage.landing.components
+            ...(!!theme &&
+            !!theme.jboldaGatsbyTheme &&
+            !!theme.jboldaGatsbyTheme.homepage &&
+            !!theme.jboldaGatsbyTheme.homepage.landing &&
+            !!theme.jboldaGatsbyTheme.homepage.landing.components
+              ? theme.jboldaGatsbyTheme.homepage.landing.components
+              : {})
           }}
         >
           <Landing

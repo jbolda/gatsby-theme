@@ -57,7 +57,13 @@ export default props => (
               heading: "jboldaGatsbyTheme.homepage.engagements.heading",
               text: "jboldaGatsbyTheme.homepage.engagements.text"
             }),
-            ...theme.jboldaGatsbyTheme.homepage.engagements.components
+            ...(!!theme &&
+            !!theme.jboldaGatsbyTheme &&
+            !!theme.jboldaGatsbyTheme.homepage &&
+            !!theme.jboldaGatsbyTheme.homepage.engagements &&
+            !!theme.jboldaGatsbyTheme.homepage.engagements.components
+              ? theme.jboldaGatsbyTheme.homepage.engagements.components
+              : {})
           }}
         >
           <Flex
