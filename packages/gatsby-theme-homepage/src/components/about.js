@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { useThemeUI } from "theme-ui";
 import {
+  mdxComponents,
   contextMDX,
   WrapElement,
   Flex,
@@ -66,6 +67,10 @@ export default props => (
       return (
         <WrapElement
           components={{
+            ...mdxComponents({
+              heading: "jboldaGatsbyTheme.homepage.about.heading",
+              text: "jboldaGatsbyTheme.homepage.about.text"
+            }),
             ...theme.jboldaGatsbyTheme.homepage.about.components
           }}
         >

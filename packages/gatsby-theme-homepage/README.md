@@ -64,7 +64,10 @@ The following are design tokens that are applied by variants through this theme.
       landing: {
         container: { /* add tokens here */ },
         left: { /* add tokens here */ },
-        right: { /* add tokens here */ }
+        right: { /* add tokens here */ },
+        heading: { /* add tokens here */ },
+        text: { /* add tokens here */ },
+        link: { /* add tokens here */ }
       },
       about: {
         container: { /* add tokens here */ },

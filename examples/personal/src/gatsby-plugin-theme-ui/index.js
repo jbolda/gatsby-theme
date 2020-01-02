@@ -1,5 +1,4 @@
-// import React from "react";
-// import { Heading, Text } from "@jbolda/isolated-theme-ui-components";
+import React from "react";
 
 const headingTextStandards = {
   fontFamily: "heading",
@@ -12,13 +11,6 @@ const bodyTextStandards = {
   fontWeight: "body",
   lineHeight: "body"
 };
-
-// const HeadingMDX = ({ as, variant }) => props => (
-//   <Heading as={props.as} sx={{ variant: props.variant }} {...props} />
-// );
-// const TextMDX = ({ as, variant }) => props => (
-//   <Text as={props.as} sx={{ variant: props.variant }} {...props} />
-// );
 
 export default {
   initialColorMode: "light",
@@ -91,16 +83,6 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "primary"
-        },
-        components: {
-          // h3: HeadingMDX({
-          //   as: "h3",
-          //   variant: "jboldaGatsbyTheme.homepage.landing.heading"
-          // }),
-          // span: TextMDX({
-          //   as: "span",
-          //   variant: "jboldaGatsbyTheme.homepage.landing.text"
-          // })
         }
       },
       about: {
@@ -139,21 +121,36 @@ export default {
         },
         text: {
           ...bodyTextStandards,
-          color: "yellow"
+          color: "muted"
         },
         link: {
           ...bodyTextStandards,
           color: "primary"
         },
         components: {
-          // h3: HeadingMDX({
-          //   as: "h3",
-          //   variant: "jboldaGatsbyTheme.homepage.engagements.heading"
-          // }),
-          // span: TextMDX({
-          //   as: "span",
-          //   variant: "jboldaGatsbyTheme.homepage.engagements.text"
-          // })
+          h3: props => (
+            //eslint-disable-next-line
+            <h3
+              {...props}
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                lineHeight: 1.47,
+                color: "#e9edf6"
+              }}
+            />
+          ),
+          p: props => (
+            <p
+              {...props}
+              style={{
+                fontFamily: "Proza Libre, system-ui, sans-serif",
+                fontWeight: 400,
+                lineHeight: 1.98,
+                color: "#e9edf6"
+              }}
+            />
+          )
         }
       },
       articles: {

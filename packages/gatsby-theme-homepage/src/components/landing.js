@@ -4,7 +4,12 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { useThemeUI } from "theme-ui";
 import { contextMDX } from "@jbolda/isolated-theme-ui-components";
 import Img from "gatsby-image";
-import { WrapElement, Flex, Box } from "@jbolda/isolated-theme-ui-components";
+import {
+  mdxComponents,
+  WrapElement,
+  Flex,
+  Box
+} from "@jbolda/isolated-theme-ui-components";
 
 const Landing = ({ landing, profile }) => (
   <Flex
@@ -70,6 +75,10 @@ export default props => (
       return (
         <WrapElement
           components={{
+            ...mdxComponents({
+              heading: "jboldaGatsbyTheme.homepage.landing.heading",
+              text: "jboldaGatsbyTheme.homepage.landing.text"
+            }),
             ...theme.jboldaGatsbyTheme.homepage.landing.components
           }}
         >
