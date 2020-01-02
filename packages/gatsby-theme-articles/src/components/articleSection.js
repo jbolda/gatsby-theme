@@ -13,7 +13,9 @@ const ArticleSection = ({
     return (
       <React.Fragment>
         <Box>
-          <Heading>{article.title}</Heading>
+          <Heading sx={{ variant: "jboldaGatsbyTheme.articles.article.text" }}>
+            {article.title}
+          </Heading>
         </Box>
         {!componentBlocks ? (
           <Box sx={{ variant: "jboldaGatsbyTheme.articles.article.content" }}>

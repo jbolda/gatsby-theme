@@ -14,9 +14,19 @@ const ArticleLayout = ({ footerInfo, article, location, children }) => (
     >
       {children}
       <Box sx={{ variant: "jboldaGatsbyTheme.articles.article.footer" }}>
-        <Text as="p">{footerInfo.siteDescription}</Text>
-        <Link to={footerInfo.siteContact}>
-          <Text>Written by {footerInfo.siteAuthor}</Text>
+        <Text
+          as="p"
+          sx={{ variant: "jboldaGatsbyTheme.articles.article.text" }}
+        >
+          {footerInfo.siteDescription}
+        </Text>
+        <Link
+          to={footerInfo.siteContact}
+          sx={{ variant: "jboldaGatsbyTheme.articles.article.link" }}
+        >
+          <Text sx={{ variant: "jboldaGatsbyTheme.articles.article.text" }}>
+            Written by {footerInfo.siteAuthor}
+          </Text>
         </Link>
       </Box>
     </Flex>

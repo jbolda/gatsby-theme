@@ -187,6 +187,36 @@ export default {
           color: "primary"
         }
       }
+    },
+    articles: {
+      list: {
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      },
+      article: {
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      }
     }
   },
   styles: {

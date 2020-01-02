@@ -19,7 +19,13 @@ export default props => {
           variant: "jboldaGatsbyTheme.articles.list.container"
         }}
       >
-        <Heading>Articles</Heading>
+        <Heading
+          sx={{
+            variant: "jboldaGatsbyTheme.articles.list.heading"
+          }}
+        >
+          Articles
+        </Heading>
         <Flex>
           {props.data.articles.nodes.map(article => (
             <Box
@@ -33,17 +39,49 @@ export default props => {
                   fluid={article.heroImage.childImageSharp.fluid}
                 />
               ) : null}
-              <Text>{article.category}</Text>
-              <Link to={article.slug}>
-                <Heading as="h2">{article.title}</Heading>
+              <Text
+                sx={{
+                  variant: "jboldaGatsbyTheme.articles.list.text"
+                }}
+              >
+                {article.category}
+              </Text>
+              <Link
+                to={article.slug}
+                sx={{
+                  variant: "jboldaGatsbyTheme.articles.list.link"
+                }}
+              >
+                <Heading
+                  as="h2"
+                  sx={{
+                    variant: "jboldaGatsbyTheme.articles.list.heading"
+                  }}
+                >
+                  {article.title}
+                </Heading>
               </Link>
-              <p
+              <Text
                 dangerouslySetInnerHTML={{
                   __html: article.excerpt
                 }}
+                sx={{
+                  variant: "jboldaGatsbyTheme.articles.list.text"
+                }}
               />
-              <Link to={article.slug}>
-                <Text>Read</Text>
+              <Link
+                to={article.slug}
+                sx={{
+                  variant: "jboldaGatsbyTheme.articles.list.link"
+                }}
+              >
+                <Text
+                  sx={{
+                    variant: "jboldaGatsbyTheme.articles.list.text"
+                  }}
+                >
+                  Read
+                </Text>
               </Link>
             </Box>
           ))}
