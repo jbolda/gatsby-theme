@@ -1,17 +1,25 @@
 import React from "react";
-import Text from "./components/text";
-import Heading from "./components/heading";
+import TextComponent from "./components/text";
+import HeadingComponent from "./components/heading";
 
 const headings = ["h1", "h2", "h3", "h4", "h5", "h6"];
 const body = ["p", "span", "div"];
 
 export default ({ heading, text }) => {
   return {
-    ...headings.map(h => ({
-      [h]: props => <Heading {...props} sx={{ variant: heading }} />
-    })),
-    ...body.map(b => ({
-      [b]: props => <Text {...props} sx={{ variant: text }} />
-    }))
+    ...headings.reduce(
+      (components, h) => ({
+        ...components,
+        [h]: props => <HeadingComponent {...props} sx={{ variant: heading }} />
+      }),
+      {}
+    ),
+    ...body.reduce(
+      (components, b) => ({
+        ...components,
+        [b]: props => <TextComponent {...props} sx={{ variant: text }} />
+      }),
+      {}
+    )
   };
 };
