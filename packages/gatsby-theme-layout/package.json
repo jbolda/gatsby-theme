@@ -31,7 +31,7 @@
     "@jbolda/isolated-theme-ui-components": "^0.1.0",
     "gatsby-plugin-compile-es6-packages": "2.1.0",
     "isolated-theme-ui": "1.0.1",
-    "react-use": "13.13.0"
+    "react-use": "13.14.0"
   },
   "peerDependencies": {
     "gatsby-plugin-mdx": "^1.0.49",

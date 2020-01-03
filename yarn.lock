@@ -12346,10 +12346,10 @@ react-side-effect@^1.1.0:
   dependencies:
     shallowequal "^1.0.1"
 
-react-use@13.13.0:
-  version "13.13.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.13.0.tgz#5d133c4d4d8d3f21f6ccf4ccbe54fbcd6fdafb36"
-  integrity sha512-J3/h5wvL6vXmecAvEnninCC3DviLMRWcQrEnouTliwws1b376DQKEgIFuTXlF8c3SKpXBQJdDDm1RpluokW6ag==
+react-use@13.14.0:
+  version "13.14.0"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.14.0.tgz#b0c27407c52897f2e42839e0801b392f2ad2718a"
+  integrity sha512-E9tmVppagnDVMgzWwdSA7V8rHEugtF1VTYmkmiBMw1RctkvZK7ib6lzsZh5KugHNEdR/7ffYFjwZZ3NZobm9KA==
   dependencies:
     "@xobotyi/scrollbar-width" "1.5.0"
     copy-to-clipboard "^3.2.0"
