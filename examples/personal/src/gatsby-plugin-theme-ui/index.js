@@ -77,15 +77,6 @@ export default {
     },
     homepage: {
       landing: {
-        container: {
-          /* add tokens here */
-        },
-        left: {
-          /* add tokens here */
-        },
-        right: {
-          /* add tokens here */
-        },
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -100,15 +91,6 @@ export default {
         }
       },
       about: {
-        container: {
-          /* add tokens here */
-        },
-        left: {
-          /* add tokens here */
-        },
-        right: {
-          /* add tokens here */
-        },
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -126,9 +108,6 @@ export default {
         container: {
           backgroundColor: "secondary"
         },
-        each: {
-          /* add tokens here */
-        },
         heading: {
           ...headingTextStandards,
           color: "muted"
@@ -140,40 +119,9 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "primary"
-        },
-        components: {
-          h3: props => (
-            //eslint-disable-next-line
-            <h3
-              {...props}
-              style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontWeight: 700,
-                lineHeight: 1.47,
-                color: "#e9edf6"
-              }}
-            />
-          ),
-          p: props => (
-            <p
-              {...props}
-              style={{
-                fontFamily: "Proza Libre, system-ui, sans-serif",
-                fontWeight: 400,
-                lineHeight: 1.98,
-                color: "#e9edf6"
-              }}
-            />
-          )
         }
       },
       articles: {
-        container: {
-          /* add tokens here */
-        },
-        each: {
-          /* add tokens here */
-        },
         heading: {
           ...headingTextStandards,
           color: "text"
