@@ -1,6 +1,6 @@
 {
   "name": "@jbolda/isolated-theme-ui-components",
-  "version": "0.2.0-alpha.1",
+  "version": "0.2.0-alpha.2",
   "description": "Components that implement the isolated-theme-ui context and pragma (eventually).",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
