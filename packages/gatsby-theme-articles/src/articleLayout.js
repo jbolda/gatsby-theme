@@ -3,13 +3,11 @@ import { StaticQuery, graphql } from "gatsby";
 import { useThemeUI } from "theme-ui";
 import Nav from "@jbolda/gatsby-theme-layout";
 import HelmetBlock from "./components/helmetBlock";
+import Footer from "./components/footer";
 import {
   mdxComponents,
   WrapElement,
-  Flex,
-  Box,
-  Text,
-  Link
+  Flex
 } from "@jbolda/isolated-theme-ui-components";
 
 const ArticleLayout = ({ footerInfo, article, location, children }) => {
@@ -36,25 +34,12 @@ const ArticleLayout = ({ footerInfo, article, location, children }) => {
       >
         <Flex
           direction="column"
-          sx={{ variant: "jboldaGatsbyTheme.articles.article.container" }}
+          sx={{
+            variant: "jboldaGatsbyTheme.articles.article.container"
+          }}
         >
           {children}
-          <Box sx={{ variant: "jboldaGatsbyTheme.articles.article.footer" }}>
-            <Text
-              as="p"
-              sx={{ variant: "jboldaGatsbyTheme.articles.article.text" }}
-            >
-              {footerInfo.siteDescription}
-            </Text>
-            <Link
-              to={footerInfo.siteContact}
-              sx={{ variant: "jboldaGatsbyTheme.articles.article.link" }}
-            >
-              <Text sx={{ variant: "jboldaGatsbyTheme.articles.article.text" }}>
-                Written by {footerInfo.siteAuthor}
-              </Text>
-            </Link>
-          </Box>
+          <Footer {...footerInfo} />
         </Flex>
       </WrapElement>
     </Nav>
