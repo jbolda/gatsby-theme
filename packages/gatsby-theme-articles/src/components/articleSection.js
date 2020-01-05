@@ -19,20 +19,9 @@ const ArticleSection = ({
             {article.title}
           </Heading>
         </Box>
-        {!componentBlocks ? (
-          <Box sx={{ variant: "jboldaGatsbyTheme.articles.article.content" }}>
-            {children}
-          </Box>
-        ) : (
-          componentBlocks.map(block => (
-            <Box
-              key={block.uniqueKey}
-              sx={{ variant: "jboldaGatsbyTheme.articles.article.content" }}
-            >
-              {block.renderComponent()}
-            </Box>
-          ))
-        )}
+        {!componentBlocks
+          ? children
+          : componentBlocks.map(block => block.renderComponent())}
       </React.Fragment>
     );
   }
