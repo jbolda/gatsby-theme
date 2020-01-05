@@ -10,14 +10,16 @@ export default ({ heading, text }) => {
     ...headings.reduce(
       (components, h) => ({
         ...components,
-        [h]: props => <HeadingComponent {...props} sx={{ variant: heading }} />
+        [h]: props => (
+          <HeadingComponent as={h} {...props} sx={{ variant: heading }} />
+        )
       }),
       {}
     ),
     ...body.reduce(
       (components, b) => ({
         ...components,
-        [b]: props => <TextComponent {...props} sx={{ variant: text }} />
+        [b]: props => <TextComponent as={b} {...props} sx={{ variant: text }} />
       }),
       {}
     )
