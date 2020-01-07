@@ -67,7 +67,11 @@ The following are design tokens that are applied by variants through this theme.
         right: { /* add tokens here */ },
         heading: { /* add tokens here */ },
         text: { /* add tokens here */ },
-        link: { /* add tokens here */ }
+        link: { /* add tokens here */ },
+        components: { /*
+          add components here as shown in mdx docs,
+          we pass this to the provider */
+        }
       },
       about: {
         container: { /* add tokens here */ },
@@ -75,14 +79,22 @@ The following are design tokens that are applied by variants through this theme.
         right: { /* add tokens here */ },
         heading: { /* add tokens here */ },
         text: { /* add tokens here */ },
-        link: { /* add tokens here */ }
+        link: { /* add tokens here */ },
+        components: { /*
+          add components here as shown in mdx docs,
+          we pass this to the provider */
+        }
       },
       engagements: {
         container: { /* add tokens here */ },
         each: { /* add tokens here */ },
         heading: { /* add tokens here */ },
         text: { /* add tokens here */ },
-        link: { /* add tokens here */ }
+        link: { /* add tokens here */ },
+        components: { /*
+          add components here as shown in mdx docs,
+          we pass this to the provider */
+        }
       },
       articles: {
         container: { /* add tokens here */ },
