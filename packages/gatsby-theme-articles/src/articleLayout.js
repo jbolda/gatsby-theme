@@ -1,27 +1,50 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
+import { useThemeUI } from "theme-ui";
 import Nav from "@jbolda/gatsby-theme-layout";
 import HelmetBlock from "./components/helmetBlock";
-import { Flex, Box, Text, Link } from "@jbolda/isolated-theme-ui-components";
+import Footer from "./components/footer";
+import {
+  mdxComponents,
+  WrapElement,
+  Flex
+} from "@jbolda/isolated-theme-ui-components";
 
-const ArticleLayout = ({ footerInfo, article, location, children }) => (
-  <Nav location={location}>
-    <HelmetBlock frontmatter={article} siteMetadata={footerInfo} />
+const ArticleLayout = ({ footerInfo, article, location, children }) => {
+  const { theme } = useThemeUI();
 
-    <Flex
-      direction="column"
-      sx={{ variant: "jboldaGatsbyTheme.articles.article.container" }}
-    >
-      {children}
-      <Box sx={{ variant: "jboldaGatsbyTheme.articles.article.footer" }}>
-        <Text as="p">{footerInfo.siteDescription}</Text>
-        <Link to={footerInfo.siteContact}>
-          <Text>Written by {footerInfo.siteAuthor}</Text>
-        </Link>
-      </Box>
-    </Flex>
-  </Nav>
-);
+  return (
+    <Nav location={location}>
+      <HelmetBlock frontmatter={article} siteMetadata={footerInfo} />
+
+      <WrapElement
+        components={{
+          ...mdxComponents({
+            heading: "jboldaGatsbyTheme.articles.article.heading",
+            text: "jboldaGatsbyTheme.articles.article.text"
+          }),
+          ...(!!theme &&
+          !!theme.jboldaGatsbyTheme &&
+          !!theme.jboldaGatsbyTheme.articles &&
+          !!theme.jboldaGatsbyTheme.articles.article &&
+          !!theme.jboldaGatsbyTheme.articles.article.components
+            ? theme.jboldaGatsbyTheme.articles.article.components
+            : {})
+        }}
+      >
+        <Flex
+          direction="column"
+          sx={{
+            variant: "jboldaGatsbyTheme.articles.article.container"
+          }}
+        >
+          {children}
+          <Footer {...footerInfo} />
+        </Flex>
+      </WrapElement>
+    </Nav>
+  );
+};
 
 export default props => (
   <StaticQuery
@@ -33,6 +56,7 @@ export default props => (
             siteAuthor
             siteDescription
             siteContact
+            siteURL
           }
         }
       }

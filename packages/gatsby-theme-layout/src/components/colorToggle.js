@@ -42,7 +42,14 @@ export default ({ hamburgerActive }) => {
         }}
         onClick={e => setColorMode(themeList[colorMode].next)}
       >
-        <Text sx={{ padding: 2 }}>{colorMode}</Text>
+        <Text
+          sx={{
+            padding: 2,
+            variant: "jboldaGatsbyTheme.layout.text"
+          }}
+        >
+          {colorMode}
+        </Text>
       </Button>
     </Box>
   );

@@ -1,16 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "../context";
 
-export default ({
-  as: Text = "span",
-  sx,
-  children,
-  dangerouslySetInnerHTML
-}) => (
-  <Text
-    sx={{ variant: `styles.${Text}`, ...sx }}
-    dangerouslySetInnerHTML={dangerouslySetInnerHTML}
-  >
-    {children}
-  </Text>
-);
+export default props => {
+  const Component = props.as || "span";
+  return (
+    <Component {...props} sx={{ ...props.sx }}>
+      {props.children}
+    </Component>
+  );
+};

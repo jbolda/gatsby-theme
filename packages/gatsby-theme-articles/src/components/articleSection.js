@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading } from "@jbolda/isolated-theme-ui-components";
+import { Box } from "@jbolda/isolated-theme-ui-components";
 
 const ArticleSection = ({
   componentOverride,
@@ -10,26 +10,19 @@ const ArticleSection = ({
   if (componentOverride) {
     return componentOverride();
   } else {
-    return (
-      <React.Fragment>
-        <Box>
-          <Heading>{article.title}</Heading>
+    return !componentBlocks ? (
+      <Box sx={{ variant: "jboldaGatsbyTheme.articles.article.content" }}>
+        {children}
+      </Box>
+    ) : (
+      componentBlocks.map(block => (
+        <Box
+          key={block.uniqueKey}
+          sx={{ variant: "jboldaGatsbyTheme.articles.article.content" }}
+        >
+          {block.renderComponent()}
         </Box>
-        {!componentBlocks ? (
-          <Box sx={{ variant: "jboldaGatsbyTheme.articles.article.content" }}>
-            {children}
-          </Box>
-        ) : (
-          componentBlocks.map(block => (
-            <Box
-              key={block.uniqueKey}
-              sx={{ variant: "jboldaGatsbyTheme.articles.article.content" }}
-            >
-              {block.renderComponent()}
-            </Box>
-          ))
-        )}
-      </React.Fragment>
+      ))
     );
   }
 };

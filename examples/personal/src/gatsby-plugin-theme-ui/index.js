@@ -59,28 +59,36 @@ export default {
     }
   },
   jboldaGatsbyTheme: {
+    layout: {
+      heading: {
+        ...headingTextStandards,
+        color: "text"
+      },
+      text: {
+        ...bodyTextStandards,
+        color: "text"
+      },
+      link: {
+        ...bodyTextStandards,
+        color: "primary"
+      }
+    },
     homepage: {
       landing: {
-        container: {
-          /* add tokens here */
+        heading: {
+          ...headingTextStandards,
+          color: "text"
         },
-        left: {
-          /* add tokens here */
+        text: {
+          ...bodyTextStandards,
+          color: "text"
         },
-        right: {
-          /* add tokens here */
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
         }
       },
       about: {
-        container: {
-          /* add tokens here */
-        },
-        left: {
-          /* add tokens here */
-        },
-        right: {
-          /* add tokens here */
-        },
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -96,11 +104,38 @@ export default {
       },
       engagements: {
         container: {
-          /* add tokens here */
+          backgroundColor: "secondary"
         },
-        each: {
-          /* add tokens here */
+        heading: {
+          ...headingTextStandards,
+          color: "muted"
         },
+        text: {
+          ...bodyTextStandards,
+          color: "muted"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      },
+      articles: {
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      }
+    },
+    articles: {
+      list: {
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -114,13 +149,7 @@ export default {
           color: "primary"
         }
       },
-      articles: {
-        container: {
-          /* add tokens here */
-        },
-        each: {
-          /* add tokens here */
-        },
+      article: {
         heading: {
           ...headingTextStandards,
           color: "text"

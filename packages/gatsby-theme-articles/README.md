@@ -41,13 +41,23 @@ The following are design tokens that are applied by variants through this theme.
     articles: {
       list: {
         container: { /* add tokens here */ },
-        each: { /* add tokens here */ }
+        each: { /* add tokens here */ },
+        heading: { /* add tokens here */ },
+        text: { /* add tokens here */ },
+        link: { /* add tokens here */ }
       },
       article: {
         container: { /* add tokens here */ },
         content: { /* add tokens here */ },
         footer: { /* add tokens here */ },
-        featuredImage: { /* add tokens here */ }
+        featuredImage: { /* add tokens here */ },
+        heading: { /* add tokens here */ },
+        text: { /* add tokens here */ },
+        link: { /* add tokens here */ },
+        components: { /*
+          add components here as shown in mdx docs,
+          we pass this to the provider */
+        }
       }
     }
   }

@@ -13,6 +13,8 @@ import Button from "./src/components/button";
 import SVG from "./src/components/svg";
 import Image from "./src/components/image";
 
+import mdxComponents from "./src/mdxComponents";
+
 export {
   contextJSX,
   contextMDX,
@@ -25,5 +27,6 @@ export {
   Link,
   Button,
   SVG,
-  Image
+  Image,
+  mdxComponents
 };
