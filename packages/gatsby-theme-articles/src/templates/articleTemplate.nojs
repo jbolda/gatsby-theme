@@ -20,6 +20,7 @@ export const pageQuery = graphql`
       title
       updated
       written
+      excerpt
       featuredImage {
         fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid_tracedSVG

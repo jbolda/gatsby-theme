@@ -14,7 +14,7 @@ const HelmetBlock = ({ frontmatter, siteMetadata }) => (
     />
     <meta
       property="og:url"
-      content={`https://www.jacobbolda.com/${frontmatter.slug}`}
+      content={`${siteMetadata.siteURL}${frontmatter.slug}`}
     />
     <meta property="og:description" content={frontmatter.excerpt} />
     <meta property="og:site_name" content={siteMetadata.siteTitle} />

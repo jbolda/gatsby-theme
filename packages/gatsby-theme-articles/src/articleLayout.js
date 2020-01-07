@@ -56,6 +56,7 @@ export default props => (
             siteAuthor
             siteDescription
             siteContact
+            siteURL
           }
         }
       }
