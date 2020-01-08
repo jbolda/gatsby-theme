@@ -6381,10 +6381,10 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
-fast-shallow-equal@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/fast-shallow-equal/-/fast-shallow-equal-0.1.1.tgz#44d01324d7fd31e00a67bb02b9396e283d526c22"
-  integrity sha512-XVP6nhaXLYOH6JZCWBcNaeEer9GJ5/8cJWUP+OLmgwWgEkJp5Kpl/fdpJ01zl0mpLxrk7f5J3hIv+GmjTCi7Mg==
+fast-shallow-equal@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/fast-shallow-equal/-/fast-shallow-equal-1.0.0.tgz#d4dcaf6472440dcefa6f88b98e3251e27f25628b"
+  integrity sha512-HPtaa38cPgWvaCFmRNhlc6NG7pv6NUHqjPgVAkWGoB9mQMwYB27/K0CvOM5Czy+qpT3e8XJ6Q4aPAnzpNpzNaw==
 
 fastest-stable-stringify@^1.0.1:
   version "1.0.1"
@@ -12346,14 +12346,14 @@ react-side-effect@^1.1.0:
   dependencies:
     shallowequal "^1.0.1"
 
-react-use@13.14.0:
-  version "13.14.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.14.0.tgz#b0c27407c52897f2e42839e0801b392f2ad2718a"
-  integrity sha512-E9tmVppagnDVMgzWwdSA7V8rHEugtF1VTYmkmiBMw1RctkvZK7ib6lzsZh5KugHNEdR/7ffYFjwZZ3NZobm9KA==
+react-use@13.14.3:
+  version "13.14.3"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.14.3.tgz#8d39c5c09ba1131e652fc460f2a363f7591d0f89"
+  integrity sha512-HTeicdoc6Jre2boKpZh3ie26RcYagirC1T1OsoQ2xcmxd3jEgtfGj8trexWT7wTThkBn0Zw7dcmflMGgARkXSw==
   dependencies:
     "@xobotyi/scrollbar-width" "1.5.0"
     copy-to-clipboard "^3.2.0"
-    fast-shallow-equal "^0.1.1"
+    fast-shallow-equal "^1.0.0"
     nano-css "^5.2.1"
     react-fast-compare "^2.0.4"
     resize-observer-polyfill "^1.5.1"
