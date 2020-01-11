@@ -15,12 +15,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: install
         run: |
-          cd examples/${{ matrix.example }}
           yarn
+          yarn bootstrap
       - name: build example/${{ matrix.example }}
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd examples/${{ matrix.example }}
           yarn build
