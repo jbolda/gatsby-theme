@@ -71,7 +71,13 @@ export default props => (
               heading: "jboldaGatsbyTheme.homepage.about.heading",
               text: "jboldaGatsbyTheme.homepage.about.text"
             }),
-            ...theme.jboldaGatsbyTheme.homepage.about.components
+            ...(!!theme &&
+            !!theme.jboldaGatsbyTheme &&
+            !!theme.jboldaGatsbyTheme.homepage &&
+            !!theme.jboldaGatsbyTheme.homepage.about &&
+            !!theme.jboldaGatsbyTheme.homepage.about.components
+              ? theme.jboldaGatsbyTheme.homepage.about.components
+              : {})
           }}
         >
           <About site={queryData.site} about={queryData.about} {...props} />
