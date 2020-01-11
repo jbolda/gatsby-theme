@@ -12,13 +12,15 @@ jobs:
         example: ['personal']
 
     steps:
-      - uses: actions/checkout@v1
-      - name: example/${{ matrix.example }}
+      - uses: actions/checkout@v2
+      - name: install
+        run: |
+          cd examples/${{ matrix.example }}
+          yarn
+      - name: build example/${{ matrix.example }}
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          yarn
-          yarn lerna bootstrap
           cd examples/${{ matrix.example }}
           yarn build
