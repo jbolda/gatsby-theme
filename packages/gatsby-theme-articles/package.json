@@ -1,6 +1,6 @@
 {
   "name": "@jbolda/gatsby-theme-articles",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Gatsby theme to construct pages for each of your articles.",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
