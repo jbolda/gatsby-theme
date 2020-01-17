@@ -7,23 +7,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        example: ['personal']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: yarn
-      - run: yarn test
+      - name: build example/${{ matrix.example }}
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        run: |
+          cd examples/${{ matrix.example }}
+          yarn build
 
   release:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-      - name: Install Dependencies
-        run: yarn
-      - name: Create Release Pull Request
+      - uses: actions/checkout@v2
+      - run: yarn
+      - name: create release pull request
         uses: changesets/action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -33,7 +38,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
       - run: yarn
       - run: yarn publish-ci
         env:
