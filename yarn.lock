@@ -1059,7 +1059,7 @@
     "@changesets/types" "^0.4.0"
     semver "^5.4.1"
 
-"@changesets/cli@^2.4.1":
+"@changesets/cli@2.4.1":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@changesets/cli/-/cli-2.4.1.tgz#45bebcc49ff40f50e660b8ecb2ad0ea281a1cac6"
   integrity sha512-hVBwbsMVFHpP8ryq9L8Z5fTsa+8igUCnnmxYC0YClrKUWiAWmZhO0wh7g9sU97j/Amg4Tk8gS0HGA0SaSY+f/w==
