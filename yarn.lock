@@ -12836,10 +12836,10 @@ react-side-effect@^1.1.0:
   dependencies:
     shallowequal "^1.0.1"
 
-react-use@13.20.0:
-  version "13.20.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.20.0.tgz#9de95af947499c99df854c35c31895f4f6e00108"
-  integrity sha512-hmZ0/J6mxCXYxBHHzpKHr0K82ZI/xpQ+CgKzLash3CAhirldGCI+WSSPccLoGq70u5Ds3bc+Ixsc+hkhG4YxSA==
+react-use@13.21.0:
+  version "13.21.0"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.21.0.tgz#9dd689264d0cd6eca31512099c43e769850b14eb"
+  integrity sha512-JwGAYb6XRIRsadqJ9LoYy+kJC5QPB6HhHFsToPvdX/Hg3P0RBDHMIYt5ITkuRqWrEOkkdCYPt8p3jADH/0CRVw==
   dependencies:
     "@types/js-cookie" "2.2.4"
     "@xobotyi/scrollbar-width" "1.5.0"
