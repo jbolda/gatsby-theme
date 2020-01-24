@@ -4,12 +4,12 @@ import { useThemeUI } from "theme-ui";
 
 export default ({ hamburgerActive }) => {
   const { theme, colorMode, setColorMode } = useThemeUI();
-
+  console.log(theme, colorMode);
   const themeModes =
     !!theme && !!theme.colors && !!theme.colors.modes
       ? [
-          !!theme && !!theme.initialColorMode
-            ? theme.initialColorMode
+          !!theme && !!theme.initialColorModeName
+            ? theme.initialColorModeName
             : "default"
         ].concat(Object.keys(theme.colors.modes))
       : [];

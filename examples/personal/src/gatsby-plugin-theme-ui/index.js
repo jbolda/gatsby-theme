@@ -11,7 +11,7 @@ const bodyTextStandards = {
 };
 
 export default {
-  initialColorMode: "light",
+  initialColorModeName: "light",
   useCustomProperties: true, // true is default
   // ^ prevents FOUC aka flash of unstyled content
   useColorSchemeMediaQuery: true, // turns on dark mode if set in browser
