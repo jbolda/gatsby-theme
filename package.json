@@ -9,7 +9,8 @@
   "private": true,
   "scripts": {
     "lerna": "lerna",
-    "publish-ci": "lerna publish from-package -y --no-verify-access"
+    "publish-ci": "lerna publish from-package -y --no-verify-access",
+    "changeset": "changeset"
   },
   "devDependencies": {
     "@changesets/cli": "2.4.1",
