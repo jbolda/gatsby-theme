@@ -3,13 +3,12 @@ import { StaticQuery, graphql } from "gatsby";
 import MasterLayout from "./masterLayout";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import { Box } from "@jbolda/isolated-theme-ui-components";
+import { Box } from "theme-ui";
 
 const Nav = ({ location, site, children, logo }) => (
   <MasterLayout siteMetadata={site.siteMetadata} id="layout">
     <Header siteMetadata={site.siteMetadata} location={location} logo={logo} />
     <Box
-      width="100%"
       sx={{
         padding: 0,
         margin: 0,

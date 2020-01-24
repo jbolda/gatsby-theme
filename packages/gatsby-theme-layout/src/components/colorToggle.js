@@ -1,10 +1,10 @@
 import React from "react";
-import { Box, Text, Button } from "@jbolda/isolated-theme-ui-components";
+import { Box, Text, Button } from "theme-ui";
 import { useThemeUI } from "theme-ui";
 
 export default ({ hamburgerActive }) => {
   const { theme, colorMode, setColorMode } = useThemeUI();
-  console.log(theme, colorMode);
+
   const themeModes =
     !!theme && !!theme.colors && !!theme.colors.modes
       ? [
@@ -26,7 +26,6 @@ export default ({ hamburgerActive }) => {
 
   return themeModes.length < 2 ? null : (
     <Box
-      width={null}
       sx={{
         display: [hamburgerActive ? "flex" : "none", "flex", "flex"],
         padding: 0,
@@ -34,9 +33,13 @@ export default ({ hamburgerActive }) => {
       }}
     >
       <Button
-        aria-label="menu"
+        aria-label="color mode"
         sx={{
+          px: 3,
+          py: 0,
+          my: -1,
           backgroundColor: "inherit",
+          border: 2,
           borderStyle: "groove",
           borderColor: "secondary"
         }}
@@ -44,7 +47,7 @@ export default ({ hamburgerActive }) => {
       >
         <Text
           sx={{
-            padding: 2,
+            padding: 0,
             variant: "jboldaGatsbyTheme.layout.text"
           }}
         >

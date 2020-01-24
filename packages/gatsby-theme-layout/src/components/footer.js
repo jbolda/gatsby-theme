@@ -10,8 +10,8 @@ import {
 const Footer = ({ site }) => (
   <Box
     as="footer"
-    width="98%"
     sx={{
+      width: "98%",
       margin: "0px",
       padding: "0px",
       flexShrink: 0,

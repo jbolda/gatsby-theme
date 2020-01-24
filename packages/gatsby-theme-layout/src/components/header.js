@@ -1,12 +1,5 @@
 import React, { useState, useRef } from "react";
-import {
-  Flex,
-  Box,
-  Text,
-  Link,
-  Button
-} from "@jbolda/isolated-theme-ui-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Flex, Box, Text, Link, MenuButton, Close } from "theme-ui";
 import { useClickAway } from "react-use";
 import ColorToggle from "./colorToggle";
 
@@ -22,8 +15,8 @@ const Header = props => {
   return (
     <Box
       as="header"
-      width="98%"
       sx={{
+        width: "98%",
         margin: "0px",
         padding: "0px",
         flexShrink: 0,
@@ -35,10 +28,12 @@ const Header = props => {
           as="nav"
           role="navigation"
           aria-label="main navigation"
-          alignItems="stretch"
-          sx={{ justifyContent: ["flex-start", "flex-end", "flex-end"] }}
+          sx={{
+            alignItems: "stretch",
+            justifyContent: ["flex-start", "flex-end", "flex-end"]
+          }}
         >
-          <Box width={null} sx={{ flexGrow: [1, 0, 0], padding: 0, margin: 2 }}>
+          <Box sx={{ flexGrow: [1, 0, 0], padding: 0, margin: 2 }}>
             <Link
               to="/"
               sx={{
@@ -67,34 +62,39 @@ const Header = props => {
           </Box>
           {!props.siteMetadata.navLinks ||
           props.siteMetadata.navLinks[0].text === "" ? null : (
-            <Box
-              width={null}
-              sx={{ flexGrow: [0, 1, 1], padding: 0, margin: 0 }}
-            >
+            <Box sx={{ flexGrow: [0, 1, 1], padding: 0, margin: 0 }}>
               <Flex
-                direction={["column", "row", "row"]}
-                alignItems="flex-end"
                 sx={{
+                  flexDirection: ["column", "row", "row"],
+                  alignItems: "flex-end",
                   justifyContent: "flex-end"
                 }}
               >
-                <Button
-                  aria-label="menu"
+                <MenuButton
+                  aria-label="toggle menu"
                   aria-expanded={hamburgerActive ? "true" : "false"}
                   onClick={toggleHamburgerMenu}
                   sx={{
-                    borderStyle: "none",
-                    backgroundColor: "inherit",
-                    display: ["flex", "none", "none"],
+                    display: [
+                      hamburgerActive ? "none" : "flex",
+                      "none",
+                      "none"
+                    ],
                     margin: 2
                   }}
-                >
-                  <FontAwesomeIcon icon={["fas", "bars"]} />
-                </Button>
+                />
+                <Close
+                  aria-label="toggle menu"
+                  aria-expanded={hamburgerActive ? "true" : "false"}
+                  onClick={toggleHamburgerMenu}
+                  sx={{
+                    display: hamburgerActive ? "flex" : "none",
+                    margin: 2
+                  }}
+                />
                 {props.siteMetadata.navLinks.map(link => (
                   <Box
                     key={link.text}
-                    width={null}
                     sx={{
                       display: [
                         hamburgerActive ? "flex" : "none",
