@@ -1,6 +1,6 @@
 {
   "name": "personal",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
   "license": "MIT",
@@ -19,9 +19,9 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@jbolda/gatsby-theme-articles": "^0.2.1",
-    "@jbolda/gatsby-theme-homepage": "^0.2.1",
-    "@jbolda/gatsby-theme-layout": "^0.2.1",
+    "@jbolda/gatsby-theme-articles": "^0.3.0",
+    "@jbolda/gatsby-theme-homepage": "^0.3.0",
+    "@jbolda/gatsby-theme-layout": "^0.3.0",
     "@mdx-js/mdx": "1.5.5",
     "gatsby": "2.19.6",
     "gatsby-image": "2.2.39",
