@@ -2,20 +2,18 @@ import React from "react";
 import { graphql } from "gatsby";
 import Nav from "@jbolda/gatsby-theme-layout";
 import Img from "gatsby-image";
-import {
-  Flex,
-  Box,
-  Heading,
-  Text,
-  Link
-} from "@jbolda/isolated-theme-ui-components";
+import { Flex, Box, Heading, Text, Link } from "theme-ui";
+import { Link as GatsbyLink } from "gatsby";
 
 export default props => {
   return (
     <Nav {...props}>
       <Flex
         sx={{
-          padding: 2,
+          flexDirection: "row",
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "center",
           variant: "jboldaGatsbyTheme.articles.list.container"
         }}
       >
@@ -26,11 +24,21 @@ export default props => {
         >
           Articles
         </Heading>
-        <Flex>
+        <Flex
+          sx={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           {props.data.articles.nodes.map(article => (
             <Box
               key={article.slug}
-              sx={{ variant: "jboldaGatsbyTheme.articles.list.each" }}
+              sx={{
+                width: ["95%", "85%", "60%"],
+                variant: "jboldaGatsbyTheme.articles.list.each"
+              }}
             >
               {article.heroImage ? (
                 <Img
@@ -40,6 +48,7 @@ export default props => {
                 />
               ) : null}
               <Text
+                as={GatsbyLink}
                 sx={{
                   variant: "jboldaGatsbyTheme.articles.list.text"
                 }}
@@ -47,6 +56,7 @@ export default props => {
                 {article.category}
               </Text>
               <Link
+                as={GatsbyLink}
                 to={article.slug}
                 sx={{
                   variant: "jboldaGatsbyTheme.articles.list.link"
@@ -70,6 +80,7 @@ export default props => {
                 }}
               />
               <Link
+                as={GatsbyLink}
                 to={article.slug}
                 sx={{
                   variant: "jboldaGatsbyTheme.articles.list.link"

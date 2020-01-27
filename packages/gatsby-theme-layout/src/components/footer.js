@@ -1,49 +1,45 @@
 import React from "react";
-import {
-  Flex,
-  Box,
-  Link,
-  Text,
-  SVG
-} from "@jbolda/isolated-theme-ui-components";
+import { Flex, Box, Link, Text } from "theme-ui";
+import { SVG } from "@jbolda/gatsby-theme-components";
 
 const Footer = ({ site }) => (
   <Box
     as="footer"
-    width="98%"
     sx={{
+      width: "98%",
       margin: "0px",
       padding: "0px",
       flexShrink: 0,
       variant: "jboldaGatsbyTheme.layout.footer"
     }}
   >
-    <Flex>
-      <Box width={null} sx={{ justifyContent: "center", flexShrink: 1 }}>
+    <Flex
+      sx={{
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center"
+      }}
+    >
+      <Link
+        as="a"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={site.siteMetadata.siteContact}
+        sx={{
+          variant: "jboldaGatsbyTheme.layout.link"
+        }}
+      >
         <Text
           sx={{
             variant: "jboldaGatsbyTheme.layout.text"
           }}
         >
-          Made with <Heart style={{}} /> by
-          {` `}
-          <Link
-            as="a"
-            to={site.siteMetadata.siteContact}
-            sx={{
-              variant: "jboldaGatsbyTheme.layout.link"
-            }}
-          >
-            <Text
-              sx={{
-                variant: "jboldaGatsbyTheme.layout.text"
-              }}
-            >
-              {site.siteMetadata.siteAuthor}
-            </Text>
-          </Link>
+          {`Made with `}
+          <Heart />
+          {` by `}
+          {site.siteMetadata.siteAuthor}
         </Text>
-      </Box>
+      </Link>
     </Flex>
   </Box>
 );

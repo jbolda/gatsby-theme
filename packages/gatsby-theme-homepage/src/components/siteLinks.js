@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Heading, Text, Link } from "@jbolda/isolated-theme-ui-components";
+import { Heading, Text, Link } from "theme-ui";
 
 export default ({ siteMetadata }) => (
   <aside className="menu">
@@ -13,7 +13,9 @@ export default ({ siteMetadata }) => (
     {siteMetadata.contactLinks.map(link => (
       <Link
         as="a"
-        to={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        href={link.url}
         key={link.url}
         sx={{ variant: "jboldaGatsbyTheme.homepage.about.link" }}
       >

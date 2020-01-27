@@ -2,6 +2,8 @@
 import { jsx } from "theme-ui";
 import { MDXProvider } from "@mdx-js/react";
 
-export default ({ children, components }) => {
+export const test = ({ children, components }) => {
   return <MDXProvider components={components}>{children}</MDXProvider>;
 };
+
+export default ({ children }) => children;

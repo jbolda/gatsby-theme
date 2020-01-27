@@ -1,7 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { useThemeUI } from "theme-ui";
-import { WrapElement, Flex } from "@jbolda/isolated-theme-ui-components";
+import { useThemeUI, Flex } from "theme-ui";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -12,26 +11,27 @@ library.add(fas, far, fab);
 
 const MasterLayout = ({ siteMetadata, children }) => {
   const { theme } = useThemeUI();
+
   return (
-    <WrapElement>
-      <Flex direction="column" sx={{ minHeight: "100vh" }}>
-        <Helmet defaultTitle={siteMetadata.siteTitle}>
-          <title>{siteMetadata.siteTitle}</title>
-          <meta property="description" content={siteMetadata.siteDescription} />
-          <meta name="keywords" content="articles" />
-          <style type="text/css">
-            {`
+    <Flex
+      sx={{ flexDirection: "column", alignItems: "center", minHeight: "100vh" }}
+    >
+      <Helmet defaultTitle={siteMetadata.siteTitle}>
+        <title>{siteMetadata.siteTitle}</title>
+        <meta property="description" content={siteMetadata.siteDescription} />
+        <meta name="keywords" content="articles" />
+        <style type="text/css">
+          {`
               body {
                   margin: 0px;
                   padding: 0px;
               }
             `}
-          </style>
-          <meta name="theme-color" content={theme.colors.background} />
-        </Helmet>
-        {children}
-      </Flex>
-    </WrapElement>
+        </style>
+        <meta name="theme-color" content={theme.colors.background} />
+      </Helmet>
+      {children}
+    </Flex>
   );
 };
 

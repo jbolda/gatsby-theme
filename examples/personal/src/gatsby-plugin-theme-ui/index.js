@@ -51,7 +51,8 @@ export default {
   text: {
     heading: {
       ...headingTextStandards,
-      letterSpacing: "heading"
+      letterSpacing: "heading",
+      my: 5
     },
     body: {
       ...bodyTextStandards,
@@ -86,7 +87,8 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "primary"
-        }
+        },
+        components: null
       },
       about: {
         heading: {
@@ -100,7 +102,8 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "primary"
-        }
+        },
+        components: null
       },
       engagements: {
         container: {
@@ -167,7 +170,8 @@ export default {
   },
   styles: {
     root: {
-      ...bodyTextStandards
+      ...bodyTextStandards,
+      color: "text"
     },
     h1: {
       color: "text",

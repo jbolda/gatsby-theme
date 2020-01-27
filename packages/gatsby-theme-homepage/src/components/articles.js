@@ -1,28 +1,33 @@
 import React from "react";
-import {
-  Flex,
-  Box,
-  Heading,
-  Text,
-  Link
-} from "@jbolda/isolated-theme-ui-components";
+import { Flex, Box, Heading, Text, Link } from "theme-ui";
+import { Link as GatsbyLink } from "gatsby";
 
 const Articles = ({ articles }) => (
   <Flex
-    direction="row"
-    alignItems="flex-start"
     sx={{
+      flexDirection: "row",
+      alignItems: "flex-start",
+      flexWrap: "wrap",
+      justifyContent: "center",
       padding: 2
     }}
   >
     {articles.nodes.map(article => (
       <Box
         key={article.slug}
-        width={["85%", "85%", "30%"]}
-        sx={{ variant: "jboldaGatsbyTheme.homepage.articles.each" }}
+        sx={{
+          width: ["85%", "85%", "30%"],
+          variant: "jboldaGatsbyTheme.homepage.articles.each"
+        }}
       >
-        <Flex direction="column">
-          <Box width="100%">
+        <Flex
+          sx={{
+            flexDirection: "column",
+            flexWrap: "wrap",
+            justifyContent: "center"
+          }}
+        >
+          <Box sx={{ width: "100%" }}>
             {article.tags.map(tag => (
               <Text
                 sx={{ variant: "jboldaGatsbyTheme.homepage.articles.text" }}
@@ -31,8 +36,9 @@ const Articles = ({ articles }) => (
               </Text>
             ))}
           </Box>
-          <Box width="100%" sx={{ padding: 0 }}>
+          <Box sx={{ width: "100%", padding: 0 }}>
             <Link
+              as={GatsbyLink}
               to={article.slug}
               sx={{ variant: "jboldaGatsbyTheme.homepage.articles.link" }}
             >
@@ -44,7 +50,7 @@ const Articles = ({ articles }) => (
               </Heading>
             </Link>
           </Box>
-          <Box width="100%" sx={{ padding: 0 }}>
+          <Box sx={{ width: "100%", padding: 0 }}>
             <Text
               dangerouslySetInnerHTML={{
                 __html: article.excerpt
@@ -52,8 +58,9 @@ const Articles = ({ articles }) => (
               sx={{ variant: "jboldaGatsbyTheme.homepage.articles.text" }}
             />
           </Box>
-          <Box width="100%">
+          <Box sx={{ width: "100%" }}>
             <Link
+              as={GatsbyLink}
               to={article.slug}
               sx={{ variant: "jboldaGatsbyTheme.homepage.articles.link" }}
             >
@@ -72,14 +79,17 @@ const Articles = ({ articles }) => (
 
 export default props => (
   <Flex
-    direction="column"
-    alignItems="left"
     sx={{
+      flexWrap: "wrap",
+      flexDirection: "column",
+      alignItems: "left",
+      justifyContent: "center",
       padding: 4,
       variant: "jboldaGatsbyTheme.homepage.articles.container"
     }}
   >
     <Link
+      as={GatsbyLink}
       to={"/articles/"}
       sx={{ variant: "jboldaGatsbyTheme.homepage.articles.link" }}
     >
@@ -98,11 +108,12 @@ export default props => (
     </Text>
     <Articles articles={props.articles} {...props} />
     <Link
+      as={GatsbyLink}
       to={"/articles/"}
       sx={{ variant: "jboldaGatsbyTheme.homepage.articles.link" }}
     >
       <Heading
-        as="h4"
+        as="h3"
         sx={{ variant: "jboldaGatsbyTheme.homepage.articles.heading" }}
       >
         Read More
