@@ -70,7 +70,7 @@ export default {
         color: "text"
       },
       link: {
-        // ...bodyTextStandards,
+        ...bodyTextStandards,
         color: "primary"
       }
     },

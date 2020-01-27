@@ -2,7 +2,7 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { useThemeUI, Flex, Box, Heading, Text } from "theme-ui";
 import { MDXProvider } from "@mdx-js/react";
-import { mdxComponents } from "@jbolda/isolated-theme-ui-components";
+import { mdxComponents } from "@jbolda/gatsby-theme-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const Engagements = ({ engagements }) => {

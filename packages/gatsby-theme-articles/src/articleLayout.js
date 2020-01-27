@@ -4,7 +4,7 @@ import { useThemeUI, Flex } from "theme-ui";
 import Nav from "@jbolda/gatsby-theme-layout";
 import HelmetBlock from "./components/helmetBlock";
 import Footer from "./components/footer";
-import { mdxComponents } from "@jbolda/isolated-theme-ui-components";
+import { mdxComponents } from "@jbolda/gatsby-theme-components";
 import { MDXProvider } from "@mdx-js/react";
 
 const ArticleLayout = ({ footerInfo, article, location, children }) => {
