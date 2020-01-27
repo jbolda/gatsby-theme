@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { useThemeUI, ThemeProvider, Flex, Box } from "theme-ui";
+import { useThemeUI, Flex, Box } from "theme-ui";
 import { MDXProvider } from "@mdx-js/react";
 import { mdxComponents } from "@jbolda/isolated-theme-ui-components";
 import SiteLinks from "./siteLinks";
