@@ -1,0 +1,20 @@
+{
+  "name": "@jbolda/gatsby-theme-components",
+  "version": "0.0.1",
+  "description": "Helper components used in @jbolda/gatsby-theme-*.",
+  "author": "Jacob Bolda <me@jacobbolda.com>",
+  "homepage": "https://github.com/jbolda/gatsby-theme#readme",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/jbolda/gatsby-theme/issues"
+  },
+  "peerDependencies": {
+    "theme-ui": ">=0.3.0"
+  }
+}
