@@ -1,14 +1,11 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { useThemeUI } from "theme-ui";
+import { useThemeUI, Flex } from "theme-ui";
 import Nav from "@jbolda/gatsby-theme-layout";
 import HelmetBlock from "./components/helmetBlock";
 import Footer from "./components/footer";
-import {
-  mdxComponents,
-  WrapElement,
-  Flex
-} from "@jbolda/isolated-theme-ui-components";
+import { mdxComponents } from "@jbolda/isolated-theme-ui-components";
+import { MDXProvider } from "@mdx-js/react";
 
 const ArticleLayout = ({ footerInfo, article, location, children }) => {
   const { theme } = useThemeUI();
@@ -17,31 +14,34 @@ const ArticleLayout = ({ footerInfo, article, location, children }) => {
     <Nav location={location}>
       <HelmetBlock frontmatter={article} siteMetadata={footerInfo} />
 
-      <WrapElement
-        components={{
-          ...mdxComponents({
-            heading: "jboldaGatsbyTheme.articles.article.heading",
-            text: "jboldaGatsbyTheme.articles.article.text"
-          }),
-          ...(!!theme &&
-          !!theme.jboldaGatsbyTheme &&
-          !!theme.jboldaGatsbyTheme.articles &&
-          !!theme.jboldaGatsbyTheme.articles.article &&
-          !!theme.jboldaGatsbyTheme.articles.article.components
-            ? theme.jboldaGatsbyTheme.articles.article.components
-            : {})
-        }}
+      <MDXProvider
+        components={
+          theme?.jboldaGatsbyTheme?.articles?.article?.components === null
+            ? null
+            : {
+                ...mdxComponents({
+                  heading: "jboldaGatsbyTheme.articles.article.heading",
+                  text: "jboldaGatsbyTheme.articles.article.text"
+                }),
+                ...(!!theme?.jboldaGatsbyTheme?.articles?.article?.components
+                  ? theme.jboldaGatsbyTheme.articles.article.components
+                  : {})
+              }
+        }
       >
         <Flex
-          direction="column"
           sx={{
+            flexDirection: "column",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
             variant: "jboldaGatsbyTheme.articles.article.container"
           }}
         >
           {children}
           <Footer {...footerInfo} />
         </Flex>
-      </WrapElement>
+      </MDXProvider>
     </Nav>
   );
 };
