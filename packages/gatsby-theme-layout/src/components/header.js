@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Flex, Box, Text, Link, MenuButton, Close } from "theme-ui";
+import { Link as GatsbyLink } from "gatsby";
 import { useClickAway } from "react-use";
 import ColorToggle from "./colorToggle";
 
@@ -35,6 +36,7 @@ const Header = props => {
         >
           <Box sx={{ flexGrow: [1, 0, 0], padding: 0, margin: 2 }}>
             <Link
+              as={GatsbyLink}
               to="/"
               sx={{
                 variant: "jboldaGatsbyTheme.layout.link"
@@ -106,6 +108,7 @@ const Header = props => {
                     }}
                   >
                     <Link
+                      as={GatsbyLink}
                       to={link.url}
                       sx={{
                         variant: "jboldaGatsbyTheme.layout.link"

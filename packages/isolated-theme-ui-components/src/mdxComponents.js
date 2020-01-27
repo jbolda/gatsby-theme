@@ -1,6 +1,5 @@
 import React from "react";
-import TextComponent from "./components/text";
-import HeadingComponent from "./components/heading";
+import { Heading as HeadingComponent, Text as TextComponent } from "theme-ui";
 
 const headings = ["h1", "h2", "h3", "h4", "h5", "h6"];
 const body = ["p", "span", "div"];
