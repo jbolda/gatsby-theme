@@ -12,6 +12,7 @@ const Landing = ({ landing, profile }) => {
     <Flex
       sx={{
         padding: 2,
+        flexWrap: "wrap",
         justifyContent: "space-evenly",
         variant: "jboldaGatsbyTheme.homepage.landing.container"
       }}

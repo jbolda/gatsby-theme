@@ -31,6 +31,7 @@ const Header = props => {
           aria-label="main navigation"
           sx={{
             alignItems: "stretch",
+            flexWrap: "wrap",
             justifyContent: ["flex-start", "flex-end", "flex-end"]
           }}
         >

@@ -16,6 +16,7 @@ const Footer = ({ site }) => (
     <Flex
       sx={{
         flexDirection: "row",
+        flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center"
       }}
