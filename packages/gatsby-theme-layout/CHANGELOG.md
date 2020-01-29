@@ -1,5 +1,12 @@
 # @jbolda/gatsby-theme-layout
 
+## 0.3.2
+
+### Patch Changes
+
+- 19f2024: remove body styles as theme-ui now sets these
+- 19f2024: set default container width that was lost in update process
+
 ## 0.3.1
 
 ### Patch Changes
