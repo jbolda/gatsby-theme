@@ -14,20 +14,17 @@ const MasterLayout = ({ siteMetadata, children }) => {
 
   return (
     <Flex
-      sx={{ flexDirection: "column", alignItems: "center", minHeight: "100vh" }}
+      sx={{
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh"
+      }}
     >
       <Helmet defaultTitle={siteMetadata.siteTitle}>
         <title>{siteMetadata.siteTitle}</title>
         <meta property="description" content={siteMetadata.siteDescription} />
         <meta name="keywords" content="articles" />
-        <style type="text/css">
-          {`
-              body {
-                  margin: 0px;
-                  padding: 0px;
-              }
-            `}
-        </style>
         <meta name="theme-color" content={theme.colors.background} />
       </Helmet>
       {children}
