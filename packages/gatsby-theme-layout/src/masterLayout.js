@@ -14,7 +14,12 @@ const MasterLayout = ({ siteMetadata, children }) => {
 
   return (
     <Flex
-      sx={{ flexDirection: "column", alignItems: "center", minHeight: "100vh" }}
+      sx={{
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh"
+      }}
     >
       <Helmet defaultTitle={siteMetadata.siteTitle}>
         <title>{siteMetadata.siteTitle}</title>

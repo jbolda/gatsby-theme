@@ -12,6 +12,7 @@ const Nav = ({ location, site, children, logo }) => (
       sx={{
         padding: 0,
         margin: 0,
+        width: "100%",
         flex: "1 1 auto",
         variant: "jboldaGatsbyTheme.layout.content"
       }}
