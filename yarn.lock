@@ -7586,10 +7586,10 @@ gatsby-remark-images@3.1.42:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-gatsby-source-airtable@2.1.0-alpha.0:
-  version "2.1.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-airtable/-/gatsby-source-airtable-2.1.0-alpha.0.tgz#7d1dc0a1562c256031cf0f0ab5b0b2f05e61a4a7"
-  integrity sha512-MuoLD+WDhTRxxen3obO9bTjZOKOKrLPPwA2K+62pV8bEXLBRcSRNpizSZxweoR3WG/zXiBzbpuPwsy7RG2dabg==
+gatsby-source-airtable@2.1.0-beta.0:
+  version "2.1.0-beta.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-airtable/-/gatsby-source-airtable-2.1.0-beta.0.tgz#f1082d08f3b57b653d906ec3337218923f5bfe59"
+  integrity sha512-eDkGYqp0ftdnfp/zgySUqhTkYML6GBGQhvNVbJSqjaN7rI9DiDvGJK+tld22c6k+5/IDs7pV3hDFFM2pI03i3g==
   dependencies:
     airtable "^0.7.2"
     bluebird "^3.5.4"
