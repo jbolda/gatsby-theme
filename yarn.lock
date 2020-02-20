@@ -3161,11 +3161,12 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
-airtable@^0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/airtable/-/airtable-0.7.2.tgz#106e87b7139f6a2c9f1bd856583e83626e2f3c04"
-  integrity sha512-BwHIJyXmtUJ78EpnNzs+aYmPK9r0xNeFyKkmSn9I6WvG6QYcXlbDe6rhoEwqEdrjPVL6ZCoNwimJN4l6y5TUJg==
+airtable@^0.8.0:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/airtable/-/airtable-0.8.1.tgz#8d10f04f41673b86ed75fa054f54470357e36ae0"
+  integrity sha512-Cxw55ta1olDwDERz++HFJOBX6LONtg+d7+wOcYguqI4PR4P5RHmgjTbY8tPKgLHb8U3FVOyAbpb7NpLRSnLGgg==
   dependencies:
+    es6-promise "4.2.8"
     lodash "4.17.15"
     request "2.88.0"
     xhr "2.3.3"
@@ -6378,7 +6379,7 @@ es-to-primitive@^1.2.0:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-es6-promise@^4.0.3:
+es6-promise@4.2.8, es6-promise@^4.0.3:
   version "4.2.8"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.8.tgz#4eb21594c972bc40553d276e510539143db53e0a"
   integrity sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==
@@ -7578,12 +7579,12 @@ gatsby-remark-images@3.1.44:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-gatsby-source-airtable@2.1.0-beta.0:
-  version "2.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-airtable/-/gatsby-source-airtable-2.1.0-beta.0.tgz#f1082d08f3b57b653d906ec3337218923f5bfe59"
-  integrity sha512-eDkGYqp0ftdnfp/zgySUqhTkYML6GBGQhvNVbJSqjaN7rI9DiDvGJK+tld22c6k+5/IDs7pV3hDFFM2pI03i3g==
+gatsby-source-airtable@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-airtable/-/gatsby-source-airtable-2.1.0.tgz#9dfaa6b9e08c47bdf60270458ba89b0954d961fe"
+  integrity sha512-51axoKud0qoERX+vlyyuMwWS6exV8UeJgCY4v9rM8d8owGsNBnzg89v50JPJ3DpoBM7xpmuGiAVmkzWg2Y0gGg==
   dependencies:
-    airtable "^0.7.2"
+    airtable "^0.8.0"
     bluebird "^3.5.4"
 
 gatsby-source-filesystem@2.1.48:
