@@ -10,7 +10,7 @@ export default props => {
     <Nav {...props}>
       <Flex
         sx={{
-          flexDirection: "row",
+          flexDirection: "column",
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
@@ -19,14 +19,15 @@ export default props => {
       >
         <Heading
           sx={{
+            textTransform: "capitalize",
             variant: "jboldaGatsbyTheme.articles.list.heading"
           }}
         >
-          Articles
+          {props.pageContext.contentPath}
         </Heading>
         <Flex
           sx={{
-            flexDirection: "row",
+            flexDirection: "column",
             flexWrap: "wrap",
             justifyContent: "center",
             alignItems: "center"
@@ -103,8 +104,11 @@ export default props => {
 };
 
 export const pageQuery = graphql`
-  query JboldaGatsbyThemeArticleListQuery {
-    articles: allArticles(sort: { fields: written, order: DESC }) {
+  query JboldaGatsbyThemeArticleListQuery($contentPath: String!) {
+    articles: allArticles(
+      filter: { contentPath: { eq: $contentPath } }
+      sort: { fields: written, order: DESC }
+    ) {
       nodes {
         excerpt
         keywords

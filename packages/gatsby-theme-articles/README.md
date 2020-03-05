@@ -26,7 +26,7 @@ module.exports = {
   plugins: [
     {
       resolve: `@jbolda/gatsby-theme-articles`,
-      options: { contentPath: "articles" }
+      options: { contents: [{contentPath: "articles"}] }
     },
   ]
 }
