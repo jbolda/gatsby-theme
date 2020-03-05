@@ -58,6 +58,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `drafts`,
+        path: `${__dirname}/src/drafts/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `homepage`,
         path: `${__dirname}/src/homepage/`
       }
@@ -77,7 +84,7 @@ module.exports = {
               ingredients: "text/markdown",
               directions: "text/markdown"
             },
-            separateMapTypes: true
+            separateMapType: true
           }
         ]
       }
@@ -91,7 +98,12 @@ module.exports = {
     },
     {
       resolve: `@jbolda/gatsby-theme-articles`,
-      options: { contentPath: "articles" }
+      options: {
+        contents: [
+          { contentPath: "articles" },
+          { contentPath: "drafts", basePath: "draft" }
+        ]
+      }
     },
     {
       resolve: `gatsby-theme-recipes`,

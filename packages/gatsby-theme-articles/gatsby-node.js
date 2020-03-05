@@ -17,6 +17,7 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
     title: String!
     body: String!
     slug: String!
+    contentPath: String!
     written: Date! @dateformat
     updated: Date @dateformat
     tags: [String]
@@ -161,12 +162,9 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
       name: `MdxArticles`,
       fields: {
         id: { type: `ID!` },
-        title: {
-          type: `String!`
-        },
-        slug: {
-          type: `String!`
-        },
+        title: { type: `String!` },
+        slug: { type: `String!` },
+        contentPath: { type: `String!` },
         written: { type: `Date!`, extensions: { dateformat: {} } },
         updated: { type: `Date`, extensions: { dateformat: {} } },
         tags: { type: `[String]` },
@@ -199,7 +197,7 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
 // This will change with schema customization with work
 exports.onCreateNode = async (
   { node, actions, getNode, createNodeId, reporter },
-  { contentPath = "articles", basePath = "" }
+  { contents = [] }
 ) => {
   const debug = Debug("@jbolda/gatsby-theme-articles:onCreateNode");
   const { createNode, createParentChildLink } = actions;
@@ -213,66 +211,85 @@ exports.onCreateNode = async (
   const fileNode = getNode(node.parent);
   const source = fileNode.sourceInstanceName;
 
-  if (node.internal.type === `Mdx` && source === contentPath) {
-    let slug;
-    if (node.frontmatter.slug) {
-      if (path.isAbsolute(node.frontmatter.slug)) {
-        // absolute paths take precedence
-        slug = node.frontmatter.slug;
-      } else {
-        // otherwise a relative slug gets turned into a sub path
-        slug = urlResolve(basePath, node.frontmatter.slug);
+  if (node.internal.type === `Mdx`) {
+    const nodes = contents.map(
+      ({ contentPath = "articles", basePath = "" }) => {
+        if (source === contentPath) {
+          let slug;
+          if (node.frontmatter.slug) {
+            if (path.isAbsolute(node.frontmatter.slug)) {
+              // absolute paths take precedence
+              slug = node.frontmatter.slug;
+            } else {
+              // otherwise a relative slug gets turned into a sub path
+              slug = urlResolve(basePath, node.frontmatter.slug);
+            }
+          } else {
+            // otherwise use the filepath function from gatsby-source-filesystem
+            const filePath = createFilePath({
+              node: fileNode,
+              getNode,
+              basePath: contentPath
+            });
+            slug = urlResolve(basePath, filePath);
+          }
+
+          // normalize use of trailing slash
+          slug = slug.replace(/\/*$/, `/`);
+          const fieldData = {
+            title: node.frontmatter.title,
+            tags: node.frontmatter.tags || [],
+            slug,
+            written: node.frontmatter.written,
+            keywords: node.frontmatter.keywords || [],
+            // set string as an easy check for early return
+            featuredImage: node.frontmatter.featuredImage,
+            contentPath: contentPath
+          };
+
+          if (debug.enabled && !!reporter) {
+            reporter.info(`@jbolda/gatsby-theme-articles:onCreateNode`);
+            reporter.info(
+              `incoming frontmatter:\n${util.inspect(node.frontmatter)}`
+            );
+            reporter.info(`proxy node data:\n${util.inspect(fieldData)}`);
+          }
+
+          const mdxBlogPostId = createNodeId(`${node.id} >>> MdxBlogPost`);
+
+          return {
+            ...fieldData,
+            // Required fields.
+            id: mdxBlogPostId,
+            parent: node.id,
+            children: [],
+            internal: {
+              type: `MdxArticles`,
+              contentDigest: crypto
+                .createHash(`md5`)
+                .update(JSON.stringify(fieldData))
+                .digest(`hex`),
+              content: JSON.stringify(fieldData),
+              description: `Mdx implementation of the Articles interface`
+            }
+          };
+        } else {
+          return null;
+        }
       }
-    } else {
-      // otherwise use the filepath function from gatsby-source-filesystem
-      const filePath = createFilePath({
-        node: fileNode,
-        getNode,
-        basePath: contentPath
-      });
+    );
 
-      slug = urlResolve(basePath, filePath);
-    }
-    // normalize use of trailing slash
-    slug = slug.replace(/\/*$/, `/`);
-    const fieldData = {
-      title: node.frontmatter.title,
-      tags: node.frontmatter.tags || [],
-      slug,
-      written: node.frontmatter.written,
-      keywords: node.frontmatter.keywords || [],
-      // set string as an easy check for early return
-      featuredImage: node.frontmatter.featuredImage
-    };
-
-    if (debug.enabled && !!reporter) {
-      reporter.info(`@jbolda/gatsby-theme-articles:onCreateNode`);
-      reporter.info(`incoming frontmatter:\n${util.inspect(node.frontmatter)}`);
-      reporter.info(`proxy node data:\n${util.inspect(fieldData)}`);
-    }
-
-    const mdxBlogPostId = createNodeId(`${node.id} >>> MdxBlogPost`);
-    await createNode({
-      ...fieldData,
-      // Required fields.
-      id: mdxBlogPostId,
-      parent: node.id,
-      children: [],
-      internal: {
-        type: `MdxArticles`,
-        contentDigest: crypto
-          .createHash(`md5`)
-          .update(JSON.stringify(fieldData))
-          .digest(`hex`),
-        content: JSON.stringify(fieldData),
-        description: `Mdx implementation of the Articles interface`
-      }
-    });
-    createParentChildLink({ parent: node, child: getNode(mdxBlogPostId) });
+    const createNodes = nodes.map(node => (!node ? false : createNode(node)));
+    const createParentLinks = nodes.map(node =>
+      !node
+        ? false
+        : createParentChildLink({ parent: node, child: getNode(node.id) })
+    );
+    return Promise.all([].concat(createNodes, createParentLinks));
   }
 };
 
-exports.createPages = ({ graphql, actions, reporter }) => {
+exports.createPages = ({ graphql, actions, reporter }, { contents = [] }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
@@ -374,10 +391,15 @@ exports.createPages = ({ graphql, actions, reporter }) => {
           }
         });
 
-        createPage({
-          path: "/articles/",
-          component: require.resolve(`./src/templates/articleList`)
-        });
+        contents.forEach(content =>
+          createPage({
+            path: !content.listPath
+              ? `/${content.contentPath}/`
+              : `/${content.listPath}/`,
+            component: require.resolve(`./src/templates/articleList`),
+            context: { contentPath: content.contentPath }
+          })
+        );
 
         return;
       })

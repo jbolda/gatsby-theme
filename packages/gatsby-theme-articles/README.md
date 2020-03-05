@@ -17,7 +17,7 @@ yarn add @jbolda/gatsby-theme-layout@^0.0.7 gatsby-plugin-mdx@^1.0.49 gatsby-plu
 ```
 
 ## Convention
-This plugin expects markdown files in a folder defined by a `gatsby-source-filesystem` config entry with a `name` entry of _articles_. The name can be configured with the `contentPath` option.
+This plugin expects markdown files in a folder defined by a `gatsby-source-filesystem` config entry with a `name` entry of _articles_. The name can be configured with the `contentPath` option. The `contentPath` is in an array of objects named `contents`. With this configuration as an array, we can enable you to add multiple folders to "watch". This may be valuable if you have notes or drafts that should be treated separate from the main articles. You may also specify a `basePath` which will be prepended to your url slug, e.g. when `basePath: "article"` then your url might be `example.com/article/my-first-post`.
 
 ## Configuration
 
@@ -26,7 +26,7 @@ module.exports = {
   plugins: [
     {
       resolve: `@jbolda/gatsby-theme-articles`,
-      options: { contentPath: "articles" }
+      options: { contents: [{contentPath: "articles"}] }
     },
   ]
 }
