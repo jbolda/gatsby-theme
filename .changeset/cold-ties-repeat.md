@@ -1,5 +1,5 @@
 ---
-"@jbolda/gatsby-theme-layout": minor
+"@jbolda/gatsby-theme-layout": patch
 "@jbolda/gatsby-theme-articles": patch
 "@jbolda/gatsby-theme-homepage": patch
 ---
