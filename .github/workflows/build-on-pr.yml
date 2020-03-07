@@ -13,13 +13,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: install
-        run: |
-          yarn
-          yarn lerna bootstrap
+      - run: yarn
+      - run: yarn lerna bootstrap
       - name: build example/${{ matrix.example }}
+        working-directory: examples/${{ matrix.example }}
+        run: yarn build
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        run: |
-          cd examples/${{ matrix.example }}
-          yarn build
+      - run: yarn changeset statuss
