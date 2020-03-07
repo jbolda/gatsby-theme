@@ -12,7 +12,11 @@ jobs:
         example: ['personal']
 
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout repo
+        uses: actions/checkout@v2
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits 
+          fetch-depth: 0
       - run: yarn
       - run: yarn lerna bootstrap
       - name: build example/${{ matrix.example }}
