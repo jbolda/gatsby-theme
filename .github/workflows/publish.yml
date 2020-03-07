@@ -32,6 +32,7 @@ jobs:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits 
           fetch-depth: 0
       - run: yarn
+      - run: yarn changeset status
       - name: create release pull request
         uses: changesets/action@master
         env:
