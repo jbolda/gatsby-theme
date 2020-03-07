@@ -29,4 +29,4 @@ jobs:
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits 
           fetch-depth: 0
-      -run:  yarn changeset status
+      - run:  yarn changeset status
