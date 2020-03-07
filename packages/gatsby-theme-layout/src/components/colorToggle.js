@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Button } from "theme-ui";
+import { Box, Button } from "theme-ui";
 import { useThemeUI } from "theme-ui";
 
 export default ({ hamburgerActive }) => {
@@ -45,14 +45,7 @@ export default ({ hamburgerActive }) => {
         }}
         onClick={e => setColorMode(themeList[colorMode].next)}
       >
-        <Text
-          sx={{
-            padding: 0,
-            variant: "jboldaGatsbyTheme.layout.text"
-          }}
-        >
-          {colorMode}
-        </Text>
+        {colorMode}
       </Button>
     </Box>
   );

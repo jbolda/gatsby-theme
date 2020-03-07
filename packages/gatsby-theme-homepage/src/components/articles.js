@@ -64,11 +64,7 @@ const Articles = ({ articles }) => (
               to={article.slug}
               sx={{ variant: "jboldaGatsbyTheme.homepage.articles.link" }}
             >
-              <Text
-                sx={{ variant: "jboldaGatsbyTheme.homepage.articles.text" }}
-              >
-                Read
-              </Text>
+              Read
             </Link>
           </Box>
         </Flex>

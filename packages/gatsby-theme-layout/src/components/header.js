@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Flex, Box, Text, Link, MenuButton, Close } from "theme-ui";
+import { Flex, Box, MenuButton, Close, NavLink } from "theme-ui";
 import { Link as GatsbyLink } from "gatsby";
 import { useClickAway } from "react-use";
 import ColorToggle from "./colorToggle";
@@ -36,11 +36,11 @@ const Header = props => {
           }}
         >
           <Box sx={{ flexGrow: [1, 0, 0], padding: 0, margin: 2 }}>
-            <Link
+            <NavLink
               as={GatsbyLink}
               to="/"
               sx={{
-                variant: "jboldaGatsbyTheme.layout.link"
+                variant: "jboldaGatsbyTheme.layout.navlink"
               }}
             >
               {props.logo ? (
@@ -53,15 +53,9 @@ const Header = props => {
                   alt={props.logo.alt}
                 />
               ) : (
-                <Text
-                  sx={{
-                    variant: "jboldaGatsbyTheme.layout.text"
-                  }}
-                >
-                  {props.siteMetadata.siteTitle}
-                </Text>
+                props.siteMetadata.siteTitle
               )}
-            </Link>
+            </NavLink>
           </Box>
           {!props.siteMetadata.navLinks ||
           props.siteMetadata.navLinks[0].text === "" ? null : (
@@ -108,21 +102,15 @@ const Header = props => {
                       margin: 2
                     }}
                   >
-                    <Link
+                    <NavLink
                       as={GatsbyLink}
                       to={link.url}
                       sx={{
-                        variant: "jboldaGatsbyTheme.layout.link"
+                        variant: "jboldaGatsbyTheme.layout.navlink"
                       }}
                     >
-                      <Text
-                        sx={{
-                          variant: "jboldaGatsbyTheme.layout.text"
-                        }}
-                      >
-                        {link.text}
-                      </Text>
-                    </Link>
+                      {link.text}
+                    </NavLink>
                   </Box>
                 ))}
                 <ColorToggle hamburgerActive={hamburgerActive} />

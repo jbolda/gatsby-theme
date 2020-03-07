@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Heading, Text, Link } from "theme-ui";
+import { Heading, Link, Text } from "theme-ui";
 
 export default ({ siteMetadata }) => (
   <aside className="menu">
