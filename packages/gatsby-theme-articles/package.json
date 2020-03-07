@@ -1,6 +1,6 @@
 {
   "name": "@jbolda/gatsby-theme-articles",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Gatsby theme to construct pages for each of your articles.",
   "author": "Jacob Bolda <me@jacobbolda.com>",
   "homepage": "https://github.com/jbolda/gatsby-theme#readme",
@@ -26,7 +26,7 @@
     "@jbolda/gatsby-theme-components": "0.0.1"
   },
   "peerDependencies": {
-    "@jbolda/gatsby-theme-layout": "^0.3.3",
+    "@jbolda/gatsby-theme-layout": "^0.3.4",
     "gatsby-image": "^2.2.0",
     "gatsby-plugin-mdx": "^1.0.49",
     "gatsby-plugin-sharp": "^2.2.0",

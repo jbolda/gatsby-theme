@@ -1,5 +1,11 @@
 # @jbolda/gatsby-theme-layout
 
+## 0.3.4
+
+### Patch Changes
+
+- 1e37e24: pull out nested Text component and switch to NavLink in header
+
 ## 0.3.3
 
 ### Patch Changes
