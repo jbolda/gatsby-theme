@@ -1,5 +1,12 @@
 # @jbolda/gatsby-theme-layout
 
+## 0.3.3
+
+### Patch Changes
+
+- 87ac536: set `react-use` to a ^ dependency to improve downstream compatibility for the user
+- 049d808: set `font-awesome` to a ^ dependency to improve downstream compatibility for the user
+
 ## 0.3.2
 
 ### Patch Changes

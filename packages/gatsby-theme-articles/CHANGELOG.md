@@ -1,6 +1,19 @@
 # @jbolda/gatsby-theme-articles
 
+## 0.4.0
+
+### Minor Changes
+
+- 6696ce8: add ability to add multiple paths of markdown to be processed
+
+### Patch Changes
+
+- Updated dependencies [87ac536]
+- Updated dependencies [049d808]
+  - @jbolda/gatsby-theme-layout@0.3.3
+
 ## 0.3.0
+
 ### Minor Changes
 
 - 280fe92: update theme-ui to v0.3.x in peer deps
