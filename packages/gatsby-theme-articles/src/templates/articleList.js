@@ -48,14 +48,14 @@ export default props => {
                   fluid={article.heroImage.childImageSharp.fluid}
                 />
               ) : null}
-              <Text
+              <Link
                 as={GatsbyLink}
                 sx={{
-                  variant: "jboldaGatsbyTheme.articles.list.text"
+                  variant: "jboldaGatsbyTheme.articles.list.link"
                 }}
               >
                 {article.category}
-              </Text>
+              </Link>
               <Link
                 as={GatsbyLink}
                 to={article.slug}
@@ -87,13 +87,7 @@ export default props => {
                   variant: "jboldaGatsbyTheme.articles.list.link"
                 }}
               >
-                <Text
-                  sx={{
-                    variant: "jboldaGatsbyTheme.articles.list.text"
-                  }}
-                >
-                  Read
-                </Text>
+                Read
               </Link>
             </Box>
           ))}

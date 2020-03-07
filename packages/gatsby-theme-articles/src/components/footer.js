@@ -16,9 +16,7 @@ export default ({ siteDescription, siteContact, siteAuthor }) => (
       href={siteContact}
       sx={{ variant: "jboldaGatsbyTheme.articles.article.link" }}
     >
-      <Text sx={{ variant: "jboldaGatsbyTheme.articles.article.text" }}>
-        Written by {siteAuthor}
-      </Text>
+      Written by {siteAuthor}
     </Link>
     <Text as="p" sx={{ variant: "jboldaGatsbyTheme.articles.article.text" }}>
       {siteDescription}
