@@ -12,24 +12,25 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        example: ['personal']
+        example:
+          - name: 'personal'
+            siteID: '57be9577-e1e0-4fc8-a7fd-adf60a31721a'
+          - name: 'personal-social-cards'
+            siteID: '39575e96-2556-4252-ad9c-c67b93706543'
 
     steps:
       - uses: actions/checkout@v2
-      - name: install
-        run: |
-          yarn
-          yarn lerna bootstrap
-      - name: build example/${{ matrix.example }}
+      - run: yarn
+      - run: yarn lerna bootstrap
+      - name: build example/${{ matrix.example.name }}
+        working-directory: examples/${{ matrix.example.name }}
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        run: |
-          cd examples/${{ matrix.example }}
-          yarn build
-      - name: deploy example/${{ matrix.example }}
+        run: yarn build
+      - name: deploy example/${{ matrix.example.name }}
+        if: success()
+        working-directory: examples/${{ matrix.example.name }}
         env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID_PERSONAL }}
+          NETLIFY_SITE_ID: ${{ matrix.example.siteID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: |
-          cd examples/${{ matrix.example }}
-          npx netlify-cli deploy --dir=public --prod
+        run: npx netlify-cli deploy --dir=public --prod --message "${{ github.event.head_commit.message }}"
