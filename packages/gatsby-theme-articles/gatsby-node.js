@@ -5,6 +5,7 @@ const util = require("util");
 const crypto = require("crypto");
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const { urlResolve } = require(`gatsby-core-utils`);
+const slugify = require(`slugify`);
 
 exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
   const debug = Debug(
@@ -212,8 +213,8 @@ exports.onCreateNode = async (
   const source = fileNode.sourceInstanceName;
 
   if (node.internal.type === `Mdx`) {
-    const nodes = contents.map(
-      ({ contentPath = "articles", basePath = "" }) => {
+    const articleNodes = await Promise.all(
+      contents.map(async ({ contentPath = "articles", basePath = "" }) => {
         if (source === contentPath) {
           let slug;
           if (node.frontmatter.slug) {
@@ -234,6 +235,37 @@ exports.onCreateNode = async (
             slug = urlResolve(basePath, filePath);
           }
 
+          const setSocialImage = async parentNode => {
+            if (!!node.frontmatter.featuredImage)
+              return node.frontmatter.featuredImage;
+
+            try {
+              const { createPrinterNode } = require(`gatsby-plugin-printer`);
+              const fileNameToRef = `${slugify(
+                parentNode.frontmatter.title
+              )}.jpg`;
+
+              await createPrinterNode({
+                id: createNodeId(`${parentNode.id.id} >>> ArticlePrinterNode`),
+                fileName: fileNameToRef,
+                outputDir: "article-images",
+                data: parentNode,
+                component: require.resolve(
+                  "./src/components/printer-article.js"
+                )
+              });
+
+              return `./public/${fileNameToRef}`;
+            } catch (e) {
+              // no-op if not installed or error
+              // plan to remove the warn after things are working
+              console.warn(e);
+              return null;
+            }
+          };
+
+          const socialImage = await setSocialImage(node);
+
           // normalize use of trailing slash
           slug = slug.replace(/\/*$/, `/`);
           const fieldData = {
@@ -243,7 +275,7 @@ exports.onCreateNode = async (
             written: node.frontmatter.written,
             keywords: node.frontmatter.keywords || [],
             // set string as an easy check for early return
-            featuredImage: node.frontmatter.featuredImage,
+            featuredImage: socialImage,
             contentPath: contentPath
           };
 
@@ -255,7 +287,7 @@ exports.onCreateNode = async (
             reporter.info(`proxy node data:\n${util.inspect(fieldData)}`);
           }
 
-          const mdxBlogPostId = createNodeId(`${node.id} >>> MdxBlogPost`);
+          const mdxBlogPostId = createNodeId(`${node.id} >>> MdxArticle`);
 
           return {
             ...fieldData,
@@ -276,15 +308,22 @@ exports.onCreateNode = async (
         } else {
           return null;
         }
-      }
+      })
     );
 
-    const createNodes = nodes.map(node => (!node ? false : createNode(node)));
-    const createParentLinks = nodes.map(node =>
-      !node
-        ? false
-        : createParentChildLink({ parent: node, child: getNode(node.id) })
+    const createNodes = articleNodes.map(async articleNode =>
+      !articleNode ? false : createNode(articleNode)
     );
+
+    const createParentLinks = articleNodes.map(async articleNode =>
+      !articleNode
+        ? false
+        : createParentChildLink({
+            parent: articleNode,
+            child: getNode(articleNode.id)
+          })
+    );
+
     return Promise.all([].concat(createNodes, createParentLinks));
   }
 };
