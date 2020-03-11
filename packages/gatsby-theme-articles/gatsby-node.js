@@ -239,7 +239,7 @@ exports.onCreateNode = async (
             const { createPrinterNode } = require(`gatsby-plugin-printer`);
 
             await createPrinterNode({
-              id: node.id,
+              id: createNodeId(`${node.id} >>> ArticlePrinterNode`),
               fileName: slugify(node.frontmatter.title),
               outputDir: "article-images",
               data: node,
@@ -247,9 +247,7 @@ exports.onCreateNode = async (
             });
           } catch (e) {
             // no-op if not installed or error
-            // plan to remove the warn after things are working
             console.warn(e);
-            return null;
           }
 
           // normalize use of trailing slash
