@@ -105,6 +105,7 @@ module.exports = {
         ]
       }
     },
+    `gatsby-plugin-printer`,
     {
       resolve: `gatsby-theme-recipes`,
       options: {
