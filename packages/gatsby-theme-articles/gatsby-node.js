@@ -237,13 +237,12 @@ exports.onCreateNode = async (
 
           try {
             const { createPrinterNode } = require(`gatsby-plugin-printer`);
-            const fileNameToRef = `${slugify(parentNode.frontmatter.title)}`;
 
             await createPrinterNode({
-              id: createNodeId(`${parentNode.id} >>> ArticlePrinterNode`),
-              fileName: fileNameToRef,
+              id: node.id,
+              fileName: slugify(node.frontmatter.title),
               outputDir: "article-images",
-              data: parentNode,
+              data: node,
               component: require.resolve("./src/components/printer-article.js")
             });
           } catch (e) {
