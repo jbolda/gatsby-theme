@@ -5,7 +5,6 @@ const util = require("util");
 const crypto = require("crypto");
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const { urlResolve } = require(`gatsby-core-utils`);
-const slugify = require(`slugify`);
 
 exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
   const debug = Debug(
@@ -240,7 +239,7 @@ exports.onCreateNode = async (
 
             await createPrinterNode({
               id: createNodeId(`${node.id} >>> ArticlePrinterNode`),
-              fileName: slugify(node.frontmatter.title),
+              fileName: slug,
               outputDir: "article-images",
               data: node,
               component: require.resolve("./src/components/printer-article.js")
