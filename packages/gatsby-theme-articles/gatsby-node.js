@@ -235,36 +235,23 @@ exports.onCreateNode = async (
             slug = urlResolve(basePath, filePath);
           }
 
-          const setSocialImage = async parentNode => {
-            if (!!node.frontmatter.featuredImage)
-              return node.frontmatter.featuredImage;
+          try {
+            const { createPrinterNode } = require(`gatsby-plugin-printer`);
+            const fileNameToRef = `${slugify(parentNode.frontmatter.title)}`;
 
-            try {
-              const { createPrinterNode } = require(`gatsby-plugin-printer`);
-              const fileNameToRef = `${slugify(
-                parentNode.frontmatter.title
-              )}.jpg`;
-
-              await createPrinterNode({
-                id: createNodeId(`${parentNode.id.id} >>> ArticlePrinterNode`),
-                fileName: fileNameToRef,
-                outputDir: "article-images",
-                data: parentNode,
-                component: require.resolve(
-                  "./src/components/printer-article.js"
-                )
-              });
-
-              return `./public/${fileNameToRef}`;
-            } catch (e) {
-              // no-op if not installed or error
-              // plan to remove the warn after things are working
-              console.warn(e);
-              return null;
-            }
-          };
-
-          const socialImage = await setSocialImage(node);
+            await createPrinterNode({
+              id: createNodeId(`${parentNode.id} >>> ArticlePrinterNode`),
+              fileName: fileNameToRef,
+              outputDir: "article-images",
+              data: parentNode,
+              component: require.resolve("./src/components/printer-article.js")
+            });
+          } catch (e) {
+            // no-op if not installed or error
+            // plan to remove the warn after things are working
+            console.warn(e);
+            return null;
+          }
 
           // normalize use of trailing slash
           slug = slug.replace(/\/*$/, `/`);
@@ -275,7 +262,7 @@ exports.onCreateNode = async (
             written: node.frontmatter.written,
             keywords: node.frontmatter.keywords || [],
             // set string as an easy check for early return
-            featuredImage: socialImage,
+            featuredImage: node.frontmatter.featuredImage,
             contentPath: contentPath
           };
 
