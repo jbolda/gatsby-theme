@@ -20,14 +20,3 @@ jobs:
         run: yarn build
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-    
-  changeset-status:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v2
-        with:
-          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits 
-          fetch-depth: 0
-      - run: yarn
-      - run: yarn changeset status --verbose
