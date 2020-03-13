@@ -13,7 +13,7 @@
     "changeset": "changeset"
   },
   "devDependencies": {
-    "@changesets/cli": "2.5.2",
+    "@changesets/cli": "2.6.1",
     "lerna": "3.20.2"
   },
   "workspaces": [
