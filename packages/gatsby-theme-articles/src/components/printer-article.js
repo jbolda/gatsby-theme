@@ -1,9 +1,8 @@
 import React from "react";
-import { Flex, Box, Heading } from "theme-ui";
 
-const Border = ({ children, ...props }) => (
-  <Flex
-    sx={{
+const Border = ({ children }) => (
+  <div
+    style={{
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
@@ -21,13 +20,13 @@ const Border = ({ children, ...props }) => (
     }}
   >
     {children}
-  </Flex>
+  </div>
 );
 
 export default ({ title }) => {
   return (
-    <Box
-      sx={{
+    <div
+      style={{
         background: "#1b1f2a",
         padding: "1rem",
         width: "800px",
@@ -35,8 +34,8 @@ export default ({ title }) => {
       }}
     >
       <Border>
-        <Heading>{title}</Heading>
+        <div>{title}</div>
       </Border>
-    </Box>
+    </div>
   );
 };
