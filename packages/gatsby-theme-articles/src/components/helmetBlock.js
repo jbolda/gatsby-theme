@@ -20,10 +20,12 @@ const HelmetBlock = ({ frontmatter, siteMetadata }) => {
         property="og:url"
         content={`${siteMetadata.siteURL}${frontmatter.slug}`}
       />
-      <meta
-        property="og:image"
-        content={`${siteMetadata.siteURL}${socialImage}`}
-      />
+      {!socialImage ? null : (
+        <meta
+          property="og:image"
+          content={`${siteMetadata.siteURL}${socialImage}`}
+        />
+      )}
       <meta property="og:description" content={frontmatter.excerpt} />
       <meta property="og:site_name" content={siteMetadata.siteTitle} />
       <meta property="og:type" content="article" />
@@ -36,10 +38,12 @@ const HelmetBlock = ({ frontmatter, siteMetadata }) => {
       <meta property="og:article:tag" content={frontmatter.category} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:domain" value={siteMetadata.siteURL} />
-      <meta
-        name="twitter:image"
-        content={`${siteMetadata.siteURL}${socialImage}`}
-      />
+      {!socialImage ? null : (
+        <meta
+          name="twitter:image"
+          content={`${siteMetadata.siteURL}${socialImage}`}
+        />
+      )}
       <meta name="twitter:label1" content="Category" />
       <meta name="twitter:data1" content={frontmatter.category} />
       <meta name="twitter:label2" content="Written" />
