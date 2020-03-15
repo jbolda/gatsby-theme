@@ -7,15 +7,13 @@ const Border = ({ children }) => (
       flexDirection: "column",
       justifyContent: "center",
       height: "100%",
-
       position: "relative",
       padding: "1px",
       boxSizing: "border-box",
-
-      background: "#000000",
+      background: "#e9edf6",
       backgroundClip: "padding-box",
       border: "solid 1px transparent",
-      borderRadius: "1rem",
+      borderRadius: "2rem",
       zIndex: 99
     }}
   >
@@ -23,18 +21,27 @@ const Border = ({ children }) => (
   </div>
 );
 
-export default ({ title }) => {
+export default ({ frontmatter: { title } }) => {
   return (
     <div
       style={{
-        background: "#1b1f2a",
+        background: "#39f1a2",
         padding: "1rem",
         width: "800px",
         height: "400px"
       }}
     >
       <Border>
-        <div>{title}</div>
+        <div
+          style={{
+            color: "#e9edf6",
+            textAlign: "center",
+            width: "400px",
+            fontSize: "3rem"
+          }}
+        >
+          {title}
+        </div>
       </Border>
     </div>
   );
