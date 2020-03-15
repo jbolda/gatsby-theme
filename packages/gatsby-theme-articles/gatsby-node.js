@@ -25,6 +25,7 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
     keywords: [String]
     excerpt: String!
     featuredImage: ImageSharp
+    socialImage: String
   }`);
 
   if (debug.enabled && !!reporter) {
@@ -187,6 +188,9 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
         featuredImage: {
           type: "ImageSharp",
           resolve: imageSharpResolverPassthrough(`featuredImage`)
+        },
+        socialImage: {
+          type: "String"
         }
       },
       interfaces: [`Node`, `Articles`]
@@ -235,19 +239,28 @@ exports.onCreateNode = async (
             slug = urlResolve(basePath, filePath);
           }
 
-          try {
-            const { createPrinterNode } = require(`gatsby-plugin-printer`);
+          let socialImage = null;
+          if (!node.frontmatter.featuredImage) {
+            try {
+              const { createPrinterNode } = require(`gatsby-plugin-printer`);
 
-            await createPrinterNode({
-              id: createNodeId(`${node.id} >>> ArticlePrinterNode`),
-              fileName: slugify(node.frontmatter.title),
-              outputDir: "article-images",
-              data: node,
-              component: require.resolve("./src/components/printer-article.js")
-            });
-          } catch (e) {
-            // no-op if not installed or error
-            console.warn(e);
+              await createPrinterNode({
+                id: createNodeId(`${node.id} >>> ArticlePrinterNode`),
+                fileName: slugify(node.frontmatter.title),
+                outputDir: "article-images",
+                data: node,
+                component: require.resolve(
+                  "./src/components/printer-article.js"
+                )
+              });
+
+              socialImage = `/article-images/${slugify(
+                node.frontmatter.title
+              )}.png`;
+            } catch (e) {
+              // no-op if not installed or error
+              console.warn(e);
+            }
           }
 
           // normalize use of trailing slash
@@ -260,6 +273,7 @@ exports.onCreateNode = async (
             keywords: node.frontmatter.keywords || [],
             // set string as an easy check for early return
             featuredImage: node.frontmatter.featuredImage,
+            socialImage: socialImage,
             contentPath: contentPath
           };
 
