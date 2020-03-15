@@ -25,6 +25,7 @@ export const pageQuery = graphql`
           ...GatsbyImageSharpFluid_tracedSVG
         }
       }
+      socialImage
     }
   }
 `;
