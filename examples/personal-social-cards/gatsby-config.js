@@ -4,7 +4,7 @@ module.exports = {
     siteDescription: `Structural Engineer with a knack for creative solutions using code and ingenuity.`,
     siteAuthor: `Jacob Bolda`,
     siteContact: "https://twitter.com/jacobbolda",
-    siteURL: "https://jbolda-gatsby-theme-personal-social-cards.netlify.com/",
+    siteURL: "https://jbolda-gatsby-theme-article-social-cards.netlify.com/",
     contactLinks: [
       {
         url: "mailto:me@jacobbolda.com",
@@ -109,7 +109,8 @@ module.exports = {
     {
       resolve: `gatsby-theme-recipes`,
       options: {
-        siteUrl: "https://jbolda-gatsby-theme-personal-social-cards.netlify.com/",
+        siteUrl:
+          "https://jbolda-gatsby-theme-article-social-cards.netlify.com/",
         sources: ["Airtable"]
       }
     },

@@ -1,5 +1,5 @@
 ---
-"personal-social-cards": patch
+"article-social-cards": patch
 ---
 
 default to featuredImage for social card if present
