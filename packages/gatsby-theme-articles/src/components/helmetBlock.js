@@ -2,9 +2,13 @@ import React from "react";
 import Helmet from "react-helmet";
 
 const HelmetBlock = ({ frontmatter, siteMetadata }) => {
-  const socialImage = !!frontmatter?.featuredImage?.fluid?.src
+  const whichSocialImage = !!frontmatter?.featuredImage?.fluid?.src
     ? frontmatter.featuredImage.fluid.src
     : frontmatter.socialImage;
+  const socialImage = `${siteMetadata.siteURL}${whichSocialImage}`.replace(
+    "//",
+    "/"
+  );
   return (
     <Helmet>
       <title>{`${siteMetadata.siteTitle} | ${frontmatter.title}`}</title>
@@ -20,11 +24,8 @@ const HelmetBlock = ({ frontmatter, siteMetadata }) => {
         property="og:url"
         content={`${siteMetadata.siteURL}${frontmatter.slug}`}
       />
-      {!socialImage ? null : (
-        <meta
-          property="og:image"
-          content={`${siteMetadata.siteURL}${socialImage}`}
-        />
+      {!whichSocialImage ? null : (
+        <meta property="og:image" content={socialImage} />
       )}
       <meta property="og:description" content={frontmatter.excerpt} />
       <meta property="og:site_name" content={siteMetadata.siteTitle} />
@@ -38,11 +39,8 @@ const HelmetBlock = ({ frontmatter, siteMetadata }) => {
       <meta property="og:article:tag" content={frontmatter.category} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:domain" value={siteMetadata.siteURL} />
-      {!socialImage ? null : (
-        <meta
-          name="twitter:image"
-          content={`${siteMetadata.siteURL}${socialImage}`}
-        />
+      {!whichSocialImage ? null : (
+        <meta name="twitter:image" content={socialImage} />
       )}
       <meta name="twitter:label1" content="Category" />
       <meta name="twitter:data1" content={frontmatter.category} />
