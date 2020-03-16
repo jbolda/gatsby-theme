@@ -1,11 +1,3 @@
-# `personal`
+# `article-social-cards`
 
-> TODO: description
-
-## Usage
-
-```
-const personal = require('personal');
-
-// TODO: DEMONSTRATE API
-```
+This is an example showing social cards on articles. These are the images you see "unfurl" when posted on social media or messaging apps.
