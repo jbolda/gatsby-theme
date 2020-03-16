@@ -34,7 +34,7 @@ export default ({ frontmatter: { title } }) => {
       <Border>
         <div
           style={{
-            color: "#e9edf6",
+            color: "black",
             textAlign: "center",
             width: "400px",
             fontSize: "3rem"
