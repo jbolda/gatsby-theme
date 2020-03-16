@@ -6,8 +6,6 @@ on:
     - 'master'
     paths:
     - '.changeset/**.md'
-    paths-ignore:
-    - '.changeset/README.md'
 
 jobs:
   changeset-status:	
