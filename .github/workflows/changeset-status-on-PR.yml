@@ -1,7 +1,9 @@
 name: Changeset Status
 
 on:
-  pull_request:
+  push:
+    branches-ignore:
+    - 'master'
     paths:
     - '.changeset/**.md'
     paths-ignore:
