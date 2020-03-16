@@ -19,6 +19,8 @@ jobs:
       - uses: actions/checkout@v2
       - run: yarn
       - run: yarn lerna bootstrap
+      - name: prep notes file
+        run: echo "# ${{ matrix.example.name }}" >> ./notes.md
       - name: build example/${{ matrix.example.name }}
         working-directory: examples/${{ matrix.example.name }}
         run: yarn build
