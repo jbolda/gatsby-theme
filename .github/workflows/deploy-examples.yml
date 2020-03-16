@@ -16,7 +16,7 @@ jobs:
           - name: 'personal'
             siteID: '57be9577-e1e0-4fc8-a7fd-adf60a31721a'
           - name: 'article-social-cards'
-            siteID: '39575e96-2556-4252-ad9c-c67b93706543'
+            siteID: '6040feb3-4b61-477a-a7c8-66c0c8d859b1'
 
     steps:
       - uses: actions/checkout@v2
