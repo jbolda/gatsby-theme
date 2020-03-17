@@ -102,7 +102,8 @@ module.exports = {
         contents: [
           { contentPath: "articles" },
           { contentPath: "drafts", basePath: "draft" }
-        ]
+        ],
+        socialImages: `https://opengraph.sector.tools/chris?title=${title}&tags=jacob-test`
       }
     },
     `gatsby-plugin-printer`,
