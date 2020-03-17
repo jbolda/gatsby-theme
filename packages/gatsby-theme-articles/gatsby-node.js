@@ -265,15 +265,11 @@ exports.onCreateNode = async (
             }
           } else if (!!socialImages) {
             // second check if string is set in config
-            try {
-              const siteURL = await store.getState().config.siteMetadata.siteURL;
-              const templatedString = template(socialImages, node.frontmatter);
-              socialImage = stringIsValidURL(templatedString)
-                ? templatedString
-                : `${siteURL}${templatedString}`.replace("//", "/");
-            } catch (e) {
-              // no-op in case we don't filter out non frontmatter
-            }
+            const siteURL = await store.getState().config.siteMetadata.siteURL;
+            const templatedString = template(socialImages)(node.frontmatter);
+            socialImage = stringIsValidURL(templatedString)
+              ? templatedString
+              : `${siteURL}${templatedString}`.replace("//", "/");
           } else if (!!node.frontmatter.featuredImage) {
             socialImage = null; // let the component set the featureImage as the socialImage
           } else {
