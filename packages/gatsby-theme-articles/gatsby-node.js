@@ -270,8 +270,12 @@ exports.onCreateNode = async (
             socialImage = stringIsValidURL(templatedString)
               ? templatedString
               : `${siteURL}${templatedString}`.replace("//", "/");
-          } else if (!node.frontmatter.featuredImage) {
+          } else if (!!node.frontmatter.featuredImage) {
+            socialImage = null; // let the component set the featureImage as the socialImage
+          } else {
             try {
+              const siteURL = await store.getState().config.siteMetadata
+                .siteURL;
               const { createPrinterNode } = require(`gatsby-plugin-printer`);
 
               await createPrinterNode({
@@ -284,9 +288,9 @@ exports.onCreateNode = async (
                 )
               });
 
-              socialImage = `/article-images/${slugify(
+              socialImage = `${siteURL}/article-images/${slugify(
                 node.frontmatter.title
-              )}.png`;
+              )}.png`.replace("//", "/");
             } catch (e) {
               // no-op if not installed or error
             }
