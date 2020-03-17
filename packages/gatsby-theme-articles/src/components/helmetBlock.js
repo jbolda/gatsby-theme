@@ -3,10 +3,10 @@ import Helmet from "react-helmet";
 
 const HelmetBlock = ({ frontmatter, siteMetadata }) => {
   let socialImage = !frontmatter.socialImage
-    ? (socialImage = `${siteMetadata.siteURL}${frontmatter.featuredImage.fluid.src}`.replace(
+    ? `${siteMetadata.siteURL}${frontmatter.featuredImage.fluid.src}`.replace(
         "//",
         "/"
-      ))
+      )
     : frontmatter.socialImage;
 
   return (
