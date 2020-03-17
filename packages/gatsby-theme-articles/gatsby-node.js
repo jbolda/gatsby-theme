@@ -6,6 +6,7 @@ const crypto = require("crypto");
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const { urlResolve } = require(`gatsby-core-utils`);
 const slugify = require("slugify");
+const { template } = require("lodash");
 
 exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
   const debug = Debug(
@@ -201,8 +202,8 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
 // Create fields for post slugs and source
 // This will change with schema customization with work
 exports.onCreateNode = async (
-  { node, actions, getNode, createNodeId, reporter },
-  { contents = [] }
+  { node, actions, getNode, store, createNodeId, reporter },
+  { contents = [], socialImages = null }
 ) => {
   const debug = Debug("@jbolda/gatsby-theme-articles:onCreateNode");
   const { createNode, createParentChildLink } = actions;
@@ -240,7 +241,36 @@ exports.onCreateNode = async (
           }
 
           let socialImage = null;
-          if (!node.frontmatter.featuredImage) {
+          const stringIsValidURL = s => {
+            try {
+              new URL(s);
+              return true;
+            } catch (err) {
+              return false;
+            }
+          };
+
+          if (!!node.frontmatter.socialImage) {
+            // first check if socialImage is defined on the article
+            if (stringIsValidURL(node.frontmatter.socialImage)) {
+              // if it is a fully valid url, use it directly
+              socialImage = node.frontmatter.socialImage;
+            } else {
+              const siteURL = await store.getState().config.siteMetadata
+                .siteURL;
+              socialImage = `${siteURL}${node.frontmatter.socialImage}`.replace(
+                "//",
+                "/"
+              );
+            }
+          } else if (!!socialImages) {
+            // second check if string is set in config
+            const siteURL = await store.getState().config.siteMetadata.siteURL;
+            const templatedString = template(socialImages, node.frontmatter);
+            socialImage = stringIsValidURL(templatedString)
+              ? templatedString
+              : `${siteURL}${templatedString}`.replace("//", "/");
+          } else if (!node.frontmatter.featuredImage) {
             try {
               const { createPrinterNode } = require(`gatsby-plugin-printer`);
 
@@ -259,7 +289,6 @@ exports.onCreateNode = async (
               )}.png`;
             } catch (e) {
               // no-op if not installed or error
-              console.warn(e);
             }
           }
 
