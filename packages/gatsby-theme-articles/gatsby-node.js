@@ -225,125 +225,126 @@ exports.onCreateNode = async (
           basePath = "",
           socialImages = null
         }) => {
-        if (source === contentPath && !!node.frontmatter) {
-          let slug;
-          if (node.frontmatter.slug) {
-            if (path.isAbsolute(node.frontmatter.slug)) {
-              // absolute paths take precedence
-              slug = node.frontmatter.slug;
+          if (source === contentPath && !!node.frontmatter) {
+            let slug;
+            if (node.frontmatter.slug) {
+              if (path.isAbsolute(node.frontmatter.slug)) {
+                // absolute paths take precedence
+                slug = node.frontmatter.slug;
+              } else {
+                // otherwise a relative slug gets turned into a sub path
+                slug = urlResolve(basePath, node.frontmatter.slug);
+              }
             } else {
-              // otherwise a relative slug gets turned into a sub path
-              slug = urlResolve(basePath, node.frontmatter.slug);
-            }
-          } else {
-            // otherwise use the filepath function from gatsby-source-filesystem
-            const filePath = createFilePath({
-              node: fileNode,
-              getNode,
-              basePath: contentPath
-            });
-            slug = urlResolve(basePath, filePath);
-          }
-
-          let socialImage = null;
-          const stringIsValidURL = s => {
-            try {
-              new URL(s);
-              return true;
-            } catch (err) {
-              return false;
-            }
-          };
-
-          if (!!node.frontmatter.socialImage) {
-            // first check if socialImage is defined on the article
-            if (stringIsValidURL(node.frontmatter.socialImage)) {
-              // if it is a fully valid url, use it directly
-              socialImage = node.frontmatter.socialImage;
-            } else {
-              const siteURL = await store.getState().config.siteMetadata
-                .siteURL;
-              socialImage = `${siteURL}${node.frontmatter.socialImage}`.replace(
-                "//",
-                "/"
-              );
-            }
-          } else if (!!socialImages) {
-            // second check if string is set in config
-            const siteURL = await store.getState().config.siteMetadata.siteURL;
-            const templatedString = template(socialImages)(node.frontmatter);
-            socialImage = stringIsValidURL(templatedString)
-              ? templatedString
-              : `${siteURL}${templatedString}`.replace("//", "/");
-          } else if (!!node.frontmatter.featuredImage) {
-            socialImage = null; // let the component set the featureImage as the socialImage
-          } else {
-            try {
-              const siteURL = await store.getState().config.siteMetadata
-                .siteURL;
-              const { createPrinterNode } = require(`gatsby-plugin-printer`);
-
-              await createPrinterNode({
-                id: createNodeId(`${node.id} >>> ArticlePrinterNode`),
-                fileName: slugify(node.frontmatter.title),
-                outputDir: "article-images",
-                data: node,
-                component: require.resolve(
-                  "./src/components/printer-article.js"
-                )
+              // otherwise use the filepath function from gatsby-source-filesystem
+              const filePath = createFilePath({
+                node: fileNode,
+                getNode,
+                basePath: contentPath
               });
-
-              socialImage = `${siteURL}/article-images/${slugify(
-                node.frontmatter.title
-              )}.png`.replace("//", "/");
-            } catch (e) {
-              // no-op if not installed or error
+              slug = urlResolve(basePath, filePath);
             }
-          }
 
-          // normalize use of trailing slash
-          slug = slug.replace(/\/*$/, `/`);
-          const fieldData = {
-            title: node.frontmatter.title,
-            tags: node.frontmatter.tags || [],
-            slug,
-            written: node.frontmatter.written,
-            keywords: node.frontmatter.keywords || [],
-            // set string as an easy check for early return
-            featuredImage: node.frontmatter.featuredImage,
-            socialImage: socialImage,
-            contentPath: contentPath
-          };
+            let socialImage = null;
+            const stringIsValidURL = s => {
+              try {
+                new URL(s);
+                return true;
+              } catch (err) {
+                return false;
+              }
+            };
 
-          if (debug.enabled && !!reporter) {
-            reporter.info(`@jbolda/gatsby-theme-articles:onCreateNode`);
-            reporter.info(
-              `incoming frontmatter:\n${util.inspect(node.frontmatter)}`
-            );
-            reporter.info(`proxy node data:\n${util.inspect(fieldData)}`);
-          }
+            if (!!node.frontmatter.socialImage) {
+              // first check if socialImage is defined on the article
+              if (stringIsValidURL(node.frontmatter.socialImage)) {
+                // if it is a fully valid url, use it directly
+                socialImage = node.frontmatter.socialImage;
+              } else {
+                const siteURL = await store.getState().config.siteMetadata
+                  .siteURL;
+                socialImage = `${siteURL}${node.frontmatter.socialImage}`.replace(
+                  "//",
+                  "/"
+                );
+              }
+            } else if (!!node.frontmatter.featuredImage) {
+              socialImage = null; // let the component set the featureImage as the socialImage
+            } else if (!!socialImages) {
+              // second check if string is set in config
+              const siteURL = await store.getState().config.siteMetadata
+                .siteURL;
+              const templatedString = template(socialImages)(node.frontmatter);
+              socialImage = stringIsValidURL(templatedString)
+                ? templatedString
+                : `${siteURL}${templatedString}`.replace("//", "/");
+            } else {
+              try {
+                const siteURL = await store.getState().config.siteMetadata
+                  .siteURL;
+                const { createPrinterNode } = require(`gatsby-plugin-printer`);
 
-          const mdxArticleId = createNodeId(`${node.id} >>> MdxArticle`);
+                await createPrinterNode({
+                  id: createNodeId(`${node.id} >>> ArticlePrinterNode`),
+                  fileName: slugify(node.frontmatter.title),
+                  outputDir: "article-images",
+                  data: node,
+                  component: require.resolve(
+                    "./src/components/printer-article.js"
+                  )
+                });
 
-          return {
-            ...fieldData,
-            // Required fields.
-            id: mdxArticleId,
-            parent: node.id,
-            children: [],
-            internal: {
-              type: `MdxArticles`,
-              contentDigest: crypto
-                .createHash(`md5`)
-                .update(JSON.stringify(fieldData))
-                .digest(`hex`),
-              content: JSON.stringify(fieldData),
-              description: `Mdx implementation of the Articles interface`
+                socialImage = `${siteURL}/article-images/${slugify(
+                  node.frontmatter.title
+                )}.png`.replace("//", "/");
+              } catch (e) {
+                // no-op if not installed or error
+              }
             }
-          };
-        } else {
-          return null;
-        }
+
+            // normalize use of trailing slash
+            slug = slug.replace(/\/*$/, `/`);
+            const fieldData = {
+              title: node.frontmatter.title,
+              tags: node.frontmatter.tags || [],
+              slug,
+              written: node.frontmatter.written,
+              keywords: node.frontmatter.keywords || [],
+              // set string as an easy check for early return
+              featuredImage: node.frontmatter.featuredImage,
+              socialImage: socialImage,
+              contentPath: contentPath
+            };
+
+            if (debug.enabled && !!reporter) {
+              reporter.info(`@jbolda/gatsby-theme-articles:onCreateNode`);
+              reporter.info(
+                `incoming frontmatter:\n${util.inspect(node.frontmatter)}`
+              );
+              reporter.info(`proxy node data:\n${util.inspect(fieldData)}`);
+            }
+
+            const mdxArticleId = createNodeId(`${node.id} >>> MdxArticle`);
+
+            return {
+              ...fieldData,
+              // Required fields.
+              id: mdxArticleId,
+              parent: node.id,
+              children: [],
+              internal: {
+                type: `MdxArticles`,
+                contentDigest: crypto
+                  .createHash(`md5`)
+                  .update(JSON.stringify(fieldData))
+                  .digest(`hex`),
+                content: JSON.stringify(fieldData),
+                description: `Mdx implementation of the Articles interface`
+              }
+            };
+          } else {
+            return null;
+          }
         }
       )
     );
