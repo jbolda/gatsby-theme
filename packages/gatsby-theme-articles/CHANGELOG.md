@@ -1,5 +1,12 @@
 # @jbolda/gatsby-theme-articles
 
+## 0.4.2
+
+### Patch Changes
+
+- 63a83f7: ability to specify socialImage frontmatter as full url, partial, or through config as either
+- 63a83f7: optional social cards through gatsby-plugin-printer
+
 ## 0.4.1
 
 ### Patch Changes
