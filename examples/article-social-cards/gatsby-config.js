@@ -102,16 +102,14 @@ module.exports = {
         contents: [
           { contentPath: "articles" },
           { contentPath: "drafts", basePath: "draft" }
-        ],
-        socialImages: 'https://opengraph.sector.tools/chris?title=${title}&tags=jacob-test'
+        ]
       }
     },
     `gatsby-plugin-printer`,
     {
       resolve: `gatsby-theme-recipes`,
       options: {
-        siteUrl:
-          "https://jbolda-gatsby-theme-social.netlify.com/",
+        siteUrl: "https://jbolda-gatsby-theme-social.netlify.com/",
         sources: ["Airtable"]
       }
     },
