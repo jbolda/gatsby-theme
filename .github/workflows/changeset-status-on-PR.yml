@@ -1,0 +1,30 @@
+name: Changeset Status
+
+on:
+  push:
+    branches-ignore:
+    - 'master'
+    paths:
+    - '.changeset/**.md'
+
+jobs:
+  changeset-status:	
+    runs-on: ubuntu-latest	
+    steps:	
+      - name: checkout repo	
+        uses: actions/checkout@v2	
+        with:	
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits 	
+          fetch-depth: 0	
+      - run: yarn	
+      - name: yarn changeset status --verbose
+        run: |
+          echo "\`\`\`" >> ./notes.md
+          yarn changeset status --verbose 2>&1 | tee -a ./notes.md
+          echo "\`\`\`" >> ./notes.md
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: ./notes.md

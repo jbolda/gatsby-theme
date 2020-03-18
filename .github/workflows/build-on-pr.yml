@@ -9,14 +9,32 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        example: ['personal']
+        example:
+          - name: 'personal'
+            siteID: '57be9577-e1e0-4fc8-a7fd-adf60a31721a'
+          - name: 'article-social-cards'
+            siteID: '6040feb3-4b61-477a-a7c8-66c0c8d859b1'
 
     steps:
       - uses: actions/checkout@v2
       - run: yarn
       - run: yarn lerna bootstrap
-      - name: build example/${{ matrix.example }}
-        working-directory: examples/${{ matrix.example }}
+      - name: prep notes file
+        run: echo "# ${{ matrix.example.name }}" >> ./notes.md
+      - name: build example/${{ matrix.example.name }}
+        working-directory: examples/${{ matrix.example.name }}
         run: yarn build
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+      - name: deploy
+        if: success()
+        env:
+          NETLIFY_SITE_ID: ${{ matrix.example.siteID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: npx netlify-cli deploy --dir=examples/${{ matrix.example.name }}/public --message "${{ github.event.pull_request.html_url }}" 2>&1 | tee -a ./notes.md
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: ./notes.md
