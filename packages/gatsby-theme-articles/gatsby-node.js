@@ -203,7 +203,7 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
 // This will change with schema customization with work
 exports.onCreateNode = async (
   { node, actions, getNode, store, createNodeId, reporter },
-  { contents = [], socialImages = null }
+  { contents = [] }
 ) => {
   const debug = Debug("@jbolda/gatsby-theme-articles:onCreateNode");
   const { createNode, createParentChildLink } = actions;
@@ -219,7 +219,12 @@ exports.onCreateNode = async (
 
   if (node.internal.type === `Mdx`) {
     const articleNodes = await Promise.all(
-      contents.map(async ({ contentPath = "articles", basePath = "" }) => {
+      contents.map(
+        async ({
+          contentPath = "articles",
+          basePath = "",
+          socialImages = null
+        }) => {
         if (source === contentPath && !!node.frontmatter) {
           let slug;
           if (node.frontmatter.slug) {
@@ -339,7 +344,8 @@ exports.onCreateNode = async (
         } else {
           return null;
         }
-      })
+        }
+      )
     );
 
     const createNodes = articleNodes.map(async articleNode =>
