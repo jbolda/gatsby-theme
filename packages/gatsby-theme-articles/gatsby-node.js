@@ -220,7 +220,7 @@ exports.onCreateNode = async (
   if (node.internal.type === `Mdx`) {
     const articleNodes = await Promise.all(
       contents.map(async ({ contentPath = "articles", basePath = "" }) => {
-        if (source === contentPath) {
+        if (source === contentPath && !!node.frontmatter) {
           let slug;
           if (node.frontmatter.slug) {
             if (path.isAbsolute(node.frontmatter.slug)) {
@@ -318,12 +318,12 @@ exports.onCreateNode = async (
             reporter.info(`proxy node data:\n${util.inspect(fieldData)}`);
           }
 
-          const mdxBlogPostId = createNodeId(`${node.id} >>> MdxArticle`);
+          const mdxArticleId = createNodeId(`${node.id} >>> MdxArticle`);
 
           return {
             ...fieldData,
             // Required fields.
-            id: mdxBlogPostId,
+            id: mdxArticleId,
             parent: node.id,
             children: [],
             internal: {
