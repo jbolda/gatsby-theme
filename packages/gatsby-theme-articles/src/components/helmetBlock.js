@@ -2,12 +2,10 @@ import React from "react";
 import Helmet from "react-helmet";
 
 const HelmetBlock = ({ frontmatter, siteMetadata }) => {
-  let socialImage = !frontmatter.socialImage
-    ? `${siteMetadata.siteURL}${frontmatter.featuredImage.fluid.src}`.replace(
-        "//",
-        "/"
-      )
-    : frontmatter.socialImage;
+  let socialImage = setSocialImage(siteMetadata, frontmatter).replace(
+    "//",
+    "/"
+  );
 
   return (
     <Helmet>
@@ -49,3 +47,15 @@ const HelmetBlock = ({ frontmatter, siteMetadata }) => {
 };
 
 export default HelmetBlock;
+
+const setSocialImage = ({ siteURL }, { socialImage, featuredImage }) => {
+  if (!socialImage) {
+    if (!featuredImage) {
+      return null;
+    } else {
+      return `${siteURL}${featuredImage.fluid.src}`;
+    }
+  } else {
+    return socialImage;
+  }
+};
