@@ -850,7 +850,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2":
   version "7.7.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.2.tgz#111a78002a5c25fc8e3361bedc9529c696b85a6a"
   integrity sha512-JONRbXbTXc9WQE2mAZd1p0Z3DZ/6vaQIkgYMSTP3KjRCyd7rCZCcfhCyX+YjwcKxcZ82UrxbRD358bpExNgrjw==
@@ -1367,11 +1367,6 @@
   integrity sha512-tAag0jEcjwH+P2quUfipd7liWCNX2F8NvYjQp2wtInsZxnMlypdw0FtAOLxtvvkO+GSRRbmNi8m/5y42PQJYCQ==
   dependencies:
     "@hapi/hoek" "^8.3.0"
-
-"@jbolda/isolated-theme-ui-components@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@jbolda/isolated-theme-ui-components/-/isolated-theme-ui-components-0.0.4.tgz#831af082b5d45667dc0f198f0bac534b230e3805"
-  integrity sha512-jRXGEP5Yau7tGfkr8DEjxrFQ1WrkK9lAEjTqFMvn8YbRRuzf9WfX7x587h0Ka879E+Nn+e/nLCeEPWE9rvYNeQ==
 
 "@jimp/bmp@^0.6.8":
   version "0.6.8"
@@ -7646,14 +7641,6 @@ gatsby-page-utils@^0.1.1:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-plugin-compile-es6-packages@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-compile-es6-packages/-/gatsby-plugin-compile-es6-packages-2.1.0.tgz#eb6068d8936fd8b404716e47b821d09bf0656af7"
-  integrity sha512-yrYAAjabHWJr3ARi8xzDm01dbBfyOxEWTwGkL3BMdgL/opfLvTrwLmfium4kSelnLs70DYY3rYDwyHjqyFsnFQ==
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    regex-escape "^3.4.8"
-
 gatsby-plugin-mdx@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.1.2.tgz#d0019400bfe9167c70c0c19a2ff29500a99736da"
@@ -7851,14 +7838,10 @@ gatsby-telemetry@^1.2.1:
     stack-utils "1.0.2"
     uuid "3.4.0"
 
-gatsby-theme-recipes@0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-recipes/-/gatsby-theme-recipes-0.0.10.tgz#07e17bb448009162403efc26ab89ab2d0a83adfc"
-  integrity sha512-vedvGqHIqCbtXUErx1kl6NJbnWl0A9dy986g1lHGe1ZGuaOzlumvSD8tXluFiEV3XbSsty+B5EfJY1SXRzr1SA==
-  dependencies:
-    "@jbolda/isolated-theme-ui-components" "0.0.4"
-    gatsby-plugin-compile-es6-packages "2.1.0"
-    isolated-theme-ui "1.0.1"
+gatsby-theme-recipes@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-recipes/-/gatsby-theme-recipes-0.1.1.tgz#274b86e00b349b2838eec7ef2f6f98ef4dccf4fd"
+  integrity sha512-eB4d3KjLgJcWNfIC5oGHFy+akbH3flxefOWTjr4FUowzagzaIxfPOQur59/2MXMU8Vq4Vss7TzwdPkwSAIJ8vQ==
 
 gatsby-transformer-sharp@2.4.2:
   version "2.4.2"
@@ -9935,11 +9918,6 @@ isobject@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-4.0.0.tgz#3f1c9155e73b192022a80819bacd0343711697b0"
   integrity sha512-S/2fF5wH8SJA/kmwr6HYhK/RI/OkhD84k8ntalo0iJjZikgq1XFvR5M8NPT1x5F7fBwCG3qHfnzeP/Vh/ZxCUA==
-
-isolated-theme-ui@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/isolated-theme-ui/-/isolated-theme-ui-1.0.1.tgz#197d79bafb68d452aee5ba35509252b9ffb2af06"
-  integrity sha512-FuCafGqck/vvbaL6AGakCXq9VzoH101pOTqwQ3UOm9hRWfkk4imxNOLtgZqD23KLlb0wjhX/j4qmR9p8vprDgQ==
 
 isstream@~0.1.2:
   version "0.1.2"
@@ -13917,11 +13895,6 @@ regenerator-transform@^0.14.2:
   dependencies:
     "@babel/runtime" "^7.8.4"
     private "^0.1.8"
-
-regex-escape@^3.4.8:
-  version "3.4.9"
-  resolved "https://registry.yarnpkg.com/regex-escape/-/regex-escape-3.4.9.tgz#407b413562e2373d56994ff213e693658ea4f8f7"
-  integrity sha512-Cv9rjwyQwVhn3L097ysanWsEElurmxDj6Cc4Ut23z7e6hzRbrNvF3Le7yAciMfuzyb0sZwSr0ZHunMNCIoy2/g==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
