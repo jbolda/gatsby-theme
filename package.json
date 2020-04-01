@@ -10,11 +10,14 @@
   "scripts": {
     "lerna": "lerna",
     "publish-ci": "lerna publish from-package -y --no-verify-access",
-    "changeset": "changeset"
+    "changeset": "changeset",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@changesets/cli": "2.6.1",
-    "lerna": "3.20.2"
+    "lerna": "3.20.2",
+    "patch-package": "^6.2.1",
+    "postinstall-postinstall": "^2.1.0"
   },
   "workspaces": [
     "packages/*",
