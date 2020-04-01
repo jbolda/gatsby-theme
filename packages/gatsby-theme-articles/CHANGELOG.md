@@ -1,5 +1,11 @@
 # @jbolda/gatsby-theme-articles
 
+## 0.4.3
+
+### Patch Changes
+
+- 61c0411: fix social image to allow passing a component to gatsby-plugin-printer over default
+
 ## 0.4.2
 
 ### Patch Changes
