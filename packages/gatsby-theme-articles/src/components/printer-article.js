@@ -1,6 +1,6 @@
 import React from "react";
 
-const Border = ({ children }) => (
+const Border = ({ children, backgroundColor }) => (
   <div
     style={{
       display: "flex",
@@ -10,7 +10,7 @@ const Border = ({ children }) => (
       position: "relative",
       padding: "1px",
       boxSizing: "border-box",
-      background: "#e9edf6",
+      background: backgroundColor,
       backgroundClip: "padding-box",
       border: "solid 1px transparent",
       borderRadius: "2rem",
@@ -21,20 +21,25 @@ const Border = ({ children }) => (
   </div>
 );
 
-export default ({ frontmatter: { title } }) => {
+export default ({
+  frontmatter: { title },
+  backgroundColor = "#e9edf6",
+  borderColor = "#39f1a2",
+  textColor = "black"
+}) => {
   return (
     <div
       style={{
-        background: "#39f1a2",
+        background: borderColor,
         padding: "1rem",
         width: "800px",
         height: "400px"
       }}
     >
-      <Border>
+      <Border backgroundColor={backgroundColor}>
         <div
           style={{
-            color: "black",
+            color: textColor,
             textAlign: "center",
             width: "400px",
             fontSize: "3rem"
