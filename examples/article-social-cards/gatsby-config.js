@@ -100,7 +100,10 @@ module.exports = {
       resolve: `@jbolda/gatsby-theme-articles`,
       options: {
         contents: [
-          { contentPath: "articles" },
+          {
+            contentPath: "articles",
+            socialImageComponent: require.resolve("./src/social-card.js")
+          },
           { contentPath: "drafts", basePath: "draft" }
         ]
       }
