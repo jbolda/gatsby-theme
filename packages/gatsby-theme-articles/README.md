@@ -52,7 +52,13 @@ module.exports = {
             contentPath: "articles",
             socialImages: "https://og-image.example.com/?title=${title}"
           },
-          { contentPath: "drafts", basePath: "draft" }
+          {
+            contentPath: "drafts",
+            basePath: "draft",
+            socialImageComponent: require.resolve(
+              "./src/articles/social-image.js"
+            )
+          }
         ]
       }
     }
@@ -67,7 +73,7 @@ We support a handful of methods to get social images built into your site. This 
 - The `socialImage` frontmatter in an article with either a full or partial url (we add the site domain for you if you have a partial url)
 - If you are using a `featureImage` placed in the frontmatter, we will use that.
 - In the config with a specific "content", specify a `socialImages` that will be applied to every piece of content. It is piped through `lodash`'s `template` function and we supply the frontmatter object to it. Note that we expect a string, but you will can use the template literal `${title}` syntax to have it dynamically filled in.
-- If you have `gatsby-plugin-printer` installed and listed in your `gatsby-config.js`, we will create the image for you. You may shadow the template used by putting a component at `./src/@jbolda/gatsby-theme-articles/components/printer-article.js`.
+- If you have `gatsby-plugin-printer` installed and listed in your `gatsby-config.js`, we will create the image for you. You cannot shadow the template used, but you can specify a `socialImageComponent` with `require.resolve()` within the content group.
 - If none of these options produce a social image, we will just not include that `meta` tag.
 
 ## Design Tokens
