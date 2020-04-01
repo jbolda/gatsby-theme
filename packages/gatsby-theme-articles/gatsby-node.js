@@ -223,7 +223,8 @@ exports.onCreateNode = async (
         async ({
           contentPath = "articles",
           basePath = "",
-          socialImages = null
+          socialImages = null,
+          socialImageComponent = null
         }) => {
           if (source === contentPath && !!node.frontmatter) {
             let slug;
@@ -289,9 +290,9 @@ exports.onCreateNode = async (
                   fileName: slugify(node.frontmatter.title),
                   outputDir: "article-images",
                   data: node,
-                  component: require.resolve(
-                    "./src/components/printer-article.js"
-                  )
+                  component:
+                    socialImageComponent ||
+                    require.resolve("./src/components/printer-article.js")
                 });
 
                 socialImage = `${siteURL}/article-images/${slugify(
