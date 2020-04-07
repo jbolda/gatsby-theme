@@ -8,8 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "lerna": "lerna",
-    "publish-ci": "lerna publish from-package -y --no-verify-access",
+    "publish-ci": "changeset publish",
     "changeset": "changeset",
     "postinstall": "patch-package"
   },
