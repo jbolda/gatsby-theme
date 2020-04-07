@@ -1,5 +1,13 @@
 # @jbolda/gatsby-theme-homepage
 
+## 0.3.3
+
+### Patch Changes
+
+- e1c7363: fix import strategy so -homepage and -articles can have nav menu shadowed
+- Updated dependencies [7c7b7a6]
+  - @jbolda/gatsby-theme-layout@0.3.5
+
 ## 0.3.2
 
 ### Patch Changes
