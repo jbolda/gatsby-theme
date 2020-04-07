@@ -1,5 +1,11 @@
 # @jbolda/gatsby-theme-layout
 
+## 0.3.5
+
+### Patch Changes
+
+- 7c7b7a6: fix(deps): update dependency react-use to v14
+
 ## 0.3.4
 
 ### Patch Changes
