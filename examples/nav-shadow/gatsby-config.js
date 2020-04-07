@@ -4,7 +4,7 @@ module.exports = {
     siteDescription: `Structural Engineer with a knack for creative solutions using code and ingenuity.`,
     siteAuthor: `Jacob Bolda`,
     siteContact: "https://twitter.com/jacobbolda",
-    siteURL: "https://jbolda-gatsby-theme-personal.netlify.com/",
+    siteURL: "https://jbolda-gatsby-theme-nav-shadow.netlify.com/",
     contactLinks: [
       {
         url: "mailto:me@jacobbolda.com",
