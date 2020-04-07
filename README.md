@@ -21,4 +21,5 @@ These themes use theme-ui which has some built-in ability to customize colors, f
 
 # Example sites
 - [Personal](https://jbolda-gatsby-theme-personal.netlify.com/) ([Source](https://github.com/jbolda/gatsby-theme/tree/master/examples/personal))
-- [Articles With Social Cards](https://jbolda-gatsby-theme-asc.netlify.com/) ([Source](https://github.com/jbolda/gatsby-theme/tree/master/examples/articles-social-cards))
+- [Articles With Social Cards](https://jbolda-gatsby-theme-social.netlify.com/) ([Source](https://github.com/jbolda/gatsby-theme/tree/master/examples/articles-social-cards))
+- [Shadowing the Navigation aka header/footer](https://jbolda-gatsby-theme-nav-shadow.netlify.com/) ([Source](https://github.com/jbolda/gatsby-theme/tree/master/examples/nav-shadow))
