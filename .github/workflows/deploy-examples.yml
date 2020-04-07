@@ -23,7 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: yarn
-      - run: yarn lerna bootstrap
       - name: build example/${{ matrix.example.name }}
         working-directory: examples/${{ matrix.example.name }}
         env:
