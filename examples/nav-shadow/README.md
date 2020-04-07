@@ -1,11 +1,3 @@
-# `personal`
+# `nav-shadow`
 
-> TODO: description
-
-## Usage
-
-```
-const personal = require('personal');
-
-// TODO: DEMONSTRATE API
-```
+This example demonstrates shadowing the `Nav` component for those that want to bring their own header and footer.
