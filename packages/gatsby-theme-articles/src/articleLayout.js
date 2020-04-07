@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { useThemeUI, Flex } from "theme-ui";
-import Nav from "@jbolda/gatsby-theme-layout";
+import Nav from "./components/nav";
 import HelmetBlock from "./components/helmetBlock";
 import Footer from "./components/footer";
 import { mdxComponents } from "@jbolda/gatsby-theme-components";
@@ -21,11 +21,11 @@ const ArticleLayout = ({ footerInfo, article, location, children }) => {
             : {
                 ...mdxComponents({
                   heading: "jboldaGatsbyTheme.articles.article.heading",
-                  text: "jboldaGatsbyTheme.articles.article.text"
+                  text: "jboldaGatsbyTheme.articles.article.text",
                 }),
                 ...(!!theme?.jboldaGatsbyTheme?.articles?.article?.components
                   ? theme.jboldaGatsbyTheme.articles.article.components
-                  : {})
+                  : {}),
               }
         }
       >
@@ -35,7 +35,7 @@ const ArticleLayout = ({ footerInfo, article, location, children }) => {
             flexWrap: "wrap",
             justifyContent: "center",
             alignItems: "center",
-            variant: "jboldaGatsbyTheme.articles.article.container"
+            variant: "jboldaGatsbyTheme.articles.article.container",
           }}
         >
           {children}
@@ -46,7 +46,7 @@ const ArticleLayout = ({ footerInfo, article, location, children }) => {
   );
 };
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query JBoldaGatsbyThemeArticleArticleLayout {
@@ -61,7 +61,7 @@ export default props => (
         }
       }
     `}
-    render={queryData => (
+    render={(queryData) => (
       <ArticleLayout footerInfo={queryData.site.siteMetadata} {...props} />
     )}
   />

@@ -26,6 +26,8 @@ Lastly, it expects a nested folder named `engagements` with markdown files with 
 
 Additionally, the site links section in the about section (the second one), you may pass a list of contact links in the `siteMetadata`.  Use `contactLinks` as an array of objects with a `url`, `text` (the text you will see), and an `icon` as pulled from fontawesome.
 
+If you would like to use your own header, you can shadow the `Nav` and you don't need to include `@jbolda/gatsby-theme-layout`. To shadow the `Nav` component, place a `nav.js` with a `Nav` component exported as a default in your directory at `src/@jbolda/gatsby-theme-homepage/components`. See the `nav-shadow` in the examples folder.
+
 ## Configuration
 
 ```
