@@ -18,7 +18,7 @@ jobs:
           - name: 'article-social-cards'
             siteID: '6040feb3-4b61-477a-a7c8-66c0c8d859b1'
           - name: 'nav-shadow'
-            site ID: '39575e96-2556-4252-ad9c-c67b93706543'
+            siteID: '39575e96-2556-4252-ad9c-c67b93706543'
 
     steps:
       - uses: actions/checkout@v2
