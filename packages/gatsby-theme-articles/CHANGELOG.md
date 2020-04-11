@@ -1,5 +1,11 @@
 # @jbolda/gatsby-theme-articles
 
+## 0.4.5
+
+### Patch Changes
+
+- 172ccf7: use named import for react-helmet for v5+ compatibility
+
 ## 0.4.4
 
 ### Patch Changes
