@@ -33,7 +33,7 @@
     "gatsby-remark-images": "3.2.2",
     "gatsby-source-airtable": "2.1.0",
     "gatsby-source-filesystem": "2.2.2",
-    "gatsby-theme-recipes": "0.1.4",
+    "gatsby-theme-recipes": "0.1.5",
     "gatsby-transformer-sharp": "2.4.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
