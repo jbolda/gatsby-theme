@@ -36,6 +36,8 @@ Everything is installed now. Let's set up some scripts for you to run your proje
 
 Next we install the plugins in gatsby-config.js and add a little bit of configuration.
 
+First the filesystem source for the homepage.
+
 <GatsbyPlugin
     name="gatsby-source-filesystem"
     key="homepage"
@@ -43,6 +45,11 @@ Next we install the plugins in gatsby-config.js and add a little bit of configur
         name: "homepage",
         path: "src/homepage/"
     }} />
+
+---
+
+Then for articles.
+
 <GatsbyPlugin
     name="gatsby-source-filesystem"
     key="articles"
@@ -50,16 +57,52 @@ Next we install the plugins in gatsby-config.js and add a little bit of configur
         name: "articles",
         path: "src/articles/"
     }} />
+
+
+---
+
+Theme-ui plugin
+
 <GatsbyPlugin name="gatsby-plugin-theme-ui" />
+
+
+---
+
+and sharp
+
 <GatsbyPlugin name="gatsby-plugin-sharp" />
+
+
+---
+
+and sharp's transformer
+
 <GatsbyPlugin name="gatsby-transformer-sharp" />
+
+
+---
+
+the homepage theme
+
 <GatsbyPlugin name="@jbolda/gatsby-theme-homepage"
     options={{ showArticlesOnHomepage: true }} />
+
+
+---
+
+and the articles theme
+
 <GatsbyPlugin name="@jbolda/gatsby-theme-articles" options={{
     contents: [
           { contentPath: "articles" },
         ]
     }}/>
+
+
+---
+
+setup plugin mdx
+
 <GatsbyPlugin name="gatsby-plugin-mdx" options={{
     gatsbyRemarkPlugins: [
         {
@@ -70,7 +113,19 @@ Next we install the plugins in gatsby-config.js and add a little bit of configur
         }
     ]
     }} />
+
+
+---
+
+and react-helmet for SEO
+
 <GatsbyPlugin name="gatsby-plugin-react-helmet" />
+
+
+---
+
+you are planning on using netlify, right?
+
 <GatsbyPlugin name="gatsby-plugin-netlify" />
 
 ---
