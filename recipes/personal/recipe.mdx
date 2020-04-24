@@ -34,15 +34,42 @@ Everything is installed now. Let's set up some scripts for you to run your proje
 
 ---
 
-Install the plugins in gatsby-config.js. We need to provide config for gatsby-source-filesystem, @jbolda/gatsby-theme-homepage, @jbolda/gatsby-theme-articles, gatsby-plugin-mdx still.
+Next we install the plugins in gatsby-config.js and add a little bit of configuration.
 
-<GatsbyPlugin name="gatsby-source-filesystem" />
+<GatsbyPlugin
+    name="gatsby-source-filesystem"
+    key="homepage"
+    options={{
+        name: `homepage`,
+        path: `${__dirname}/src/homepage/`
+    }} />
+<GatsbyPlugin
+    name="gatsby-source-filesystem"
+    key="articles"
+    options={{
+        name: `articles`,
+        path: `${__dirname}/src/articles/`
+    }} />
 <GatsbyPlugin name="gatsby-plugin-theme-ui" />
 <GatsbyPlugin name="gatsby-plugin-sharp" />
 <GatsbyPlugin name="gatsby-transformer-sharp" />
-<GatsbyPlugin name="@jbolda/gatsby-theme-homepage" />
-<GatsbyPlugin name="@jbolda/gatsby-theme-articles" />
-<GatsbyPlugin name="gatsby-plugin-mdx" />
+<GatsbyPlugin name="@jbolda/gatsby-theme-homepage"
+    options={{ showArticlesOnHomepage: true }} />
+<GatsbyPlugin name="@jbolda/gatsby-theme-articles" options={{
+    contents: [
+          { contentPath: "articles" },
+        ]
+    }}/>
+<GatsbyPlugin name="gatsby-plugin-mdx" options={{
+    gatsbyRemarkPlugins: [
+        {
+            resolve: `gatsby-remark-images`,
+            options: {
+                maxWidth: 590
+            }
+        }
+    ]
+    }} />
 <GatsbyPlugin name="gatsby-plugin-react-helmet" />
 <GatsbyPlugin name="gatsby-plugin-netlify" />
 
