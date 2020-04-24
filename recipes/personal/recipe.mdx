@@ -54,11 +54,6 @@ First the filesystem source for the homepage.
         name: "homepage",
         path: "src/homepage/"
     }} />
-
----
-
-Then for articles.
-
 <GatsbyPlugin
     name="gatsby-source-filesystem"
     key="articles"
@@ -66,52 +61,16 @@ Then for articles.
         name: "articles",
         path: "src/articles/"
     }} />
-
-
----
-
-Theme-ui plugin
-
 <GatsbyPlugin name="gatsby-plugin-theme-ui" />
-
-
----
-
-and sharp
-
 <GatsbyPlugin name="gatsby-plugin-sharp" />
-
-
----
-
-and sharp's transformer
-
 <GatsbyPlugin name="gatsby-transformer-sharp" />
-
-
----
-
-the homepage theme
-
 <GatsbyPlugin name="@jbolda/gatsby-theme-homepage"
     options={{ showArticlesOnHomepage: true }} />
-
-
----
-
-and the articles theme
-
 <GatsbyPlugin name="@jbolda/gatsby-theme-articles" options={{
     contents: [
           { contentPath: "articles" },
         ]
     }}/>
-
-
----
-
-setup plugin mdx
-
 <GatsbyPlugin name="gatsby-plugin-mdx" options={{
     gatsbyRemarkPlugins: [
         {
@@ -122,19 +81,7 @@ setup plugin mdx
         }
     ]
     }} />
-
-
----
-
-and react-helmet for SEO
-
 <GatsbyPlugin name="gatsby-plugin-react-helmet" />
-
-
----
-
-you are planning on using netlify, right?
-
 <GatsbyPlugin name="gatsby-plugin-netlify" />
 
 ---
