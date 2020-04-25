@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "2.6.5",
-    "gatsby-cli": "^2.11.18",
+    "gatsby-cli": "^2.11.21",
     "patch-package": "^6.2.2",
     "postinstall-postinstall": "^2.1.0"
   },

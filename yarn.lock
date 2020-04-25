@@ -6911,10 +6911,10 @@ fwd-stream@^1.0.4:
   dependencies:
     readable-stream "~1.0.26-4"
 
-gatsby-cli@^2.11.18:
-  version "2.11.18"
-  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.11.18.tgz#3613c9e38af75d98787587f589abeb10f2d284d5"
-  integrity sha512-bsWsRUYYD0w9HM56vXJTMFxrPPcTZoHveaeDlz9bKTY2QTuUCE9BeQZTRHxOC/5sE3V3uR3cXqk/q+o+OsJQiw==
+gatsby-cli@^2.11.21:
+  version "2.11.21"
+  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.11.21.tgz#9536f8742fce16278d33c384514bc63fe5d6271c"
+  integrity sha512-qGN9Jwxb84UyVDiQe5FJsuP6XCSn8W0wE3q6/wNv4U3EoyqPWpWZXtcc0at3uyJPOgDZF8O5S5j95ZzdkGeTiQ==
   dependencies:
     "@babel/code-frame" "^7.8.3"
     "@babel/runtime" "^7.8.7"
@@ -6932,7 +6932,7 @@ gatsby-cli@^2.11.18:
     fs-exists-cached "^1.0.0"
     fs-extra "^8.1.0"
     gatsby-core-utils "^1.1.4"
-    gatsby-recipes "^0.0.15"
+    gatsby-recipes "^0.0.18"
     gatsby-telemetry "^1.2.6"
     hosted-git-info "^3.0.4"
     is-valid-path "^0.1.1"
@@ -7136,10 +7136,10 @@ gatsby-react-router-scroll@^2.2.3:
     scroll-behavior "^0.9.12"
     warning "^3.0.0"
 
-gatsby-recipes@^0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/gatsby-recipes/-/gatsby-recipes-0.0.15.tgz#38325a3235d44cd38fcda47faf3cd6059fe23a8e"
-  integrity sha512-5uJYDZThFOZfVusT62gB36ZPWZFGmPvVD5sN1HJ/jC7Vg/mDOjX9IaE47GpNYIKhLpDU4vzcNHYJq0AHcXGzWQ==
+gatsby-recipes@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/gatsby-recipes/-/gatsby-recipes-0.0.18.tgz#58be424c789a8a0a8387c3b4818918009032ce26"
+  integrity sha512-mxpZ22XP7an/RHPSbvslpCS/CVkGR4Rrojzh/f9r1UxlAS/Ba/GJ/1fAn9Pp+755aNIR9ditf1vRUBOML0G6+Q==
   dependencies:
     "@babel/core" "^7.8.7"
     "@babel/generator" "^7.9.5"
@@ -7179,6 +7179,7 @@ gatsby-recipes@^0.0.15:
     ink-box "^1.0.0"
     ink-link "^1.0.0"
     ink-select-input "^3.1.2"
+    ink-spinner "^3.0.1"
     is-blank "^2.1.0"
     is-newline "^1.0.0"
     is-relative "^1.0.0"
@@ -7290,10 +7291,10 @@ gatsby-transformer-sharp@2.4.7:
     semver "^5.7.1"
     sharp "^0.25.1"
 
-gatsby@2.20.32:
-  version "2.20.32"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.20.32.tgz#8bf20b6a6fbee631dcf27c354b39223bed53afdc"
-  integrity sha512-R2fLaqi3ZDCMUxRgXE5oQ3wJtHeIQ/Pv1ZcyM/jsExMBpokCpaD92LJ8jjup8TfUYSBroBp/1Gpl6D8D/AHFYQ==
+gatsby@2.20.35:
+  version "2.20.35"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.20.35.tgz#805bf2df576dc316ebdbddd3fea033983b13e32b"
+  integrity sha512-WAjsMc28vkvd4xfQqxd2sdnxgY/ydcw6x1TGUbbtNQCRDNdpdls7iVSyUqPnZnry3vdDDc/V3KBaNTGpx1etqA==
   dependencies:
     "@babel/code-frame" "^7.8.3"
     "@babel/core" "^7.8.7"
@@ -7356,7 +7357,7 @@ gatsby@2.20.32:
     flat "^4.1.0"
     fs-exists-cached "1.0.0"
     fs-extra "^8.1.0"
-    gatsby-cli "^2.11.18"
+    gatsby-cli "^2.11.21"
     gatsby-core-utils "^1.1.4"
     gatsby-graphiql-explorer "^0.3.5"
     gatsby-link "^2.3.5"
