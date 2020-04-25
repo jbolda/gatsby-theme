@@ -43,10 +43,10 @@ jobs:
 
   test-recipes:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     strategy:
       fail-fast: false
-      timeout-minutes: 20
       matrix:
         recipe:
           - name: personal
