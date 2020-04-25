@@ -20,7 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: yarn
-      - run: yarn
       - name: prep notes file
         run: echo "# ${{ matrix.example.name }}" >> ./notes.md
       - name: build example/${{ matrix.example.name }}
@@ -40,3 +39,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           path: ./notes.md
+
+
+  test-recipes:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      timeout-minutes: 20
+      matrix:
+        recipe:
+          - name: personal
+            file: ./personal/recipe.mdx
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn
+      - name: gatsby recipes ${{ matrix.recipe.name }}
+        working-directory: recipes
+        run: yes | gatsby recipes ${{ matrix.recipe.file }}
