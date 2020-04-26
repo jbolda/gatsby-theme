@@ -22,7 +22,7 @@
     "@jbolda/gatsby-theme-articles": "^0.4.0",
     "@jbolda/gatsby-theme-homepage": "^0.3.0",
     "@mdx-js/mdx": "1.5.9",
-    "gatsby": "2.20.35",
+    "gatsby": "2.20.36",
     "gatsby-image": "2.3.5",
     "gatsby-plugin-mdx": "1.1.11",
     "gatsby-plugin-netlify": "2.2.4",
