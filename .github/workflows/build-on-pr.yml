@@ -42,22 +42,22 @@ jobs:
 
 
   test-recipes:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     defaults:
       run:
-        working-directory: recipes
+        working-directory: ${{ runner.workspace }}
 
     strategy:
       fail-fast: false
       matrix:
+        os: ['ubuntu-latest']
         recipe:
           - name: personal
             file: ./personal/recipe.mdx
 
     steps:
       - uses: actions/checkout@v2
-      - run: yarn
       - name: gatsby recipes ${{ matrix.recipe.name }}
         timeout-minutes: 20
-        run: yes | yarn gatsby recipes ${{ matrix.recipe.file }}
+        run: yes | npx gatsby recipes ${{ matrix.recipe.file }}
       - run: yarn gatsby build
