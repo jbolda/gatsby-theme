@@ -43,7 +43,6 @@ jobs:
 
   test-recipes:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
 
     strategy:
       fail-fast: false
@@ -56,6 +55,9 @@ jobs:
       - uses: actions/checkout@v2
       - run: yarn
       - name: gatsby recipes ${{ matrix.recipe.name }}
-        working-directory: ..
-        run: yes | npx gatsby recipes ./gatsby-theme/${{ matrix.recipe.file }}
-      - run: npx gatsby build
+        timeout-minutes: 20
+        working-directory: recipes
+        run: yes | yarn gatsby recipes ${{ matrix.recipe.file }}
+      - name: yarn gatsby build
+        working-directory: recipes
+        run: yarn gatsby build
