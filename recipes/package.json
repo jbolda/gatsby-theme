@@ -1,10 +1,7 @@
 {
   "name": "recipes",
   "private": true,
-  "scripts": {
-    "gatsby": "gatsby"
-  },
-  "devDependencies": {
-    "gatsby-cli": "^2.11.22"
+  "dependencies": {
+    "gatsby": "2.20.36"
   }
 }
