@@ -35,6 +35,14 @@ Everything is installed now. Let's set up some scripts for you to run your proje
 
 ---
 
+It is good practice to ignore some of the gatsby build files. This will make certain that we don't commit them into our repository. Let's do that now.
+
+<GitIgnore name="node_modules" key="node_modules"/>
+<GitIgnore name=".cache" key=".cache"/>
+<GitIgnore name="public" key="public"/>
+
+---
+
 Bootstrap a config file for you (this step should go away eventually when `GatsbyPlugin` is smarter).
 
 <File
