@@ -20,7 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: yarn
-      - run: yarn
       - name: prep notes file
         run: echo "# ${{ matrix.example.name }}" >> ./notes.md
       - name: build example/${{ matrix.example.name }}
@@ -40,3 +39,30 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           path: ./notes.md
+
+
+  test-recipes:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-latest']
+        # we expect this to fail as recipes don't support running in CI _yet_
+        notice: ['known to fail']
+        recipe:
+          - name: personal
+            file: ./personal/recipe.mdx
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: create test dir
+        working-directory: ..
+        run: mkdir recipes-test
+      - name: gatsby recipes ${{ matrix.recipe.name }}
+        timeout-minutes: 20
+        working-directory: ../recipes-test
+        run: npx gatsby recipes ${{ matrix.recipe.file }}
+      - name: yarn gatsby build
+        working-directory: ../recipes-test
+        run: yarn gatsby build

@@ -1,0 +1,140 @@
+# Setup Personal Website With @jbolda/gatsby-themes
+
+---
+
+Install necessary NPM packages
+
+<NPMPackage name="@jbolda/gatsby-theme-articles" />
+<NPMPackage name="@jbolda/gatsby-theme-homepage" />
+<NPMPackage name="@jbolda/gatsby-theme-layout" />
+<NPMPackage name="@mdx-js/mdx" />
+<NPMPackage name="gatsby" />
+<NPMPackage name="gatsby-image" />
+<NPMPackage name="gatsby-plugin-mdx" />
+<NPMPackage name="gatsby-plugin-netlify" />
+<NPMPackage name="gatsby-plugin-printer" />
+<NPMPackage name="gatsby-plugin-react-helmet" />
+<NPMPackage name="gatsby-plugin-sharp" />
+<NPMPackage name="gatsby-plugin-theme-ui" />
+<NPMPackage name="gatsby-remark-images" />
+<NPMPackage name="gatsby-source-filesystem" />
+<NPMPackage name="gatsby-transformer-sharp" />
+<NPMPackage name="react" />
+<NPMPackage name="react-dom" />
+<NPMPackage name="react-helmet" />
+<NPMPackage name="theme-ui" />
+
+---
+
+Everything is installed now. Let's set up some scripts for you to run your project.
+
+<NPMScript name="develop" command="gatsby develop" />
+<NPMScript name="dev:hard" command="gatsby clean && gatsby develop" />
+<NPMScript name="build" command="gatsby build" />
+<NPMScript name="build:hard" command="gatsby clean && gatsby build" />
+
+---
+
+It is good practice to ignore some of the gatsby build files. This will make certain that we don't commit them into our repository. Let's do that now.
+
+<GitIgnore name="node_modules" key="node_modules"/>
+<GitIgnore name=".cache" key=".cache"/>
+<GitIgnore name="public" key="public"/>
+
+---
+
+Bootstrap a config file for you (this step should go away eventually when `GatsbyPlugin` is smarter).
+
+<File
+ path="gatsby-config.js"
+ content="https://raw.githubusercontent.com/jbolda/gatsby-theme/master/recipes/personal/gatsby-config.js"
+/>
+
+---
+
+Next we install the plugins in gatsby-config.js and add a little bit of configuration.
+
+First the filesystem source for the homepage.
+
+<GatsbyPlugin
+    name="gatsby-source-filesystem"
+    key="homepage"
+    options={{
+        name: "homepage",
+        path: "src/homepage/"
+    }} />
+<GatsbyPlugin
+    name="gatsby-source-filesystem"
+    key="articles"
+    options={{
+        name: "articles",
+        path: "src/articles/"
+    }} />
+<GatsbyPlugin name="gatsby-plugin-theme-ui" />
+<GatsbyPlugin name="gatsby-plugin-sharp" />
+<GatsbyPlugin name="gatsby-transformer-sharp" />
+<GatsbyPlugin name="@jbolda/gatsby-theme-homepage"
+    options={{ showArticlesOnHomepage: true }} />
+<GatsbyPlugin name="@jbolda/gatsby-theme-articles" options={{
+    contents: [
+          { contentPath: "articles" },
+        ]
+    }}/>
+<GatsbyPlugin name="gatsby-plugin-mdx" options={{
+    gatsbyRemarkPlugins: [
+        {
+            resolve: `gatsby-remark-images`,
+            options: {
+                maxWidth: 590
+            }
+        }
+    ]
+    }} />
+<GatsbyPlugin name="gatsby-plugin-printer" />
+<GatsbyPlugin name="gatsby-plugin-react-helmet" />
+<GatsbyPlugin name="gatsby-plugin-netlify" />
+
+---
+
+Config is all set. Let's shadow the theme file to allow you to customize the look and feel of your site.
+
+<GatsbyShadowFile theme="gatsby-plugin-theme-ui" path="src/index.js" />
+
+---
+
+Great! We have our config all set up. Let's start writing drop some content on the homepage. We will create a template file for you to start. Add some content to the "landing" and "about" files which will make up your homepage.
+
+<File
+ path="src/homepage/landing.mdx"
+ content="https://raw.githubusercontent.com/jbolda/gatsby-theme/master/recipes/personal/homepage-landing.mdx"
+/>
+<File
+ path="src/homepage/about.mdx"
+ content="https://raw.githubusercontent.com/jbolda/gatsby-theme/master/recipes/personal/homepage-about.mdx"
+/>
+
+---
+
+Now we can add some projects or public engagements. You can put as many files in this folder as you would like and it will show up in the next section of the homepage.
+
+<File
+ path="src/homepage/engagements/projectOne.mdx"
+ content="https://raw.githubusercontent.com/jbolda/gatsby-theme/master/recipes/personal/homepage-engagement.mdx"
+/>
+<File
+ path="src/homepage/engagements/projectTwo.mdx"
+ content="https://raw.githubusercontent.com/jbolda/gatsby-theme/master/recipes/personal/homepage-engagement.mdx"
+/>
+<File
+ path="src/homepage/engagements/projectThree.mdx"
+ content="https://raw.githubusercontent.com/jbolda/gatsby-theme/master/recipes/personal/homepage-engagement.mdx"
+/>
+
+---
+
+And then let's to writing our first article. Here is a template to get you started.
+
+<File
+ path="src/articles/0001-my-first-article/index.mdx"
+ content="https://raw.githubusercontent.com/jbolda/gatsby-theme/master/recipes/personal/article-template.mdx"
+/>
