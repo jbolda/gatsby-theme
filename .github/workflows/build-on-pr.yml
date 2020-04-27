@@ -61,7 +61,7 @@ jobs:
       - name: gatsby recipes ${{ matrix.recipe.name }}
         timeout-minutes: 20
         working-directory: ../recipes-test
-        run: yes | npx gatsby recipes ${{ matrix.recipe.file }}
+        run: npx gatsby recipes ${{ matrix.recipe.file }}
       - name: yarn gatsby build
         working-directory: ../recipes-test
         run: yarn gatsby build
