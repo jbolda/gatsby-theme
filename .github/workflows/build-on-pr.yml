@@ -43,9 +43,6 @@ jobs:
 
   test-recipes:
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        working-directory: ..
 
     strategy:
       fail-fast: false
@@ -57,7 +54,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: create test dir
+        working-directory: ..
+        run: mkdir recipes-test
       - name: gatsby recipes ${{ matrix.recipe.name }}
         timeout-minutes: 20
+        working-directory: ../recipes-test
         run: yes | npx gatsby recipes ${{ matrix.recipe.file }}
-      - run: yarn gatsby build
+      - name: yarn gatsby build
+        working-directory: ../recipes-test
+        run: yarn gatsby build
