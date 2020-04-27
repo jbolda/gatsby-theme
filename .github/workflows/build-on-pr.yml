@@ -48,7 +48,7 @@ jobs:
       fail-fast: false
       matrix:
         os: ['ubuntu-latest']
-        notice: ['this will fail, doesn't work in CI yet']
+        notice: ['fails as doesn't work in CI']
         recipe:
           - name: personal
             file: ./personal/recipe.mdx
