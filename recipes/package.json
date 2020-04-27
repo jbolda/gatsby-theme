@@ -1,7 +1,0 @@
-{
-  "name": "recipes",
-  "private": true,
-  "dependencies": {
-    "gatsby": "2.21.0"
-  }
-}
