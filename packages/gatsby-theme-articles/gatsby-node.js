@@ -14,7 +14,8 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
   );
   const { createTypes } = actions;
 
-  createTypes(`interface Articles @nodeInterface {
+  createTypes(`
+  interface Articles @nodeInterface {
     id: ID!
     title: String!
     body: String!
@@ -27,13 +28,22 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
     excerpt: String!
     featuredImage: ImageSharp
     socialImage: String
-  }`);
+    timeToRead: Int
+    wordCount: ArticleWordCount
+  }
+
+  interface ArticleWordCount {
+    paragraphs: Int
+    sentences: Int
+    words: Int
+  }
+  `);
 
   if (debug.enabled && !!reporter) {
     reporter.info(`@jbolda/gatsby-theme-articles:createSchemaCustomization`);
   }
 
-  const mdxResolverPassthrough = fieldName => async (
+  const mdxResolverPassthrough = (fieldName) => async (
     source,
     args,
     context,
@@ -44,7 +54,7 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
     );
     const type = info.schema.getType(`Mdx`);
     const mdxNode = context.nodeModel.getNodeById({
-      id: source.parent
+      id: source.parent,
     });
     if (debug.enabled && !!reporter) {
       reporter.info(
@@ -55,7 +65,7 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
     }
     const resolver = type.getFields()[fieldName].resolve;
     const result = await resolver(mdxNode, args, context, {
-      fieldName
+      fieldName,
     });
     if (debug.enabled && !!reporter) {
       reporter.info(
@@ -67,7 +77,7 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
     return result;
   };
 
-  const imageSharpResolverPassthrough = fieldName => async (
+  const imageSharpResolverPassthrough = (fieldName) => async (
     source,
     args,
     context,
@@ -96,13 +106,13 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
         type, // source node
         {
           frontmatter: {
-            featuredImage: { childImageSharp: { id: true } }
-          }
+            featuredImage: { childImageSharp: { id: true } },
+          },
         }, // querying for resolvable field
         {
           frontmatter: {
-            featuredImage: { childImageSharp: { id: true } }
-          }
+            featuredImage: { childImageSharp: { id: true } },
+          },
         }, // resolve this field
         [type.name] // The types to use are these
       );
@@ -120,7 +130,7 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
       const mdxNode = await context.nodeModel.runQuery({
         type: type,
         query: { filter: { id: { eq: source.parent } } },
-        firstOnly: true
+        firstOnly: true,
       });
 
       if (debug.enabled && !!reporter) {
@@ -134,7 +144,8 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
 
       const imageSharpNode = await context.nodeModel.getNodeById({
         id:
-          mdxNode.__gatsby_resolved.frontmatter.featuredImage.childImageSharp.id
+          mdxNode.__gatsby_resolved.frontmatter.featuredImage.childImageSharp
+            .id,
       });
 
       if (debug.enabled && !!reporter) {
@@ -177,24 +188,32 @@ exports.createSchemaCustomization = ({ actions, schema, reporter }, {}) => {
           args: {
             pruneLength: {
               type: `Int`,
-              defaultValue: 140
-            }
+              defaultValue: 140,
+            },
           },
-          resolve: mdxResolverPassthrough(`excerpt`)
+          resolve: mdxResolverPassthrough(`excerpt`),
         },
         body: {
           type: `String!`,
-          resolve: mdxResolverPassthrough(`body`)
+          resolve: mdxResolverPassthrough(`body`),
         },
         featuredImage: {
           type: "ImageSharp",
-          resolve: imageSharpResolverPassthrough(`featuredImage`)
+          resolve: imageSharpResolverPassthrough(`featuredImage`),
         },
         socialImage: {
-          type: "String"
-        }
+          type: "String",
+        },
+        timeToRead: {
+          type: "Int",
+          resolve: mdxResolverPassthrough(`timeToRead`),
+        },
+        wordCount: {
+          type: "ArticleWordCount",
+          resolve: mdxResolverPassthrough(`wordCount`),
+        },
       },
-      interfaces: [`Node`, `Articles`]
+      interfaces: [`Node`, `Articles`],
     })
   );
 };
@@ -224,7 +243,7 @@ exports.onCreateNode = async (
           contentPath = "articles",
           basePath = "",
           socialImages = null,
-          socialImageComponent = null
+          socialImageComponent = null,
         }) => {
           if (source === contentPath && !!node.frontmatter) {
             let slug;
@@ -241,13 +260,13 @@ exports.onCreateNode = async (
               const filePath = createFilePath({
                 node: fileNode,
                 getNode,
-                basePath: contentPath
+                basePath: contentPath,
               });
               slug = urlResolve(basePath, filePath);
             }
 
             let socialImage = null;
-            const stringIsValidURL = s => {
+            const stringIsValidURL = (s) => {
               try {
                 new URL(s);
                 return true;
@@ -292,7 +311,7 @@ exports.onCreateNode = async (
                   data: node,
                   component:
                     socialImageComponent ||
-                    require.resolve("./src/components/printer-article.js")
+                    require.resolve("./src/components/printer-article.js"),
                 });
 
                 socialImage = `${siteURL}/article-images/${slugify(
@@ -314,7 +333,7 @@ exports.onCreateNode = async (
               // set string as an easy check for early return
               featuredImage: node.frontmatter.featuredImage,
               socialImage: socialImage,
-              contentPath: contentPath
+              contentPath: contentPath,
             };
 
             if (debug.enabled && !!reporter) {
@@ -340,8 +359,8 @@ exports.onCreateNode = async (
                   .update(JSON.stringify(fieldData))
                   .digest(`hex`),
                 content: JSON.stringify(fieldData),
-                description: `Mdx implementation of the Articles interface`
-              }
+                description: `Mdx implementation of the Articles interface`,
+              },
             };
           } else {
             return null;
@@ -350,16 +369,16 @@ exports.onCreateNode = async (
       )
     );
 
-    const createNodes = articleNodes.map(async articleNode =>
+    const createNodes = articleNodes.map(async (articleNode) =>
       !articleNode ? false : createNode(articleNode)
     );
 
-    const createParentLinks = articleNodes.map(async articleNode =>
+    const createParentLinks = articleNodes.map(async (articleNode) =>
       !articleNode
         ? false
         : createParentChildLink({
             parent: articleNode,
-            child: getNode(articleNode.id)
+            child: getNode(articleNode.id),
           })
     );
 
@@ -385,7 +404,7 @@ exports.createPages = ({ graphql, actions, reporter }, { contents = [] }) => {
             }
           }
         `
-      ).then(async result => {
+      ).then(async (result) => {
         if (result.errors) {
           console.log(result.errors);
           console.log(result);
@@ -397,7 +416,7 @@ exports.createPages = ({ graphql, actions, reporter }, { contents = [] }) => {
         let mdxArticleWithImage;
         let articlesWithImages = 0;
         let mdxArticleWithoutImage;
-        result.data.allArticles.nodes.forEach(node => {
+        result.data.allArticles.nodes.forEach((node) => {
           if (node.featuredImage && node.featuredImage.id) {
             articlesWithImages++;
           } else {
@@ -454,7 +473,7 @@ exports.createPages = ({ graphql, actions, reporter }, { contents = [] }) => {
           );
         }
 
-        result.data.allArticles.nodes.forEach(node => {
+        result.data.allArticles.nodes.forEach((node) => {
           if (node.slug) {
             createPage({
               path: node.slug, // required
@@ -463,19 +482,19 @@ exports.createPages = ({ graphql, actions, reporter }, { contents = [] }) => {
                   ? mdxArticleWithImage
                   : mdxArticleWithoutImage,
               context: {
-                slug: node.slug
-              }
+                slug: node.slug,
+              },
             });
           }
         });
 
-        contents.forEach(content =>
+        contents.forEach((content) =>
           createPage({
             path: !content.listPath
               ? `/${content.contentPath}/`
               : `/${content.listPath}/`,
             component: require.resolve(`./src/templates/articleList`),
-            context: { contentPath: content.contentPath }
+            context: { contentPath: content.contentPath },
           })
         );
 
