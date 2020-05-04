@@ -20,6 +20,7 @@ export const pageQuery = graphql`
       updated
       written
       excerpt
+      timeToRead
       socialImage
     }
   }

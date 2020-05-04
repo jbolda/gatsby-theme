@@ -22,11 +22,11 @@
     "@jbolda/gatsby-theme-articles": "^0.4.2",
     "@jbolda/gatsby-theme-homepage": "^0.3.0",
     "@jbolda/gatsby-theme-layout": "^0.3.3",
-    "@mdx-js/mdx": "1.5.9",
-    "gatsby": "2.21.0",
+    "@mdx-js/mdx": "1.6.1",
+    "gatsby": "2.21.11",
     "gatsby-image": "2.4.0",
-    "gatsby-plugin-mdx": "1.2.0",
-    "gatsby-plugin-netlify": "2.3.0",
+    "gatsby-plugin-mdx": "1.2.5",
+    "gatsby-plugin-netlify": "2.3.1",
     "gatsby-plugin-printer": "1.1.1",
     "gatsby-plugin-react-helmet": "3.3.0",
     "gatsby-plugin-sharp": "2.6.0",
@@ -40,5 +40,8 @@
     "react-dom": "16.13.1",
     "react-helmet": "6.0.0",
     "theme-ui": "0.3.1"
+  },
+  "resolutions": {
+    "puppeteer": "1.20.0"
   }
 }

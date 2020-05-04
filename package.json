@@ -9,16 +9,16 @@
   "private": true,
   "scripts": {
     "publish-ci": "changeset publish",
-    "changeset": "changeset",
-    "postinstall": "patch-package"
+    "changeset": "changeset"
   },
   "devDependencies": {
-    "@changesets/cli": "2.6.5",
-    "patch-package": "^6.2.2",
-    "postinstall-postinstall": "^2.1.0"
+    "@changesets/cli": "2.6.5"
   },
   "workspaces": [
     "packages/*",
     "examples/*"
-  ]
+  ],
+  "resolutions": {
+    "puppeteer": "1.20.0"
+  }
 }
