@@ -1,5 +1,11 @@
 # @jbolda/gatsby-theme-articles
 
+## 0.4.6
+
+### Patch Changes
+
+- 455dd4e: add reading time to top of articles
+
 ## 0.4.5
 
 ### Patch Changes
