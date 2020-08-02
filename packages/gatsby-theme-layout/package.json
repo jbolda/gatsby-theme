@@ -28,7 +28,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.12.0",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
-    "react-use": "^14.0.0"
+    "react-use": "^15.0.0"
   },
   "peerDependencies": {
     "gatsby-plugin-mdx": "^1.0.49",
