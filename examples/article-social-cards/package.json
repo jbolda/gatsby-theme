@@ -42,6 +42,6 @@
     "theme-ui": "0.3.1"
   },
   "resolutions": {
-    "puppeteer": "1.20.0"
+    "puppeteer": "5.5.0"
   }
 }
